@@ -1,6 +1,6 @@
 # Wazuh
 
-> Course oUTLINE
+> ## Course Outline
 * Introduction to Wazuh
 * HIDS,OSSEC and Wazuh
 * Components of Wazuh
