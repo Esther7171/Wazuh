@@ -9,20 +9,45 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+mkdir /root/wazuh-all
+cd /root/wazuh-all 
+
 clear
 echo "${boldx}--------------------------------------------${ncx}"
 echo "${boldx} Increase max_map_count on your Docker host${ncx}"
 echo "${boldx}--------------------------------------------${ncx}"
-
+sleep 1
 sysctl -w vm.max_map_count=262144
+clear
 
-redx='\033[0;31m'
-ncx='\033[0m'
-boldx='\033[1m'
+echo "${boldx}--------------------------${ncx}"
+echo "${boldx} Start the Docker service ${ncx}"
+echo "${boldx}--------------------------${ncx}"
+systemctl start docker
+
+echo "${boldx}---------------------------------------${ncx}"
+echo "${boldx} Changing Docker User-Group Permission ${ncx}"
+echo "${boldx}---------------------------------------${ncx}"
+sleep 1
+usermod -aG docker
 clear
-echo "${redx}This script must be run as root, login to root shell or it will break pkg. Exiting.${ncx}"
-sleep 2
+echo "${boldx}----------------------------${ncx}"
+echo "${boldx} Downloading Docker compose ${ncx}"
+echo "${boldx}----------------------------${ncx}"
+sleep 1
+curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)" -o /root/docker-compose
 clear
-echo "${boldx}--------------------------------------------${ncx}"
-echo "${boldx} Increase max_map_count on your Docker host${ncx}"
-echo "${boldx}--------------------------------------------${ncx}"
+echo "${boldx}---------------------${ncx}"
+echo "${boldx} Changing Permission ${ncx}"
+echo "${boldx}---------------------${ncx}"
+chmod +x /root/docker-compose
+sleep 1
+clear
+
+mv /root/docker-compose /usr/local/bin/
+
+git clone https://github.com/wazuh/wazuh-docker.git -b v4.9.2
+
+read -p "Would U like Single or Multi (s/m): "nodex
+
+if [ $nodex == "s" ||]
