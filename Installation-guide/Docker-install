@@ -17,5 +17,12 @@ echo "${boldx}--------------------------------------------${ncx}"
 sysctl -w vm.max_map_count=262144
 
 redx='\033[0;31m'
-ncx='\033[0m' # No color
+ncx='\033[0m'
+boldx='\033[1m'
+clear
 echo "${redx}This script must be run as root, login to root shell or it will break pkg. Exiting.${ncx}"
+sleep 2
+clear
+echo "${boldx}--------------------------------------------${ncx}"
+echo "${boldx} Increase max_map_count on your Docker host${ncx}"
+echo "${boldx}--------------------------------------------${ncx}"
