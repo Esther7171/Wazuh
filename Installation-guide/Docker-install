@@ -1,6 +1,7 @@
 #!/bin/bash
-redx='\033[0;31m'
-ncx='\033[0m' # No color
+
+redx="\e[1;31m"
+ncx="\e[0m" # No color
 boldx="\033[1m
 
 # Check if the script is being run as root
@@ -9,14 +10,15 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-mkdir /root/wazuh-all
-cd /root/wazuh-all 
+mkdir /home/$USER/wazuh-all
+cd /home/$USER/wazuh-all 
 
 clear
-echo "${boldx}--------------------------------------------${ncx}"
-echo "${boldx} Increase max_map_count on your Docker host${ncx}"
-echo "${boldx}--------------------------------------------${ncx}"
-sleep 1
+echo -e "\e[1;31m_______________________________________________\e[0m" #red
+echo ""
+echo -e "\e[7;1;5;31m Increase max_map_count on your Docker host\e[0m"
+echo -e "\e[1;31m_______________________________________________\e[0m
+sleep 0.5
 sysctl -w vm.max_map_count=262144
 clear
 
@@ -48,7 +50,23 @@ mv /root/docker-compose /usr/local/bin/
 
 git clone https://github.com/wazuh/wazuh-docker.git -b v4.9.2
 
-# read -p "Would U like Single or Multi (s/m): "nodex
+read -p "Would you like Single or Multi (S/M): " nodex
 
-# if [ $nodex == "s" ]
-# then
+# Convert input to lowercase for case-insensitivity
+nodex=$(echo "$nodex" | tr '[:upper:]' '[:lower:]')
+
+if [[ "$nodex" == "s" ]]; then
+    cd  /home/$USER/wazuh-all/wazuh-docker/single-node || exit
+    docker-compose -f generate-indexer-certs.yml run --rm generator
+    docker-compose up -d
+    echo "All done! Single Node has been deployed." | lolcat
+
+elif [[ "$nodex" == "m" ]]; then
+    cd  /home/$USER/wazuh-all/wazuh-docker/multi-node || exit
+    docker-compose -f generate-indexer-certs.yml run --rm generator
+    docker-compose up -d
+    echo "All done! Multi Node has been deployed." | lolcat
+
+else
+    echo "Wrong option. Please choose 'S' for Single or 'M' for Multi."
+fi
