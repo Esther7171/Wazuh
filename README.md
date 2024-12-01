@@ -8,7 +8,7 @@
 * Deployment Methods
 * Wazuh Feature
 * Wazuh Demo
-* Wazuh Intergration
+* [Wazuh Intergration](https://github.com/Esther7171/Wazuh/blob/main/README.md#wazuh-integrations)
 * Ubuntu Endpoint agent Enrollement
 * Windows Endpoint agent Enrollment
 * Wazuh Ruleset & Decoders
