@@ -24,3 +24,46 @@ OSSEC is open source HIDS security platform and a Host Intrusion Detection Syste
 
 > # What is HIDS ?
 Host-Based Intrusion Detection System that install directly on endpoint or servers. Purpose is basically to identify
+
+
+
+
+
+# Wazuh Integrations
+>  ## Antivirus
+> * CLamAV
+> * Kaspersky Antivirus
+> * McAfee
+> * Sophos
+> * Symantec Endpoint Protection
+* Endpoint Detection and Response (EDR)
+* Security Orchestration,Automation,and Response (SOAR)
+* Incident Response
+* Threat Response
+* Intrusion Detection system (IDS)
+* Intrusion Prevention system (IPS)
+* Vulnerability Managment
+* Log Manangement and SIEM
+* Cloud Security
+* Compliance and Audition
+
+1. Antivirus
+
+
+
+
+EDR
+
+CrowdStrick Falcon
+Carbon Black
+Cylance PROTECT
+Sentinel One
+Microsoft Defender for Endpoint
+
+
+SOAR (Security Orchestration Automation,and Response)
+
+Shuffle SOAR
+Cortex XSOAR
+Siemplify
+Swimlane
