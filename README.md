@@ -28,21 +28,21 @@ Host- [ ]Based Intrusion Detection System that install directly on endpoint or s
 
 # Wazuh Integrations
 >  ## Antivirus
-- [ ] [ ] CLamAV
-- [ ] [ ] Kaspersky Antivirus
-- [ ] [ ] McAfee
-- [ ] [ ] Sophos
-- [ ] [ ] Symantec Endpoint Protection
-- [ ] [ ] Endpoint Detection and Response (EDR)
-- [ ] [ ] Security Orchestration,Automation,and Response (SOAR)
-- [ ] [ ] Incident Response
-- [ ] [ ] Threat Response
-- [ ] [ ] Intrusion Detection system (IDS)
-- [ ] [ ] Intrusion Prevention system (IPS)
-- [ ] [ ] Vulnerability Managment
-- [ ] [ ] Log Manangement and SIEM
-- [ ] [ ] Cloud Security
-- [ ] [ ] Compliance and Audition
+- [ ] CLamAV
+- [ ] Kaspersky Antivirus
+- [ ] McAfee
+- [ ] Sophos
+- [ ] Symantec Endpoint Protection
+- [ ] Endpoint Detection and Response (EDR)
+- [ ] Security Orchestration,Automation,and Response (SOAR)
+- [ ] Incident Response
+- [ ] Threat Response
+- [ ] Intrusion Detection system (IDS)
+- [ ] Intrusion Prevention system (IPS)
+- [ ] Vulnerability Managment
+- [ ] Log Manangement and SIEM
+- [ ] Cloud Security
+- [ ] Compliance and Audition
 >  ## Endpoint Detection and Response (EDR)
 - [ ] CrowdStrick Falcon
 - [ ] Carbon Black
