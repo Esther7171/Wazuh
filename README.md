@@ -23,65 +23,65 @@
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
 
 > # What is HIDS ?
-Host-Based Intrusion Detection System that install directly on endpoint or servers. Purpose is basically to identify
+Host- [ ]Based Intrusion Detection System that install directly on endpoint or servers. Purpose is basically to identify
 
 
 # Wazuh Integrations
 >  ## Antivirus
-- [ ] CLamAV
-- [ ] Kaspersky Antivirus
-- [ ] McAfee
-- [ ] Sophos
-- [ ] Symantec Endpoint Protection
-- [ ] Endpoint Detection and Response (EDR)
-- [ ] Security Orchestration,Automation,and Response (SOAR)
-- [ ] Incident Response
-- [ ] Threat Response
-- [ ] Intrusion Detection system (IDS)
-- [ ] Intrusion Prevention system (IPS)
-- [ ] Vulnerability Managment
-- [ ] Log Manangement and SIEM
-- [ ] Cloud Security
-- [ ] Compliance and Audition
+- [ ] [ ] CLamAV
+- [ ] [ ] Kaspersky Antivirus
+- [ ] [ ] McAfee
+- [ ] [ ] Sophos
+- [ ] [ ] Symantec Endpoint Protection
+- [ ] [ ] Endpoint Detection and Response (EDR)
+- [ ] [ ] Security Orchestration,Automation,and Response (SOAR)
+- [ ] [ ] Incident Response
+- [ ] [ ] Threat Response
+- [ ] [ ] Intrusion Detection system (IDS)
+- [ ] [ ] Intrusion Prevention system (IPS)
+- [ ] [ ] Vulnerability Managment
+- [ ] [ ] Log Manangement and SIEM
+- [ ] [ ] Cloud Security
+- [ ] [ ] Compliance and Audition
 >  ## Endpoint Detection and Response (EDR)
-- CrowdStrick Falcon
-- Carbon Black
-- Cylance PROTECT
-- Sentinel One
-- Microsoft Defender for Endpoint
+- [ ] CrowdStrick Falcon
+- [ ] Carbon Black
+- [ ] Cylance PROTECT
+- [ ] Sentinel One
+- [ ] Microsoft Defender for Endpoint
 
 >  ## SOAR (Security Orchestration Automation,and Response)
-- Shuffle SOAR
-- Cortex XSOAR
-- Siemplify
-- Swimlane
+- [ ] Shuffle SOAR
+- [ ] Cortex XSOAR
+- [ ] Siemplify
+- [ ] Swimlane
 
 >  ## Incident Response
-- TheHive
-- MISP (Malware Information Sharing Platform)
-- IR Flow
-- IBM Resilient
-- Splunk Phantom
+- [ ] TheHive
+- [ ] MISP (Malware Information Sharing Platform)
+- [ ] IR Flow
+- [ ] IBM Resilient
+- [ ] Splunk Phantom
 
 > ## Threat Intelligence
-- Virus Total
-- AlienValut OTX
-- IBM X-Force Exchange
-- Recorded Future
-- Threat Connect
+- [ ] Virus Total
+- [ ] AlienValut OTX
+- [ ] IBM X-Force Exchange
+- [ ] Recorded Future
+- [ ] Threat Connect
 
 > ## Intrusion Detection System (IDS) / Intrusion Prevention System (IPS)
-- Suricata
-- Snort
-- Zeek (formerly bro)
+- [ ] Suricata
+- [ ] Snort
+- [ ] Zeek (formerly bro)
 
 > ## Log Management
-- Graylog
-- Grafana
-- Elastic Stack
+- [ ] Graylog
+- [ ] Grafana
+- [ ] Elastic Stack
 
 > ## Cloud Security
-- AWS CloudTrail
-- Azure Security Center
-- Google Cloud Security Command Center
-- Cloudflare
+- [ ] AWS CloudTrail
+- [ ] Azure Security Center
+- [ ] Google Cloud Security Command Center
+- [ ] Cloudflare
