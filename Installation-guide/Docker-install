@@ -48,6 +48,7 @@ mv /root/docker-compose /usr/local/bin/
 
 git clone https://github.com/wazuh/wazuh-docker.git -b v4.9.2
 
-read -p "Would U like Single or Multi (s/m): "nodex
+# read -p "Would U like Single or Multi (s/m): "nodex
 
-if [ $nodex == "s" ||]
+# if [ $nodex == "s" ]
+# then
