@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# You just need to run this script It will install all necessary components
 # Check if the script is being run as root
 if [[ $EUID -ne 0 ]]; then
     echo "\e[31m This script must be run as root, login to root shell or it will break pkg. Exiting.\e[0m"
@@ -40,7 +41,7 @@ install_package "git"
 install_package "curl"
 install_package "figlet"
 install_package "lolcat"
-install_package "docker.io"
+install_package "python*"
 echo -e "\e[32mDone! All required packages have been installed.\e[0m"
 }
 
@@ -55,7 +56,7 @@ echo ""
 echo -e "\e[7;1;5;31m Increase max_map_count on your Docker host\e[0m"
 echo -e "\e[1;31m_______________________________________________\e[0m
 sleep 0.5
-sysctl -w vm.max_map_count=262144
+sudo sysctl -w vm.max_map_count=262144
 clear
 
 echo "__________________________" | lolcat
@@ -63,7 +64,7 @@ echo ""
 echo " Start the Docker service " | lolcat
 echo "__________________________" | lolcat
 sleep 0.5
-systemctl start docker
+sudo systemctl start docker
 clear
 
 echo "_______________________________________" | lolcat
@@ -85,7 +86,7 @@ echo "_____________________" | lolcat
 echo ""
 echo " Changing Permission " | lolcat
 echo "_____________________" | lolcat
-chmod +x /home/$USER/docker-compose
+sudo chmod +x /home/$USER/docker-compose
 sleep 0.5
 clear
 
