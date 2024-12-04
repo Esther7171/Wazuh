@@ -107,23 +107,29 @@ git clone https://github.com/wazuh/wazuh-docker.git -b v4.9.2
 sleep 0.5
 clear
 
+
+# Prompt user for input
 read -p "Would you like Single or Multi (S/M): " nodex
 
 # Convert input to lowercase for case-insensitivity
 nodex=$(echo "$nodex" | tr '[:upper:]' '[:lower:]')
 
+# Define base directory
+BASE_DIR="/home/$USER/wazuh-all/wazuh-docker"
+
 if [[ "$nodex" == "s" ]]; then
-    cd  /home/$USER/wazuh-all/wazuh-docker/single-node || exit
+    cd "$BASE_DIR/single-node" || { echo "Error: Directory not found."; exit 1; }
     docker-compose -f generate-indexer-certs.yml run --rm generator
     docker-compose up -d
     echo "All done! Single Node has been deployed." | lolcat
 
 elif [[ "$nodex" == "m" ]]; then
-    cd  /home/$USER/wazuh-all/wazuh-docker/multi-node || exit
+    cd "$BASE_DIR/multi-node" || { echo "Error: Directory not found."; exit 1; }
     docker-compose -f generate-indexer-certs.yml run --rm generator
     docker-compose up -d
     echo "All done! Multi Node has been deployed." | lolcat
 
 else
-    echo "Wrong option. Please choose 'S' for Single or 'M' for Multi."
+    echo "Invalid option. Please choose 'S' for Single or 'M' for Multi."
 fi
+
