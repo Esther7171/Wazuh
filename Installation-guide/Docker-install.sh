@@ -109,7 +109,7 @@ clear
 
 
 # Prompt user for input
-read -p "Would you like Single or Multi (S/M): " nodex
+read -p "Would you like Single or Multi (S/M) => " nodex
 
 # Convert input to lowercase for case-insensitivity
 nodex=$(echo "$nodex" | tr '[:upper:]' '[:lower:]')
