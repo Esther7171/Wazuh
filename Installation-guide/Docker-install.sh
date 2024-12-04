@@ -45,10 +45,13 @@ install_package "python*"
 echo -e "\e[32mDone! All required packages have been installed.\e[0m"
 }
 
-Install_all_pkg 
+Install_all_pkg
+clear
+figlet "Wazuh Setup Begain" | lolcat
+sleep 1
 
-mkdir /home/$USER/wazuh-all
-cd /home/$USER/wazuh-all 
+mkdir /root/wazuh-all
+cd /root/wazuh-all 
 
 clear
 echo -e "\e[1;31m_______________________________________________\e[0m" #red
