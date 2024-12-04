@@ -1,7 +1,7 @@
 # Wazuh
 
 > ## Course Outline
-* Introduction to Wazuh
+* [Introduction to Wazuh](https://github.com/Esther7171/Wazuh#introduction-to-wazuh)
 * HIDS,OSSEC and Wazuh
 * Components of Wazuh
 * Architecture of Wazuh
