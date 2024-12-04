@@ -23,8 +23,29 @@
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
 
 > # What is HIDS ?
-Host- [ ]Based Intrusion Detection System that install directly on endpoint or servers. Purpose is basically to identify
+Host-Based Intrusion Detection System that install directly on endpoint or servers. Purpose is basically to identify any Malicious activities or policy violations on individual hosts or devices. Deployed on each device or host that needs to be monitord
+For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , KERNAL LV Activity.
+> OSSEC Features
+* Log Analysis
+* File Integrity
+* Rootkit Detection
+* Reak-Time Alerts
+* Compliance
 
+> # How Wazuh is different from OSSEC ?
+* Vulnerability Detection
+* Security Configuration Assessment (SCS) ---> (CISB)
+* Cloud Security (AWS,AZURE,GOOGLE CLOUD...)
+* Comprehensive Dashboard
+* Integration
+* Better Community Support
+
+
+> # Components of Wazuh
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/f3d5b53d-73a6-4cfd-bbf4-195e2641192d" height=""></img>
+</div>
 
 # Wazuh Integrations
 >  ## Antivirus
