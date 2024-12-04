@@ -3,7 +3,7 @@
 # You just need to run this script It will install all necessary components
 # Check if the script is being run as root
 if [[ $EUID -ne 0 ]]; then
-    echo "\e[31m This script must be run as root, login to root shell or it will break pkg. Exiting.\e[0m"
+    echo -e "\e[1;31m This script must be run as root, login to root shell or it will break pkg. Exiting.\e[0m"
     exit 1
 fi
 Install_all_pkg (){
