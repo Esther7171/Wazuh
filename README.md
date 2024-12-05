@@ -54,26 +54,31 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 |3.|Indexer|
 |4.|Dashboard|
 
-### Wazuh Agent Install on endpoint
+
+# Wazuh Agent: It Installed on endpoints.
 
 ## Agent Modules:
-| S.No |
-1. Active response (Incident Respone,Kind of script which will be trigired once specific rules ment)
-2. Command Execution (Montion cmd and terminal)
-3. Configuration Assessment
-4. Container Security (Docker,Kubernetes,Openshift)
-5. Cloud Security (Aws,Azure,GCP)
-6. File Integrity Monitoring (It is used to Monitor any file additon,Edit,deletion)
-7. Log Collector
-8. Malware Detection
-9. System Inventory
 
-Agent Daemon:
+| S.No | Agent Modules | Description|
+|------|---------------|------------|
+|1.|Active response| Incident Response,Kind of script which will be triggered once specific rules ment|
+|2.|Command Execution| Monitor running commands on Terminal |
+|3.|Configuration Assessment| used as security audit | 
+|4.|Container Security| Docker,Kubernetes,Openshift|
+|5.|Cloud Security| Aws,Azure,GCP |
+|6.|File Integrity Monitoring | It is used to Monitor any file additon,Edit,deletion, ownership and permission|
+|7.|Log Collector| Collect logs|
+|8.|Malware Detection| Detect malicious files |
+|9.|System Inventory| Monitor installed app,storage|
 
-1. Data Encryption
-2. Modules Management
-3. Remote Configuration
-4. Server Authentication
+## Agent Daemon:
+
+| S.No | Agent Modules | Description|
+|------|---------------|------------|
+|1.|Data Encryption |
+|2.|Modules Management |
+|3.|Remote Configuration |
+|4.|Server Authentication |
 
 
 
