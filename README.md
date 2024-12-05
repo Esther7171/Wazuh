@@ -41,11 +41,70 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 * Better Community Support
 
 
-> # Components of Wazuh
+> # [Components of Wazuh](https://github.com/Esther7171/Wazuh/edit/main/README.md#components-of-wazuh)
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/f3d5b53d-73a6-4cfd-bbf4-195e2641192d" height=""></img>
 </div>
+
+| S.no | Components |
+|------|------------|
+|1.| Agent|
+|2.|Server|
+|3.|Indexer|
+|4.|Dashboard|
+
+### Wazuh Agent Install on endpoint
+
+## Agent Modules:
+| S.No |
+1. Active response (Incident Respone,Kind of script which will be trigired once specific rules ment)
+2. Command Execution (Montion cmd and terminal)
+3. Configuration Assessment
+4. Container Security (Docker,Kubernetes,Openshift)
+5. Cloud Security (Aws,Azure,GCP)
+6. File Integrity Monitoring (It is used to Monitor any file additon,Edit,deletion)
+7. Log Collector
+8. Malware Detection
+9. System Inventory
+
+Agent Daemon:
+
+1. Data Encryption
+2. Modules Management
+3. Remote Configuration
+4. Server Authentication
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Wazuh Integrations
 >  ## Antivirus
