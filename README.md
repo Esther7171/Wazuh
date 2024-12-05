@@ -83,11 +83,10 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 ## IF any of these Collect Logs It will immediately send it to Centeral Components -> Wazuh Server
 
 ## Wazuh Server
-                        
-Agent Daemon send logs -> Agent connection Service
-Agent Daemon send logs -> Agent enrollment Service
 
-
+<div align="center">
+<img width="5567" alt="wazuh-chart" src="https://github.com/user-attachments/assets/0e425c0b-6539-42ab-b06d-3644db5f459a">
+</div>
 
 
 
