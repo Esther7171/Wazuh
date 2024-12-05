@@ -73,21 +73,19 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 
 ## Agent Daemon:
 
-| S.No | Agent Modules | Description|
-|------|---------------|------------|
+| S.No | Agent Modules |
+|------|---------------|
 |1.|Data Encryption |
 |2.|Modules Management |
 |3.|Remote Configuration |
 |4.|Server Authentication |
 
+## IF any of these Collect Logs It will immediately send it to Centeral Components -> Wazuh Server
 
-
-
-
-
-
-
-
+## Wazuh Server
+                        
+Agent Daemon send logs -> Agent connection Service
+Agent Daemon send logs -> Agent enrollment Service
 
 
 
