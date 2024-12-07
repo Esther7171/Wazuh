@@ -97,8 +97,15 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 |-----------|---------------|
 | The component talks about smaller scope focuing majorly on functionality and on differenet services mor different modules | This is all baout high level structure of your software this is about preformace of your system, The preformance of the system improvced when you have better scalability and elasticity and databse and Securitiy Function and how do youi maintain the entire infrastructure |
 
+## Architecture of Wazuh
 
+<div align="center">
+<img src="https://github.com/user-attachments/assets/2bc6cbbd-a09a-4911-8101-2a1bae2c83a7">
+</div>
 
+<div align="center">
+<img width="2959" alt="wazuh arch" src="https://github.com/user-attachments/assets/93e45c66-f9f1-4032-8032-8a0f85322f3d">
+</div>
 
 
 
