@@ -109,8 +109,29 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 
 
 
+## Deployment Methods
 
+* Distributed Servers
+* Virtual Machine
+* Amazon Machine Image (AMI)
+* Docker
+* Kubernetes
 
+Single node 
+1. all in one
+Multi node deployment we have 2 nodes
+1. master
+2. worker
+3. it will be indexer
+4. dashboard
+
+## Wazuh Features and Capabilities
+
+| S.no | Feature | Discription |
+|------|---------|-------------|
+| 1. | Intrusion Detection | Scan and Monitor Endpoints. Llook for rootkit, malware, detect hidden file and unregiter network listners.
+| 2. | Log Data Analysis | Read os logs and app logs  then encript it and send it to manager or server on rule base analysis. We still get data form sys logs like ```Router or switches```
+| 3. | File Integrity Monitoring | Wazuh Monitor the file system  Identify any changes in the content, permission, ownership and different attributes of file and generates an alert when there is any unauthorized changes. We can join pci  
 
 
 
