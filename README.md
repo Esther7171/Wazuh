@@ -95,7 +95,7 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 ## What is Difference between Component and Architecture
 | Component |  Architecture |
 |-----------|---------------|
-| The component talks about smaller scope focuing majorly on functionality and on differenet services mor different modules | This is all baout high level structure of your software this is about preformace of your system, The preformance of the system improvced when you have better scalability and elasticity and databse and Securitiy Function and how do youi maintain the entire infrastructure
+| The component talks about smaller scope focuing majorly on functionality and on differenet services mor different modules | This is all baout high level structure of your software this is about preformace of your system, The preformance of the system improvced when you have better scalability and elasticity and databse and Securitiy Function and how do youi maintain the entire infrastructure |
 
 
 
