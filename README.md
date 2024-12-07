@@ -7,7 +7,7 @@
 > ## Topics
 * [Introduction to Wazuh](https://github.com/Esther7171/Wazuh#introduction-to-wazuh)
 * [HIDS,OSSEC and Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#what-is-hids-)
-* Components of Wazuh
+* [Components of Wazuh](https://github.com/Esther7171/Wazuh/edit/main/README.md#components-of-wazuh)
 * Architecture of Wazuh
 * Deployment Methods
 * Wazuh Feature
@@ -92,8 +92,10 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 <img width="5567" alt="wazuh-chart" src="https://github.com/user-attachments/assets/0e425c0b-6539-42ab-b06d-3644db5f459a">
 </div>
 
-
-
+## What is Difference between Component and Architecture
+| Component |  Architecture |
+|-----------|---------------|
+| The component talks about smaller scope focuing majorly on functionality and on differenet services mor different modules | This is all baout high level structure of your software this is about preformace of your system, The preformance of the system improvced when you have better scalability and elasticity and databse and Securitiy Function and how do youi maintain the entire infrastructure
 
 
 
