@@ -71,7 +71,7 @@ echo -e "\e[1;31m_______________________________________\e[0m""
 echo ""
 echo -e "\e[1;31m Changing Docker User-Group Permission \e[0m" 
 echo -e "\e[1;31m_______________________________________\e[0m" 
-usermod -aG docker
+usermod -aG docker $USER
 sleep 0.5
 clear
 
