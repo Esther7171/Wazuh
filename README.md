@@ -9,9 +9,9 @@
 * [HIDS,OSSEC and Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#what-is-hids-)
 * [Components of Wazuh](https://github.com/Esther7171/Wazuh/edit/main/README.md#components-of-wazuh)
 * [Architecture of Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#architecture-of-wazuh)
-* Deployment Methods
-* Wazuh Feature
-* Wazuh Demo
+* [Deployment Methods](https://github.com/Esther7171/Wazuh/blob/main/README.md#deployment-methods)
+* [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
+* [Wazuh Demo]()
 * [Wazuh Intergration](https://github.com/Esther7171/Wazuh/blob/main/README.md#wazuh-integrations)
 * Ubuntu Endpoint agent Enrollement
 * Windows Endpoint agent Enrollment
