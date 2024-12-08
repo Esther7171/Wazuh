@@ -55,7 +55,8 @@ echo -e "\e[1;31m_______________________________________________\e[0m" #red
 echo ""
 echo -e "\e[7;1;5;31m Increase max_map_count on your Docker host\e[0m"
 echo -e "\e[1;31m_______________________________________________\e[0m
-sleep 0.5
+echo ""
+sleep 1
 sudo sysctl -w vm.max_map_count=262144
 clear
 
@@ -63,7 +64,8 @@ echo -e "\e[1;31m__________________________\e[0m"
 echo ""
 echo -e "\e[1;31m Start the Docker service \e[0m" 
 echo -e "\e[1;31m__________________________\e[0m" 
-sleep 0.5
+echo ""
+sleep 1
 sudo systemctl start docker
 clear
 
@@ -121,13 +123,13 @@ if [[ "$nodex" == "s" ]]; then
     cd "$BASE_DIR/single-node" || { echo "Error: Directory not found."; exit 1; }
     docker-compose -f generate-indexer-certs.yml run --rm generator
     docker-compose up -d
-    echo "All done! Single Node has been deployed." 
+    echo -e "\e[1;7;32m All done! Single Node has been deployed. All the Files Are in /root dir \e[0m" 
 
 elif [[ "$nodex" == "m" ]]; then
     cd "$BASE_DIR/multi-node" || { echo "Error: Directory not found."; exit 1; }
     docker-compose -f generate-indexer-certs.yml run --rm generator
     docker-compose up -d
-    echo "All done! Multi Node has been deployed." 
+    echo -e "\e[1;7;32m All done! Multi Node has been deployed. All the Files Are in /root dir\e[0m" 
 
 else
     echo "Invalid option. Please choose 'S' for Single or 'M' for Multi."
