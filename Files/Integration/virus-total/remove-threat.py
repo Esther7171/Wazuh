@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-# Copyright (C) 2015-2022, Wazuh Inc.
-# All rights reserved.
 
+# All rights reserved.
+# Remove This lines for windows
 import os
 import sys
 import json
