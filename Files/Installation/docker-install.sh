@@ -41,6 +41,8 @@ install_package "git"
 install_package "curl"
 install_package "figlet"
 install_package "python*"
+install_package "docker.io"
+
 echo -e "\e[32mDone! All required packages have been installed.\e[0m"
 
 clear
@@ -54,10 +56,10 @@ clear
 echo -e "\e[1;31m_______________________________________________\e[0m" #red
 echo ""
 echo -e "\e[7;1;5;31m Increase max_map_count on your Docker host\e[0m"
-echo -e "\e[1;31m_______________________________________________\e[0m
+echo -e "\e[1;31m_______________________________________________\e[0m"
 echo ""
 sleep 1
-sudo sysctl -w vm.max_map_count=262144
+sudo systemctl -w vm.max_map_count=262144
 clear
 
 echo -e "\e[1;31m__________________________\e[0m" 
