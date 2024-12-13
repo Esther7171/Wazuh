@@ -1,8 +1,3 @@
-https://youtu.be/1vEU8DJp1Wg?si=7lhBRyPqnBqRD5F-
-
-https://github.com/mriazx/wazuh-setup
-
-https://medium.com/btech-engineering/getting-started-with-wazuh-installation-and-configuration-guide-7caac7d73e42
 
 # <div align="center"> Wazuh</div>
 <div align="center">
