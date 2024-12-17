@@ -167,3 +167,4 @@ pyinstaller -F \path_to_remove-threat.py
 ```
 Restart-Service -Name wazuh
 ```
+```C:\Program Files (x86)\ossec-agent\active-response\bin```
