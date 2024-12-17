@@ -19,3 +19,7 @@ sudo nano /var/ossec/etc/shared/default/agent.conf
 ```
 
 https://documentation.wazuh.com/current/user-manual/capabilities/command-monitoring/use-cases/detect-usb-storage.html
+
+```
+logcollector.remote_commands=1
+```
