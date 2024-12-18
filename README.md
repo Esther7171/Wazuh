@@ -16,6 +16,7 @@
 * [Wazuh Intergration](https://github.com/Esther7171/Wazuh/blob/main/README.md#wazuh-integrations)
 * Ubuntu Endpoint agent Enrollement
 * Windows Endpoint agent Enrollment
+* [Uninstalling the Wazuh agent]()
 * Wazuh Ruleset & Decoders
 * Hands on lab 1: FilE Intergrity Monitoring
 * Hands on lab 2: Detecting Network using Suricata IDS 
@@ -23,6 +24,7 @@
 * Hands on lab 4: Detecting Execution of Malicious Commands
 * Hands on lab 5: Detecting and Blocking Brute Force Attack
 * Hands on lab 6: Detecting Malaicious files using VirusTotal
+
 
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
@@ -195,4 +197,71 @@ Multi node deployment we have 2 nodes
 - [ ] Cloudflare
 
 
-# in
+# Uninstalling the Wazuh agent form Agent side
+> ### Windows Wazuh agent
+#### ```Disable the wazuh service```
+#### ```Delete this folder in C Drive```
+```
+C:\Program Files (x86)\ossec-agent
+```
+
+> ### Linux Wazuh agent
+#### ```Disable the Service```
+```
+systemctl disable wazuh-agent
+systemctl daemon-reload
+```
+#### ```Remove the Wazuh agent installation.```
+##### ```yum```
+```
+yum remove wazuh-agent
+```
+##### ```apt```
+```
+apt-get remove wazuh-agent -y
+apt-get remove --purge wazuh-agent -y
+```
+
+### Uninstalling the Wazuh agent form Server side
+#### Copy past this
+```
+var/ossec/bin/manage_agents
+```
+### U will get this prompt
+```
+wazuh@wazuh:~$ sudo /var/ossec/bin/manage_agents
+
+
+****************************************
+* Wazuh v4.9.2 Agent manager.          *
+* The following options are available: *
+****************************************
+   (A)dd an agent (A).
+   (E)xtract key for an agent (E).
+   (L)ist already added agents (L).
+   (R)emove an agent (R).
+   (Q)uit.
+Choose your action: A,E,L,R or Q:
+```
+#### Press R/r
+```
+wazuh@wazuh:~$ sudo /var/ossec/bin/manage_agents
+
+
+****************************************
+* Wazuh v4.9.2 Agent manager.          *
+* The following options are available: *
+****************************************
+   (A)dd an agent (A).
+   (E)xtract key for an agent (E).
+   (L)ist already added agents (L).
+   (R)emove an agent (R).
+   (Q)uit.
+Choose your action: A,E,L,R or Q: r
+
+Available agents:
+   ID: 001, Name: windows-test, IP: any
+   ID: 002, Name: on-ubuntu, IP: any
+Provide the ID of the agent to be removed (or '\q' to quit):
+```
+### Give the id of agent u wanna remove
