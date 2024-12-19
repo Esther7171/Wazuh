@@ -172,12 +172,29 @@ def main(argv):
 if __name__ == "__main__":
     main(sys.argv)
 ```
-## Open the terminal without admin rights.
+7. Open the terminal without admin rights.
 ```
-pyinstaller -F \path_to_remove-threat.py
+pyinstaller -F C:\path\to\remove-threat.py
 ```
-### Resart 
+```
+pyinstaller -F remove-threat.py
+```
+8. Move the executable (.exe) file `remove-threat.exe` to the `C:\Program Files (x86)\ossec-agent\active-response\bin` directory.
+9. Restart the Wazuh agent to apply the changes either manually or Run the following PowerShell command as an administrator:
 ```
 Restart-Service -Name wazuh
 ```
-```C:\Program Files (x86)\ossec-agent\active-response\bin```
+
+# Wazuh server configuration
+
+1. Add the following configuration to the bottom of ```/var/ossec/etc/ossec.conf``` file on the Wazuh server to enable the VirusTotal integration.
+```
+<ossec_config>
+  <integration>
+    <name>virustotal</name>
+    <api_key><YOUR_VIRUS_TOTAL_API_KEY></api_key> <!-- Replace with your VirusTotal API key -->
+    <group>syscheck</group>
+    <alert_format>json</alert_format>
+  </integration>
+</ossec_config>
+```
