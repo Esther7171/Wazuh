@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# All rights reserved.
+# All rights reserved. by me
 # Remove This lines for windows
 import os
 import sys
