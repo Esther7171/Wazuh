@@ -6,7 +6,7 @@ You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use cas
 Just Create an Account and get your api key
 
 > ## How will it work?
-> We'll integrate VirusTotal API with the Wazuh server and create a Python-based executable for agents to detect and remove malware using VirusTotal data.
-> ### Note The free VirusTotal API rate limits requests to four per minute. If you have a premium VirusTotal API key, with a high frequency of queries allowed, you can add more rules besides these two. You can configure Wazuh to monitor more directories besides `C:\Users\<USER_NAME>\Downloads`.
+> We'll integrate the VirusTotal API with the Wazuh server. For Windows, a Python-based executable will enable agents to detect and remove malware using VirusTotal data. For Linux, a bash script will serve the
+> same purpose. Note: The free VirusTotal API allows up to four requests per minute. With a premium API key, you can increase query frequency and add more rules. You can also configure Wazuh to monitor additional directories beyond C:\Users\<USER_NAME>\Downloads.
 
 First, configure the agent, then the Wazuh server and set rules and decoders
