@@ -1,6 +1,6 @@
-# virustotal integration with wazuh
+# <div align="center">Virus Total Integration with Wazuh</div>
 
-Wazuh uses the integrator module to connect to external APIs and alerting tools such as VirusTotal.
+<br>Wazuh uses the integrator module to connect to external APIs and alerting tools such as VirusTotal.
 
 You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use case to authenticate Wazuh to the VirusTotal API.
 Just Create an Account and get your api key
