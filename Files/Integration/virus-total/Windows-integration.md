@@ -260,7 +260,7 @@ Restart-Service -Name wazuh
 ```xml
 sudo systemctl restart wazuh-manager
 ```
-6. Test Configuration
+### 6. Test Configuration
 Disable the defender and download a sample virus from the [Eicar website](https://www.eicar.org/download/eicar_com-zip/?wpdmdl=8847&refresh=67646bd6c1dec1734634454) for testing.
 <div align=center>
     <img src="https://github.com/user-attachments/assets/2e3fc361-22d2-43c5-a7dd-fd1e640e0f39"></src>
