@@ -1,3 +1,12 @@
+# virustotal integration with wazuh
+
+Wazuh uses the integrator module to connect to external APIs and alerting tools such as VirusTotal.
+
+You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use case to authenticate Wazuh to the VirusTotal API.
+Just Create an Account and get your api key
+
+> ## Windows
+> open agent conf file u can either c
 ```C:\Program Files (x86)\ossec-agent\ossec.conf```
 ```
 <syscheck>
