@@ -6,7 +6,7 @@ You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use cas
 Just Create an Account and get your api key
 
 > ## Windows
-> open agent conf file u can either c
+> open agent conf file u can either copy it to another directory and after making changes u can save it again to its origional place 
 ```C:\Program Files (x86)\ossec-agent\ossec.conf```
 ```
 <syscheck>
