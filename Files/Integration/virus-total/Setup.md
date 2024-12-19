@@ -6,15 +6,18 @@ You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use cas
 Just Create an Account and get your api key
 
 > ## Windows
-> open agent conf file u can either copy it to another directory and after making changes u can save it again to its origional place 
-```C:\Program Files (x86)\ossec-agent\ossec.conf```
+> Open the agent conf file, copy it to another directory, make your changes, and then save it back to its original location.
+```C:\Program Files (x86)\ossec-agent```
+1. Locate the ```<syscheck>``` block in the Wazuh agent file at ```C:\Program Files (x86)\ossec-agent\ossec.conf```, and ensure ```<disabled>``` is set to ```no```
+This will monitors the ```/download``` directory replace username with system user.
+* example
 ```
 <syscheck>
-<disabled>no</disabled>disabled>
+<disabled>no</disabled>
   
-<directories realtime="yes">C:\Users\<USER_NAME>\Downloads</directories>
+<directories realtime="yes">C:\Users\Esther\Downloads</directories>
 ```
-
+2. If You want to Monitor entire C drive then use this command but it not sometimes it will fail to recorgnize and give false postive and 
 ```
 pip install pyinstaller
 pyinstaller --version
