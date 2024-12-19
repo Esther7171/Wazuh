@@ -5,6 +5,7 @@ Wazuh uses the integrator module to connect to external APIs and alerting tools 
 You need a [VirusTotal API key](https://www.virustotal.com/gui/) in this use case to authenticate Wazuh to the VirusTotal API.
 Just Create an Account and get your api key
 
+> ### How it We were going to add virus total api key in wazuh server to integrate it with api and on agent side making an python exe that detect malware based on virus total details and remove it using exe that we were going to create with python 
 > ## Windows
 > Open the agent conf file, copy it to another directory, make your changes, and then save it back to its original location.
 ```C:\Program Files (x86)\ossec-agent```
@@ -17,7 +18,11 @@ This will monitors the ```/download``` directory replace username with system us
   
 <directories realtime="yes">C:\Users\Esther\Downloads</directories>
 ```
-2. If You want to Monitor entire C drive then use this command but it not sometimes it will fail to recorgnize and give false postive and 
+2. To monitor the entire C drive, use this command. However, it may sometimes fail to recognize and give false positives; exclude system files to avoid this. 
+```
+<directories realtime="yes">C:</directories>
+```
+3. Download Download the Python executable installer from the official Python website.
 ```
 pip install pyinstaller
 pyinstaller --version
