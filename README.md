@@ -23,7 +23,7 @@
 * Hands on Lab 3: Detecting Vulnerabilities
 * Hands on lab 4: Detecting Execution of Malicious Commands
 * Hands on lab 5: Detecting and Blocking Brute Force Attack
-* Hands on lab 6: Detecting Malaicious files using VirusTotal
+* [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
 
 
 > # Introduction to Wazuh
