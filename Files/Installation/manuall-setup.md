@@ -62,3 +62,9 @@ Just comment Out or delete this code, it will allow u to use `public ip`.
 <div align="center">
   <img src="https://github.com/user-attachments/assets/84040969-831b-414e-8843-5b35dad2308a"></img>
 </div>
+4. Run the Wazuh installation script with the option --generate-config-files to generate the Wazuh cluster key, certificates, and passwords necessary for installation. 
+
+```
+bash wazuh-install.sh --generate-config-files
+```
+
