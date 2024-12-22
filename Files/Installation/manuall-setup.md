@@ -1,22 +1,32 @@
-Step 1 Installing the Wazuh indexer using the assisted installation method
+# Installing the Wazuh Indexer Using the Assisted Installation Method
 
-Note You need root user privileges to run all the commands described below.
+> **Note**: You need root user privileges to run all the commands described below.
 
-Create a directory to arrange all the files
-```
+---
+
+## Step 1: Create a Directory for Installation Files
+Organize all installation files in a dedicated directory:
+
+```bash
 mkdir wazuh-install
 cd wazuh-install
 ```
-1. Initial configuration
-Indicate your deployment configuration, create the SSL certificates to encrypt communications between the Wazuh components, and generate random passwords to secure your installation.
 
-Download the Wazuh installation assistant and the configuration file.
-```
+---
+
+## Step 2: Initial Configuration
+Set up your deployment configuration, generate SSL certificates, and create secure random passwords.
+
+### Download the Installation Assistant and Configuration File:
+```bash
 curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh
 curl -sO https://packages.wazuh.com/4.9/config.yml
 ```
-2. Edit `config.yml` and replace the node names and IP values with the corresponding names and IP addresses. You need to do this for all Wazuh server, Wazuh indexer, and Wazuh dashboard nodes. Add as many node fields as needed.
-```yml
+
+### Edit `config.yml`:
+Update the node names and IP addresses for your Wazuh server, indexer, and dashboard. Modify the `nodes` section as needed:
+
+```yaml
 nodes:
   # Wazuh indexer nodes
   indexer:
@@ -28,16 +38,11 @@ nodes:
     #  ip: "<indexer-node-ip>"
 
   # Wazuh server nodes
-  # If there is more than one Wazuh server
-  # node, each one must have a node_type
   server:
     - name: wazuh-1
       ip: "10.10.10.10"
     #  node_type: master
     #- name: wazuh-2
-    #  ip: "<wazuh-manager-ip>"
-    #  node_type: worker
-    #- name: wazuh-3
     #  ip: "<wazuh-manager-ip>"
     #  node_type: worker
 
@@ -46,25 +51,104 @@ nodes:
     - name: dashboard
       ip: "10.10.10.10"
 ```
-3. If You are Using `static public Ip` u need to prefrom some changes on the script , else u can skip this:
-Just comment Out or delete this code, it will allow u to use `public ip`.
-```yml
-        for ip in "${all_ips[@]}"; do
-            isIP=$(echo "${ip}" | grep -P "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$")
-            if [[ -n "${isIP}" ]]; then
-                if ! cert_checkPrivateIp "$ip"; then
-                    common_logger -e "The IP ${ip} is public."
-                    exit 1
-                fi
-            fi
-        done
+
+---
+
+## Step 3: Configure for Static Public IP (Optional)
+If using a static public IP, modify the script by commenting out or deleting the following block to allow public IP usage:
+
+```bash
+for ip in "${all_ips[@]}"; do
+    isIP=$(echo "${ip}" | grep -P "^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$")
+    if [[ -n "${isIP}" ]]; then
+        if ! cert_checkPrivateIp "$ip"; then
+            common_logger -e "The IP ${ip} is public."
+            exit 1
+        fi
+    fi
+done
 ```
 <div align="center">
   <img src="https://github.com/user-attachments/assets/84040969-831b-414e-8843-5b35dad2308a"></img>
 </div>
-4. Run the Wazuh installation script with the option --generate-config-files to generate the Wazuh cluster key, certificates, and passwords necessary for installation. 
+---
 
-```
+## Step 4: Generate Configuration Files
+Run the following command to create the Wazuh cluster key, SSL certificates, and secure passwords:
+
+```bash
 bash wazuh-install.sh --generate-config-files
 ```
 
+---
+
+## Step 5: Install Wazuh Indexer Nodes
+### Download the Installation Assistant:
+```bash
+curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh
+```
+
+### Install and Configure the Wazuh Indexer:
+Run the script for each node (e.g., `node-1`):
+
+> **Note**: Ensure `wazuh-install-files.tar` from the initial configuration is in your working directory.
+
+```bash
+bash wazuh-install.sh --wazuh-indexer node-1
+```
+
+---
+
+## Step 6: Initialize the Cluster
+### Start the Cluster:
+Run the command on any Wazuh indexer node to load the new certificates and initialize the cluster:
+
+```bash
+bash wazuh-install.sh --start-cluster
+```
+
+> **Note**: This step is only needed once. No need to run it on every node.
+
+---
+
+## Step 7: Test the Cluster Installation
+### Retrieve the Admin Password:
+Save the admin password to `/root/pass.txt`:
+
+```bash
+tar -axf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt -O | grep -P "\'admin\'" -A 1 | tee -a /root/pass.txt
+```
+
+### Verify Installation:
+Replace `<ADMIN_PASSWORD>` and `<WAZUH_INDEXER_IP>` with your values and run:
+
+```bash
+curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200
+```
+
+Expected Output:
+```json
+{
+  "name": "node-1",
+  "cluster_name": "wazuh-cluster",
+  "cluster_uuid": "095jEW-oRJSFKLz5wmo5PA",
+  "version": {
+    "number": "7.10.2",
+    "build_type": "rpm",
+    "build_hash": "db90a415ff2fd428b4f7b3f800a51dc229287cb4",
+    "build_date": "2023-06-03T06:24:25.112415503Z",
+    "build_snapshot": false,
+    "lucene_version": "9.6.0",
+    "minimum_wire_compatibility_version": "7.10.0",
+    "minimum_index_compatibility_version": "7.0.0"
+  },
+  "tagline": "The OpenSearch Project: https://opensearch.org/"
+}
+```
+
+### Check Cluster Status:
+Replace `<WAZUH_INDEXER_IP>` and `<ADMIN_PASSWORD>` and execute:
+
+```bash
+curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200/_cat/nodes?v
+```
