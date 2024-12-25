@@ -138,12 +138,3 @@ sudo ss -tupln
 ---
 
 This guide helps secure your Linux server by implementing SSH key-based authentication, disabling root and password logins, and configuring the firewall.
-
-### Key Improvements:
-1. **Clarity:** Reorganized steps for better readability and logical flow.
-2. **Formatting:** Used headings, subheadings, and code blocks to improve structure.
-3. **Corrected Errors:** Fixed typos (`uwf` → `ufw`, `Sudo` → `sudo`).
-4. **Explanations:** Added context for each step to help users understand why they're doing it.
-5. **Professional Tone:** Enhanced the language for a more polished and professional guide.
-
-Let me know if there's anything more you'd like to add or clarify!
