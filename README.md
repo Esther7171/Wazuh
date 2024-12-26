@@ -25,6 +25,7 @@
 * Hands on lab 4: Detecting Execution of Malicious Commands
 * Hands on lab 5: Detecting and Blocking Brute Force Attack
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
+* Linux-Server Hardening
 
 
 > # Introduction to Wazuh
