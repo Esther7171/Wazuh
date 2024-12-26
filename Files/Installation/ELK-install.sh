@@ -28,3 +28,6 @@ ifconfig
 sleep 10
 sudo nano /etc/elasticsearch/elasticsearch.yml
 sudo systemctl restart elasticsearch
+
+
+# https://github.com/gndhmwn/wazuh-setup-ELK/blob/main/wazuh-manager-setup.md
