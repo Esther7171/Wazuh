@@ -1,6 +1,6 @@
 # Linux Server Hardening Guide
 
-## 1. Change Passwords
+## 1. Change Passwords:
 
 Use different passwords for the `/root` user and regular sudo users.
 
