@@ -1,10 +1,10 @@
 @echo off
 REM Batch script to connect via SSH
-REM Replace 'cybrotech' and '122.160.144.106' with the desired username and IP if needed
+REM Replace 'Esther' and '10.10.10.10' with the desired username and IP if needed
 
 set username=cybrotech
-set ip=122.160.144.106
-set port=9999
+set ip=10.10.10.10
+set port=9000
 
 echo Connecting to %username%@%ip% on port %port%...
 ssh %username%@%ip% -p %port%
