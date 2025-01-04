@@ -4,7 +4,7 @@ REM Replace 'Esther' and '10.10.10.10' with the desired username and IP if neede
 
 set username=cybrotech
 set ip=10.10.10.10
-set port=9000
+set port=2000
 
 echo Connecting to %username%@%ip% on port %port%...
 ssh %username%@%ip% -p %port%
