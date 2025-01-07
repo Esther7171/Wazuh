@@ -1,6 +1,4 @@
-```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIAJfTRV20zKFxlH438HxXnAgfzLhgzg6U6Fd4F/8r40 u0_a331@localhost
-```
+
 # <div align="center"> Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
