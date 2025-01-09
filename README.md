@@ -2,8 +2,6 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
-
-
  
 > # Topics
 * [Introduction to Wazuh](https://github.com/Esther7171/Wazuh#introduction-to-wazuh)
