@@ -1,6 +1,27 @@
 ```
 Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.10.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Continua-Kids' WAZUH_AGENT_NAME='CON-N-23' 
 ```
+```
+<directories check_all="yes" whodata="yes" report_changes="yes">C:</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes">C:</directories>
+
+<directories realtime="yes">C:</directories>
+<directories realtime="yes">C:</directories>
+<directories realtime="yes">C:</directories>
+<directories realtime="yes">C:</directories>
+<directories realtime="yes">C:</directories>
+<directories realtime="yes">C:</directories>
+    <!-- Frequency that syscheck is executed default every 12 hours -->
+    <frequency>10</frequency>
+
+
+    <directories recursion_level="1">C:</directories>
+    <directories recursion_level="1">D:</directories>
+
+```
+
+
+
 # <div align="center"> Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
