@@ -14,18 +14,18 @@
 * [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
 * [Wazuh Demo]()
 * [Wazuh Intergration](https://github.com/Esther7171/Wazuh/blob/main/README.md#wazuh-integrations)
-* Ubuntu Endpoint agent Enrollement
-* Windows Endpoint agent Enrollment
+* [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
+* [Installing the Wazuh Agent on an Windows Endpoint: Enrollment Guide]()
+* [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
 * [Uninstalling the Wazuh agent]()
-* Wazuh Ruleset & Decoders
-* Hands on lab 1: FilE Intergrity Monitoring
-* Hands on lab 2: Detecting Network using Suricata IDS 
-* Hands on Lab 3: Detecting Vulnerabilities
-* Hands on lab 4: Detecting Execution of Malicious Commands
-* Hands on lab 5: Detecting and Blocking Brute Force Attack
+* [Wazuh Ruleset & Decoders]
+* [Configuring File Integrity Monitoring (FIM)]()
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
+* [Detecting Network using Suricata `IDS`]()
+* Detecting Vulnerabilities
+* Detecting Execution of Malicious Commands
+* Detecting and Blocking Brute Force Attack
 * Linux-Server Hardening
-
 
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
