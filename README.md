@@ -1,3 +1,29 @@
+```
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.10.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Continua-Kids' WAZUH_AGENT_NAME='CON-H-Rohtak-Model-Town-31'
+```
+```
+<directories check_all="yes" whodata="yes" report_changes="yes"></directories>
+<directories realtime="yes"></directories>
+<directories realtime="yes"></directories>
+<directories realtime="yes"></directories>
+<directories realtime="yes"></directories>
+<directories realtime="yes"></directories>
+<directories realtime="yes"></directories>
+    <!-- Frequency that syscheck is executed default every 12 hours -->
+    <frequency>10</frequency>
+
+
+    <directories recursion_level="1"></directories>
+```
+```
+https://github.com/Esther7171/Wazuh/blob/main/Files/Integration/virus-total/remove-threat.py
+```
+```
+pip install pyinstaller
+```
+```
+pyinstaller -F remove-threat.py
+```
 
 
 # <div align="center"> Wazuh</div>
