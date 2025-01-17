@@ -1,10 +1,3 @@
-```
-wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.10.0-1_amd64.deb && sudo WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Cybrotech' WAZUH_AGENT_NAME='laksh' dpkg -i ./wazuh-agent_4.10.0-1_amd64.deb
-
-sudo systemctl daemon-reload
-sudo systemctl enable wazuh-agent
-sudo systemctl start wazuh-agent
-```
 # <div align="center"> Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
