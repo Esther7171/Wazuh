@@ -21,7 +21,7 @@
 * [Configuring File Integrity Monitoring (FIM)]()
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
 * [Detecting Network using Suricata `IDS`]()
-* Detecting Vulnerabilities
+* [Detecting Vulnerabilities]
 * Detecting Execution of Malicious Commands
 * Detecting and Blocking Brute Force Attack
 * Linux-Server Hardening
