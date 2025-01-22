@@ -22,9 +22,9 @@
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
 * [Detecting Network using Suricata `IDS`]()
 * [Detecting Vulnerabilities]
-* Detecting Execution of Malicious Commands
-* Detecting and Blocking Brute Force Attack
-* Linux-Server Hardening
+* [Detecting Execution of Malicious Commands]
+* [Detecting and Blocking Brute Force Attack]
+* [Linux-Server Hardening]
 
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
