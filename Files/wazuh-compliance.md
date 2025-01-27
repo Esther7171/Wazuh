@@ -1,4 +1,4 @@
-
+# Windows 10
 | **Setting**                                                                 | **Status**                                                              |
 |-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | Length of password                                                           | 14>=24 char [English uppercase characters (A through Z) - English lowercase characters (a through z) - Base 10 digits (0 through 9) - Non-alphabetic characters (for example, !, $, #, %) o A catch-all category of any Unicode character] |
@@ -70,3 +70,39 @@
 | Turn off Data Execution Prevention for Explorer                             | Disabled                                                                 |
 | Turn off heap termination on corruption                                      | Disabled                                                                 |
 | Turn off shell protocol protected mode                                      | Disabled                                                                 |
+
+# Windows 11 CIS Benchmark Compliance
+
+This document outlines the necessary compliance rules that need to be implemented to achieve a higher compliance score with Wazuh on a Windows 11 machine.
+
+## Compliance Table
+
+| Section        | Benchmark Item                                   | Compliance Level | Configuration Requirement |
+|---------------|------------------------------------------------|------------------|---------------------------|
+| Desktop App Installer | Ensure 'Enable App Installer' is set to 'Disabled' | L1 | Automated |
+| Desktop App Installer | Ensure 'Enable App Installer Experimental Features' is set to 'Disabled' | L1 | Automated |
+| Desktop App Installer | Ensure 'Enable App Installer Hash Override' is set to 'Disabled' | L1 | Automated |
+| Desktop App Installer | Ensure 'Enable App Installer ms-appinstaller protocol' is set to 'Disabled' | L1 | Automated |
+| Event Log Service | Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled' | L1 | Automated |
+| Event Log Service | Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater' | L1 | Automated |
+| Event Log Service | Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled' | L1 | Automated |
+| Event Log Service | Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater' | L1 | Automated |
+| Event Log Service | Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled' | L1 | Automated |
+| Event Log Service | Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater' | L1 | Automated |
+| Microsoft Defender Antivirus | Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled' | L1 | Automated |
+| Microsoft Defender Antivirus | Ensure 'Prevent users and apps from accessing dangerous websites' is set to 'Enabled: Block' | L1 | Automated |
+| Microsoft Defender Antivirus | Ensure 'Scan all downloaded files and attachments' is set to 'Enabled' | L1 | Automated |
+| Microsoft Defender Antivirus | Ensure 'Turn on script scanning' is set to 'Enabled' | L1 | Automated |
+| Microsoft Defender Antivirus | Ensure 'Turn off Microsoft Defender AntiVirus' is set to 'Disabled' | L1 | Automated |
+| Microsoft Defender Application Guard | Ensure 'Allow auditing events in Microsoft Defender Application Guard' is set to 'Enabled' | L1 | Automated |
+| Remote Desktop Services | Ensure 'Do not allow passwords to be saved' is set to 'Enabled' | L1 | Automated |
+| Remote Desktop Services | Ensure 'Always prompt for password upon connection' is set to 'Enabled' | L1 | Automated |
+| Remote Desktop Services | Ensure 'Require secure RPC communication' is set to 'Enabled' | L1 | Automated |
+| Windows Update | Ensure 'Configure Automatic Updates' is set to 'Enabled' | L1 | Automated |
+| Windows Update | Ensure 'Remove access to "Pause updates" feature' is set to 'Enabled' | L1 | Automated |
+| Windows Security | Ensure 'Prevent users from modifying settings' is set to 'Enabled' | L1 | Automated |
+| Windows Search | Ensure 'Allow Cortana' is set to 'Disabled' | L1 | Automated |
+| Windows Search | Ensure 'Allow search and Cortana to use location' is set to 'Disabled' | L1 | Automated |
+| Windows Store | Ensure 'Turn off the Store application' is set to 'Enabled' | L2 | Automated |
+
+
