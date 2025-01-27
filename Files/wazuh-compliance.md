@@ -143,3 +143,41 @@ This document outlines the necessary compliance rules that need to be implemente
 | Printing | Ensure 'Enable Microsoft Defender SmartScreen to block potentially unwanted apps' is set to 'Enabled' | L1 | Automated |
 | Microsoft Edge Update | Ensure 'Update policy override default' is set to 'Enabled: Always allow updates (recommended)' | L1 | Automated |
 
+---
+# Google Chrome CIS Benchmark Compliance
+
+This document outlines the necessary compliance rules that need to be implemented to achieve a higher compliance score for Google Chrome.
+
+## Compliance Table
+
+| Section        | Benchmark Item                                   | Compliance Level | Configuration Requirement |
+|---------------|------------------------------------------------|------------------|---------------------------|
+| HTTP Authentication | Ensure 'Cross-origin HTTP Authentication prompts' is set to 'Disabled' | L1 | Automated |
+| Safe Browsing | Ensure 'Configure the list of domains on which Safe Browsing will not trigger warnings' is set to 'Disabled' | L1 | Automated |
+| Safe Browsing | Ensure 'Safe Browsing Protection Level' is set to 'Enabled: Safe Browsing is active in the standard mode.' or higher | L1 | Manual |
+| Security Settings | Ensure 'Allow Google Cast to connect to Cast devices on all IP addresses' is set to 'Disabled' | L1 | Automated |
+| Security Settings | Ensure 'Allow queries to a Google time service' is set to 'Enabled' | L1 | Automated |
+| Security Settings | Ensure 'Allow the audio sandbox to run' is set to 'Enabled' | L1 | Automated |
+| Security Settings | Ensure 'Ask where to save each file before downloading' is set to 'Enabled' | L1 | Automated |
+| Privacy Settings | Ensure 'Continue running background apps when Google Chrome is closed' is set to 'Disabled' | L1 | Automated |
+| Privacy Settings | Ensure 'Control SafeSites adult content filtering' is set to 'Enabled: Filter top level sites for adult content' | L2 | Automated |
+| Certificate Settings | Ensure 'Disable Certificate Transparency enforcement for a list of Legacy Certificate Authorities' is set to 'Disabled' | L1 | Automated |
+| Certificate Settings | Ensure 'Disable Certificate Transparency enforcement for a list of URLs' is set to 'Disabled' | L1 | Automated |
+| DNS Settings | Ensure 'DNS interception checks enabled' is set to 'Enabled' | L1 | Automated |
+| Security Warnings | Ensure 'Enable security warnings for command-line flags' is set to 'Enabled' | L1 | Automated |
+| Extensions | Ensure 'Blocks external extensions from being installed' is set to 'Enabled' | L1 | Automated |
+| Extensions | Ensure 'Configure allowed app/extension types' is set to 'Enabled: extension, hosted_app, platform_app, theme' | L1 | Automated |
+| Extensions | Ensure 'Configure extension installation blocklist' is set to 'Enabled: *' | L1 | Automated |
+| Privacy | Ensure 'Enable deleting browser and download history' is set to 'Disabled' | L1 | Automated |
+| Updates | Ensure 'Update policy override' is set to 'Enabled: Always allow updates (recommended)' or 'Automatic silent updates' specified | L1 | Automated |
+| Content Settings | Ensure 'Control use of insecure content exceptions' is set to 'Enabled: Do not allow any site to load mixed content' | L1 | Automated |
+| Content Settings | Ensure 'Control use of the Web Bluetooth API' is set to 'Enabled: Do not allow any site to request access to Bluetooth devices' | L2 | Automated |
+| Printing | Ensure 'Enable Google Cloud Print Proxy' is set to 'Disabled' | L1 | Automated |
+| Remote Access | Ensure 'Allow remote access connections to this machine' is set to 'Disabled' | L1 | Manual |
+| Remote Access | Ensure 'Enable firewall traversal from remote access host' is set to 'Disabled' | L1 | Automated |
+| Security | Ensure 'Enable Renderer App Container' is set to 'Enabled' | L1 | Automated |
+| Security | Ensure 'Enable strict MIME type checking for worker scripts' is set to 'Enabled' | L1 | Automated |
+| Security | Ensure 'Allow Web Authentication requests on sites with broken TLS certificates' is set to 'Disabled' | L1 | Automated |
+| Privacy | Ensure 'Enable alternate error pages' is set to 'Disabled' | L1 | Automated |
+| Privacy | Ensure 'Enable URL-keyed anonymized data collection' is set to 'Disabled' | L1 | Automated |
+
