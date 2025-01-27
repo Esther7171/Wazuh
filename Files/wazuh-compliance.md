@@ -181,3 +181,42 @@ This document outlines the necessary compliance rules that need to be implemente
 | Privacy | Ensure 'Enable alternate error pages' is set to 'Disabled' | L1 | Automated |
 | Privacy | Ensure 'Enable URL-keyed anonymized data collection' is set to 'Disabled' | L1 | Automated |
 
+---
+
+# Microsoft Office CIS Benchmark Compliance
+
+This document outlines the necessary compliance rules that need to be implemented to achieve a higher compliance score for Microsoft Office.
+
+## Compliance Table
+
+| Section                | Benchmark Item                                                                                     | Compliance Level | Configuration Requirement |
+|-----------------------|--------------------------------------------------------------------------------------------------|------------------|---------------------------|
+| Security Settings     | Ensure 'Allow mix of policy and user locations' is set to 'Disabled'                              | L1               | Automated                 |
+| Security Settings     | Ensure 'ActiveX Control Initialization' is set to 'Enabled: 6'                                    | L1               | Automated                 |
+| Security Settings     | Ensure 'Allow Basic Authentication prompts from network proxies' is set to 'Disabled'             | L1               | Automated                 |
+| Security Settings     | Ensure 'Allow VBA to load typelib references by path from untrusted intranet locations' is set to 'Disabled' | L1 | Automated |
+| Security Settings     | Ensure 'Automation Security' is set to 'Enabled: Disable Macros by default'                      | L1               | Automated                 |
+| Security Settings     | Ensure 'Control how Office handles form-based sign-in prompts' is set to 'Enabled: Block all prompts' | L1 | Automated |
+| Security Settings     | Ensure 'Disable additional security checks on VBA library references' is set to 'Disabled'        | L1               | Automated                 |
+| Security Settings     | Ensure 'Disable all Trust Bar notifications for security issues' is set to 'Disabled'             | L1               | Automated                 |
+| Security Settings     | Ensure 'Disable password to open UI' is set to 'Disabled'                                         | L1               | Automated                 |
+| Security Settings     | Ensure 'Encryption mode for Information Rights Management (IRM)' is set to 'Enabled: CBC'         | L1               | Automated                 |
+| Security Settings     | Ensure 'Encryption type for password protected Office 97-2003 files' is set to 'Enabled'          | L1               | Automated                 |
+| Security Settings     | Ensure 'Encryption type for password protected Office Open XML files' is set to 'Enabled'         | L1               | Automated                 |
+| Security Settings     | Ensure 'Macro Runtime Scan Scope' is set to 'Enabled: Enable for all documents'                   | L1               | Automated                 |
+| Security Settings     | Ensure 'Protect document metadata for password protected files' is set to 'Enabled'               | L1               | Automated                 |
+| Server Settings       | Ensure 'Disable the Office client from polling the SharePoint Server for published links'         | L1               | Automated                 |
+| Services              | Ensure 'Disable Internet Fax feature' is set to 'Enabled'                                         | L1               | Automated                 |
+| Signing               | Ensure 'Legacy format signatures' is set to 'Disabled'                                            | L1               | Automated                 |
+| Signing               | Ensure 'Suppress external signature services menu item' is set to 'Enabled'                       | L1               | Automated                 |
+| Smart Documents       | Ensure 'Disable Smart Document's use of manifests' is set to 'Enabled'                            | L1               | Automated                 |
+| Outlook Settings      | Ensure 'Authentication with Exchange server' is set to 'Enabled: Kerberos Password Authentication' | L1 | Automated |
+| Outlook Settings      | Ensure 'Do not allow users to change permissions on folders' is set to 'Enabled'                   | L1 | Automated |
+| Outlook Settings      | Ensure 'Enable RPC encryption' is set to 'Enabled'                                                 | L1 | Automated |
+| Outlook Settings      | Ensure 'Automatically download attachments' is set to 'Disabled'                                  | L1 | Automated |
+| Outlook Settings      | Ensure 'Do not include Internet Calendar integration in Outlook' is set to 'Enabled'               | L1 | Automated |
+| Outlook Settings      | Ensure 'Download full text of articles as HTML attachments' is set to 'Disabled'                   | L1 | Automated |
+| Outlook Settings      | Ensure 'Turn off RSS feature' is set to 'Enabled'                                                  | L1 | Automated |
+
+---
+
