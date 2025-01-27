@@ -105,4 +105,41 @@ This document outlines the necessary compliance rules that need to be implemente
 | Windows Search | Ensure 'Allow search and Cortana to use location' is set to 'Disabled' | L1 | Automated |
 | Windows Store | Ensure 'Turn off the Store application' is set to 'Enabled' | L2 | Automated |
 
+---
+
+# Microsoft Edge CIS Benchmark Compliance
+
+This document outlines the necessary compliance rules that need to be implemented to achieve a higher compliance score for Microsoft Edge.
+
+## Compliance Table
+
+| Section        | Benchmark Item                                   | Compliance Level | Configuration Requirement |
+|---------------|------------------------------------------------|------------------|---------------------------|
+| Application Guard | Ensure 'Enable Google Cast' is set to 'Disabled' | L1 | Automated |
+| Content Settings | Ensure 'Allow read access via the File System API on these sites' is set to 'Disabled' | L2 | Automated |
+| Content Settings | Ensure 'Control use of insecure content exceptions' is set to 'Enabled: Do not allow any site to load mixed content' | L1 | Automated |
+| Content Settings | Ensure 'Control use of JavaScript JIT' is set to 'Enabled: Do not allow any site to run JavaScript JIT' | L2 | Automated |
+| Content Settings | Ensure 'Control use of the File System API for reading' is set to 'Enabled: Don’t allow any site to request read access' | L2 | Automated |
+| Content Settings | Ensure 'Control use of the File System API for writing' is set to 'Enabled: Don’t allow any site to request write access' | L1 | Automated |
+| Content Settings | Ensure 'Control use of the Web Bluetooth API' is set to 'Enabled: Do not allow any site to request access' | L2 | Automated |
+| Content Settings | Ensure 'Control use of the WebHID API' is set to 'Enabled: Do not allow any site to request access' | L2 | Automated |
+| Content Settings | Ensure 'Default automatic downloads setting' is set to 'Enabled: Don’t allow any website to perform automatic downloads' | L1 | Automated |
+| Content Settings | Ensure 'Default geolocation setting' is set to 'Enabled: Don’t allow any site to track users' physical location' | L1 | Automated |
+| Content Settings | Ensure 'Default setting for third-party storage partitioning' is set to 'Enabled: Block third-party storage' | L2 | Automated |
+| Default Search Provider | Ensure 'Configure Edge Website Typo Protection' is set to 'Enabled' | L1 | Automated |
+| Experimentation | Ensure 'Configure users ability to override feature flags' is set to 'Enabled: Prevent users from overriding feature flags' | L1 | Automated |
+| Extensions | Ensure 'Blocks external extensions from being installed' is set to 'Enabled' | L1 | Automated |
+| HTTP Authentication | Ensure 'Allow Basic authentication for HTTP' is set to 'Disabled' | L1 | Automated |
+| HTTP Authentication | Ensure 'Allow cross-origin HTTP Authentication prompts' is set to 'Disabled' | L1 | Automated |
+| Identity and Sign-in | Ensure 'Enable the linked account feature' is set to 'Disabled' | L1 | Automated |
+| Network Settings | Ensure 'Enable saving passwords to the password manager' is set to 'Disabled' | L1 | Automated |
+| Performance | Ensure 'Enable startup boost' is set to 'Disabled' | L1 | Automated |
+| Private Network Requests | Ensure 'Specifies whether to allow websites to make requests to more-private network endpoints' is set to 'Disabled' | L1 | Automated |
+| SmartScreen | Ensure 'Configure Microsoft Defender SmartScreen' is set to 'Enabled' | L1 | Automated |
+| SmartScreen | Ensure 'Prevent bypassing Microsoft Defender SmartScreen prompts for sites' is set to 'Enabled' | L1 | Automated |
+| Startup and New Tab | Ensure 'Disable Bing chat entry-points on Microsoft Edge Enterprise new tab page' is set to 'Disabled' | L1 | Automated |
+| Startup and New Tab | Ensure 'Allow import of data from other browsers on each Microsoft Edge launch' is set to 'Disabled' | L1 | Automated |
+| Proxy Server | Ensure 'Allow download restrictions' is set to 'Enabled: Block malicious downloads' | L1 | Automated |
+| Printing | Ensure 'Enable Microsoft Defender SmartScreen to block potentially unwanted apps' is set to 'Enabled' | L1 | Automated |
+| Microsoft Edge Update | Ensure 'Update policy override default' is set to 'Enabled: Always allow updates (recommended)' | L1 | Automated |
 
