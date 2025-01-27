@@ -219,4 +219,41 @@ This document outlines the necessary compliance rules that need to be implemente
 | Outlook Settings      | Ensure 'Turn off RSS feature' is set to 'Enabled'                                                  | L1 | Automated |
 
 ---
+# Microsoft Office Word 2016 CIS Benchmark Compliance
+
+This document outlines the necessary compliance rules that need to be implemented to achieve compliance with the CIS Benchmark for Microsoft Office Word 2016.
+
+## Compliance Table
+
+| Section        | Benchmark Item                                   | Compliance Level | Configuration Requirement |
+|---------------|------------------------------------------------|------------------|---------------------------|
+| Collaboration Settings | Ensure 'Use Online Translation Dictionaries' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Custom Markup Warning' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Update Automatic Links at Open' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Hidden Text' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Default File Format' is set to 'Enabled (Word Document .docx)' | L1 | Scored |
+| Word Options | Ensure 'Default File Block Behavior' is set to 'Enabled (Blocked files are not opened)' | L1 | Scored |
+| Word Options | Ensure 'Word 2 and Earlier Binary Documents and Templates' is set to 'Enabled (Open/Save blocked, use open policy)' | L1 | Scored |
+| Word Options | Ensure 'Word 6.0 Binary Documents and Templates' is set to 'Enabled (Open/Save blocked, use open policy)' | L1 | Scored |
+| Word Options | Ensure 'Word 95 Binary Documents and Templates' is set to 'Enabled (Open/Save Blocked, Use Open Policy)' | L1 | Scored |
+| Word Options | Ensure 'Word 97 Binary Documents and Templates' is set to 'Enabled (Open/Save Blocked, Use Open Policy)' | L1 | Scored |
+| Word Options | Ensure 'Do Not Open Files from The Internet Zone in Protected View' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Do Not Open Files in Unsafe Locations in Protected View' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Turn Off Protected View for Attachments Opened from Outlook' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Document Behavior if File Validation Fails' is set to 'Enabled (Open in Protected View)' | L1 | Scored |
+| Word Options | Ensure 'Allow Trusted Locations on the Network' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Disable All Trusted Locations' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Scan Encrypted Macros in Word Open XML Documents' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Disable Trust Bar Notification for Unsigned Application Add-ins and Block Them' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Require That Application Add-ins Are Signed By Trusted Publisher' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Trust Access to Visual Basic Project' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'VBA Macro Notification Settings' is set to 'Enabled (Disable all Except Digitally Signed)' | L1 | Scored |
+| Word Options | Ensure 'Make Hidden Markup Visible' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Turn Off File Validation' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Warn Before Printing, Saving or Sending a File That Contains Tracked Changes or Comments' is set to 'Enabled' | L1 | Scored |
+| Word Options | Ensure 'Turn Off Protected View for Attachments Opened from Outlook' is set to 'Disabled' | L1 | Scored |
+| Word Options | Ensure 'Allow Trusted Locations on the Network' is set to 'Disabled' | L1 | Scored |
+
+---
+
 
