@@ -423,7 +423,7 @@ updated by @nissy34
         <field name="win.eventdata.currentDirectory">AppData</field>
         <description>Detects a suspicious command line execution that includes an URL and AppData</description>
     </rule>
-<!--
+
     <rule id="255069" level="12">
         <if_sid>255017</if_sid>
         <match>!172.</match>
@@ -434,7 +434,7 @@ updated by @nissy34
         <match>!10.</match>
         <description>Detects a rundll32 that communicates with public IP addresses</description>
     </rule>
--->
+
     <rule id="255071" level="12">
         <if_group>sysmon_event1</if_group>
         <field name="win.eventdata.commandline">AppData</field>
