@@ -1,5 +1,5 @@
 ```ps1
-curl https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml -o sysmonconfig.xml
+curl https://github.com/sametsazak/sysmon/blob/master/sysmon.xml -o sysmonconfig.xml
 ```
 ```ps1
 .\sysmon64.exe -accepteula -i .\sysmonconfig.xml
