@@ -1,5 +1,5 @@
 ```ps1
-curl https://github.com/sametsazak/sysmon/blob/master/sysmon.xml -o sysmonconfig.xml
+curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml
 ```
 ```ps1
 .\sysmon64.exe -accepteula -i .\sysmonconfig.xml
@@ -448,8 +448,7 @@ updated by @nissy34
     </rule>
 </group>
 ```
-```
-cybrotech@server:~$ cat win.txt
+```ps1
  curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml
 
 
