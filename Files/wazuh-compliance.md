@@ -1,7 +1,7 @@
 # Windows 10
 | **Setting**                                                                 | **Status**                                                              |
 |-----------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| Length of password                                                           | 14>=24 char [English uppercase characters (A through Z) - English lowercase characters (a through z) - Base 10 digits (0 through 9) - Non-alphabetic characters (for example, !, $, #, %) o A catch-all category of any Unicode character] |
+| Length of password                                                           | 8>=24 char [English uppercase characters (A through Z) - English lowercase characters (a through z) - Base 10 digits (0 through 9) - Non-alphabetic characters (for example, !, $, #, %) o A catch-all category of any Unicode character] |
 | Maximum password age                                                         | 60 days                                                                  |
 | Minimum password age                                                         | 7 days                                                                   |
 | Account lockout duration                                                     | 15 or more minutes                                                       |
