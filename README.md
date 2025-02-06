@@ -18,12 +18,13 @@
 * [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
 * [Uninstalling the Wazuh agent]()
 * [Wazuh Ruleset & Decoders]
-* [Configuring File Integrity Monitoring (FIM)]()
+* [File Integrity Monitoring (FIM) Configuration](./Files/Integration/FIM/readme.md)
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
 * [Detecting Network using Suricata `IDS`]()
 * [Detecting Vulnerabilities]
 * [Detecting Execution of Malicious Commands]
 * [Detecting and Blocking Brute Force Attack]
+* [Get Wazuh Alert on Mail (Configure smtp)](Files/Smtp/readme.md)
 * [Linux-Server Hardening]
 
 > # Introduction to Wazuh
