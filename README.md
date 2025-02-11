@@ -226,7 +226,7 @@ apt-get remove --purge wazuh-agent -y
 ### Uninstalling the Wazuh agent form Server side
 #### Copy past this
 ```
-var/ossec/bin/manage_agents
+/var/ossec/bin/manage_agents
 ```
 ### U will get this prompt
 ```
