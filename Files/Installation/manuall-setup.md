@@ -25,6 +25,9 @@ curl -sO https://packages.wazuh.com/4.9/config.yml
 
 ### Edit `config.yml`:
 Update the node names and IP addresses for your Wazuh server, indexer, and dashboard. Modify the `nodes` section as needed:
+```
+nano config.yml
+```
 
 ```yaml
 nodes:
