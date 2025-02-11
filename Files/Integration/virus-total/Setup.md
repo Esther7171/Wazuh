@@ -88,3 +88,8 @@ By following these steps, you'll be able to leverage VirusTotal's threat intelli
 
 <!-- Virus Total Integration End here-->
 ```
+
+3. Restart Manager
+```
+sudo systemctl restart wazuh-manager
+```
