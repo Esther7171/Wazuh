@@ -16,7 +16,9 @@ sudo apt-get update && apt-get install postfix mailutils libsasl2-2 ca-certifica
 2. Select No Configuration
 
 3. Append these lines to the `/etc/postfix/main.cf` file to configure Postfix. Create the file if missing.
-
+```
+nano /etc/postfix/main.cf
+```
 ```xml
 relayhost = [smtp.gmail.com]:587
 smtp_sasl_auth_enable = yes
