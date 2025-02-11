@@ -30,3 +30,61 @@ By following these steps, you'll be able to leverage VirusTotal's threat intelli
 ---
 
 *For additional information or troubleshooting, please refer to the Wazuh and VirusTotal documentation.*
+
+## Wazuh server
+1. add this rules `/var/ossec/etc/rules/local_rules.xml`
+
+```xml
+<group name="syscheck,pci_dss_11.5,nist_800_53_SI.7,">
+    <!-- Rules for Linux systems -->
+    <rule id="100200" level="7">
+        <if_sid>550</if_sid>
+        <field name="file">/root</field>
+        <description>File modified in /root directory.</description>
+    </rule>
+    <rule id="100201" level="7">
+        <if_sid>554</if_sid>
+        <field name="file">/root</field>
+        <description>File added to /root directory.</description>
+    </rule>
+</group>
+<group name="virustotal,">
+  <rule id="100092" level="12">
+    <if_sid>657</if_sid>
+    <match>Successfully removed threat</match>
+    <description>$(parameters.program) removed threat located at $(parameters.alert.data.virustotal.source.file)</description>
+  </rule>
+
+  <rule id="100093" level="12">
+    <if_sid>657</if_sid>
+    <match>Error removing threat</match>
+    <description>Error removing threat located at $(parameters.alert.data.virustotal.source.file)</description>
+  </rule>
+</group>
+```
+2. Add Config Get Your api key from virus total past it at `/var/ossec/etc/ossec.conf` add this at bottom before `</ossec_config>`
+
+```xml
+<!-- Virus Total Integration Start here-->
+  <integration>
+    <name>virustotal</name>
+    <api_key><YOUR_VIRUS_TOTAL_API_KEY></api_key> <!-- Replace with your VirusTotal API key -->
+    <group>syscheck</group>
+    <alert_format>json</alert_format>
+  </integration>
+
+  <command>
+    <name>remove-threat</name>
+    <executable>remove-threat.exe</executable>
+    <timeout_allowed>no</timeout_allowed>
+  </command>
+
+  <active-response>
+    <disabled>no</disabled>
+    <command>remove-threat</command>
+    <location>local</location>
+    <rules_id>87105</rules_id>
+  </active-response>
+
+<!-- Virus Total Integration End here-->
+```
