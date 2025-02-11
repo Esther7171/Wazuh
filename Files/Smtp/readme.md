@@ -42,7 +42,7 @@ postmap /etc/postfix/sasl_passwd
 <img src="https://github.com/user-attachments/assets/1b8b9eaa-ae32-4e7f-b372-a0cbc721226c" height=""></img>
 </div>
 
-6. Secure your password DB file so that only the root user has full read and write access to it. This is because the /etc/postfix/sasl_passwd and /etc/postfix/sasl_passwd.db files have plaintext credentials.
+6. Secure your password DB file so that only the root user has full read and write access to it. This is because the `/etc/postfix/sasl_passwd` and `/etc/postfix/sasl_passwd.db` files have plaintext credentials.
 
 ```
 chown root:root /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
