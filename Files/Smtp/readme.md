@@ -21,6 +21,7 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 smtp_use_tls = yes
 smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination
 ```
+
 4. Go to your gmail of the mail you were using and create a [app password](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Pv1YWpSOoP-tkrnbgDUE9W5MTey-cZBe3kp-DkJV_cK9s7eEbr4kX8OObm7LyNEdsKuGH-1tRVMoTVjIaSMYRs5fp--ojmFZRF0UDKQtR1jvEW0Ps)
 
 5. Set the credentials of the sender in the /etc/postfix/sasl_passwd file and create a database file for Postfix. Replace the <USERNAME> and <PASSWORD> variables with sender’s email address username and password respectively.
