@@ -16,7 +16,7 @@
 * [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
 * [Installing the Wazuh Agent on an Windows Endpoint: Enrollment Guide]()
 * [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
-* [Uninstalling the Wazuh agent]()
+* [Uninstalling the Wazuh agent](https://github.com/Esther7171/Wazuh/edit/main/README.md#uninstalling-the-wazuh-agent-form-agent-side)
 * [Wazuh Ruleset & Decoders]
 * [File Integrity Monitoring (FIM) Configuration](./Files/Integration/FIM/readme.md)
 * [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
