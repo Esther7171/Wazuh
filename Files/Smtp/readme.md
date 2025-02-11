@@ -3,6 +3,25 @@
 ## Introduction
 This guide explains how to configure SMTP settings in Wazuh to enable email alerts for security events. By setting up email notifications, you can receive alerts when specific rules are triggered.
 
+1. Run this command to install the required packages. Select No configuration, if prompted about the mail server configuration type.
+```
+sudo apt-get update && apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
+```
+<div align=center>
+  <img src="https://github.com/user-attachments/assets/882e4fa6-f1ed-49e7-9e06-21013b8dafda"></img>
+</div>
+2. Select No Configuration
+3. Append these lines to the `/etc/postfix/main.cf` file to configure Postfix. Create the file if missing.
+```xml
+relayhost = [smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_use_tls = yes
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination
+```
+
 ## Alert Management in Wazuh
 Wazuh generates alerts based on predefined rules. By default, alerts are stored in:
 - `/var/ossec/logs/alerts/alerts.log`
