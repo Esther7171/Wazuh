@@ -4,14 +4,19 @@
 This guide explains how to configure SMTP settings in Wazuh to enable email alerts for security events. By setting up email notifications, you can receive alerts when specific rules are triggered.
 
 1. Run this command to install the required packages. Select No configuration, if prompted about the mail server configuration type.
+
 ```
 sudo apt-get update && apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
 ```
+
 <div align=center>
   <img src="https://github.com/user-attachments/assets/882e4fa6-f1ed-49e7-9e06-21013b8dafda"></img>
 </div>
+
 2. Select No Configuration
+
 3. Append these lines to the `/etc/postfix/main.cf` file to configure Postfix. Create the file if missing.
+
 ```xml
 relayhost = [smtp.gmail.com]:587
 smtp_sasl_auth_enable = yes
@@ -25,21 +30,27 @@ smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_u
 4. Go to your gmail of the mail you were using and create a [app password](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Pv1YWpSOoP-tkrnbgDUE9W5MTey-cZBe3kp-DkJV_cK9s7eEbr4kX8OObm7LyNEdsKuGH-1tRVMoTVjIaSMYRs5fp--ojmFZRF0UDKQtR1jvEW0Ps)
 
 5. Set the credentials of the sender in the /etc/postfix/sasl_passwd file and create a database file for Postfix. Replace the <USERNAME> and <PASSWORD> variables with sender’s email address username and password respectively.
+
 ```
 echo [smtp.gmail.com]:587 <USERNAME>@gmail.com:<PASSWORD> > /etc/postfix/sasl_passwd
 postmap /etc/postfix/sasl_passwd
 ```
 
 6. Secure your password DB file so that only the root user has full read and write access to it. This is because the /etc/postfix/sasl_passwd and /etc/postfix/sasl_passwd.db files have plaintext credentials.
+
 ```
 chown root:root /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
 chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
 ```
+
 7. Restart Postfix to effect the configuration changes
+
 ```
 systemctl restart postfix
 ```
+
 8. Run the following command to test the configuration
+
 ```
 echo "Test mail from postfix" | mail -s "Test Postfix" -r "<CONFIGURED_EMAIL>" <RECEIVER_EMAIL>
 ```
