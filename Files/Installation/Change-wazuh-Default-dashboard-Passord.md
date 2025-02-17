@@ -37,5 +37,4 @@ This ensures that Wazuh components function correctly with the updated credentia
 
 ---
 
-📌 **Need Help?** If you encounter any issues, feel free to open an **issue** in this repository!  
-```
+📌 **Need Help?** If you encounter any issues, feel free to open an **issue** in this repository!
