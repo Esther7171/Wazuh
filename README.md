@@ -3,14 +3,10 @@
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
 
-
-
-
-
 > # Topics
-* [Introduction to Wazuh](https://github.com/Esther7171/Wazuh#introduction-to-wazuh)
-* [HIDS,OSSEC and Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#what-is-hids-)
-* [Components of Wazuh](https://github.com/Esther7171/Wazuh/edit/main/README.md#components-of-wazuh)
+* [Introduction to Wazuh](#introduction-to-wazuh)
+* [HIDS,OSSEC and Wazuh](#what-is-hids-)
+* [Components of Wazuh](#components-of-wazuh)
 * [Architecture of Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#architecture-of-wazuh)
 * [Deployment Methods](https://github.com/Esther7171/Wazuh/blob/main/README.md#deployment-methods)
 * [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
