@@ -11,7 +11,7 @@
 * [Architecture of Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#architecture-of-wazuh)
 * [Deployment Methods](https://github.com/Esther7171/Wazuh/blob/main/README.md#deployment-methods)
 * [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
-* [Wazuh Installation]()
+* [Wazuh Installation]( )
 * [Wazuh Intergration](#wazuh-integrations)
 * [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
 * [Installing the Wazuh Agent on an Windows Endpoint: Enrollment Guide]()
