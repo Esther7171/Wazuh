@@ -1,6 +1,3 @@
-```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5pr0yJkzlshML8SOamiDSrt5YJCtCDyS787UneCOTp yash_@Death
-```
 # Linux Server Hardening Guide
 
 ## 1. Change Passwords:
