@@ -1,9 +1,6 @@
 Configure Wazuh With Sysmon So we See Incidents More Clearly
 
 1. Open Powershell in Admin At default ```C:``` drive
-```ps
-cd C:
-```
 2. Download Sysmon
 ```
 curl https://download.sysinternals.com/files/Sysmon.zip -o Sysmon.zip
