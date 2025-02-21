@@ -28,7 +28,7 @@ curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-te
 Sysmon installation and configuration
 In order to modify the Sysmon default configuration, which is needed for the purpose of this article, it is necessary to create an XML file. Below you can see an XML configuration that would work for Sysmon to generate the right log when Powershell is executed:
 
-Ossec.conf
+Agent ```Ossec.conf```
 ```xml
 <localfile>
     <location>Microsoft-Windows-Sysmon/Operational</location>
