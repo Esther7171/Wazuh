@@ -1,3 +1,10 @@
+```
+curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.10.1-1.arm64.pkg && echo "WAZUH_MANAGER='122.160.144.106' && WAZUH_AGENT_GROUP='Revfin' && WAZUH_AGENT_NAME='Revfin-Mac-M-Test'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /
+
+sudo /Library/Ossec/bin/wazuh-control start
+```
+
+
 # <div align="center">Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
