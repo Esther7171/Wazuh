@@ -23,3 +23,7 @@ https://documentation.wazuh.com/current/user-manual/capabilities/command-monitor
 ```
 logcollector.remote_commands=1
 ```
+
+```
+test
+```
