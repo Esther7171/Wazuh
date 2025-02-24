@@ -29,13 +29,27 @@ curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-te
 Sysmon installation and configuration
 In order to modify the Sysmon default configuration, which is needed for the purpose of this article, it is necessary to create an XML file. Below you can see an XML configuration that would work for Sysmon to generate the right log when Powershell is executed:
 
-Agent ```Ossec.conf```
+Open Powershell as admin
+```
+notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
+```
+Agent ```Ossec.conf``` add 
 ```xml
+
+<localfile>
+  <location>Microsoft-Windows-PrintService/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
 <localfile>
     <location>Microsoft-Windows-Sysmon/Operational</location>
     <log_format>eventchannel</log_format>
 </localfile>
 ```
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/54c7a1e4-dec1-4da7-a101-0cd0042ce711"></img>
+</div>
+    
 ---
 ### **🔍 Detect USB and Printer Activity using Sysmon & Wazuh**  
 
