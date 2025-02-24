@@ -13,11 +13,15 @@ Expand-Archive Sysmon.zip
 ```ps
 rm Sysmon.zip
 ```
-5. Install Wazuh Sysmon-config file
+5. Go to folder.
+```
+cd Sysmon
+```
+6. Install Wazuh Sysmon-config file
 ```ps1
 curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml
 ```
-6. Install Config File 
+7. Install Config File 
 ```ps1
 .\sysmon64.exe -accepteula -i .\sysmonconfig.xml
 ```
