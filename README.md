@@ -12,10 +12,9 @@
 * [Deployment Methods](https://github.com/Esther7171/Wazuh/blob/main/README.md#deployment-methods)
 * [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
 * [Wazuh Installation]( )
+* [Agent Enrollment]()
+* [How to Create Dashboard]()
 * [Wazuh Intergration](#wazuh-integrations)
-* [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
-* [Installing the Wazuh Agent on an Windows Endpoint: Enrollment Guide]()
-* [Installing the Wazuh Agent on an Ubuntu Endpoint: Enrollment Guide]()
 * [Uninstalling the Wazuh agent](#uninstalling-the-wazuh-agent-form-agent-side)
 * [Wazuh Ruleset & Decoders]
 * [File Integrity Monitoring (FIM) Configuration](./Files/Integration/FIM/readme.md)
