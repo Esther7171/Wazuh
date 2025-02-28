@@ -257,5 +257,3 @@ This document outlines the necessary compliance rules that need to be implemente
 | Word Options | Ensure 'Allow Trusted Locations on the Network' is set to 'Disabled' | L1 | Scored |
 
 ---
-
-![cropped_image](https://github.com/user-attachments/assets/1895df68-6ab8-49e9-83b2-8e7b95624c58)
