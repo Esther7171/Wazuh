@@ -1,4 +1,7 @@
 ```
+https://meet.google.com/pgj-ddpf-pex
+```
+```
 curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.11.0-1.intel64.pkg && echo "WAZUH_MANAGER='122.160.144.106' && WAZUH_AGENT_GROUP='Cybrotech' && WAZUH_AGENT_NAME='Deendayal'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /
 ```
 ```
