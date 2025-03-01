@@ -1,3 +1,8 @@
+```
+curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.11.0-1.intel64.pkg && echo "WAZUH_MANAGER='122.160.144.106' && WAZUH_AGENT_GROUP='Cybrotech' && WAZUH_AGENT_NAME='Deendayal'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /
+```
+
+
 # <div align="center">Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
@@ -195,6 +200,17 @@ Multi node deployment we have 2 nodes
 - [ ] Azure Security Center
 - [ ] Google Cloud Security Command Center
 - [ ] Cloudflare
+
+# Agent Enrollment
+
+Agent Enrollement in Mac OS (Intel)
+
+![image](https://github.com/user-attachments/assets/0479b21c-abd5-4746-9a49-76e4344d0d78)
+
+Add Agent name and group
+![image](https://github.com/user-attachments/assets/9305c30f-0e2a-4efb-ba84-15c85b4d1370)
+
+Copy the command and past it in mac endpoint
 
 
 # Uninstalling the Wazuh agent form Agent side
