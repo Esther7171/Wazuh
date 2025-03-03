@@ -7,18 +7,6 @@
 <img width="701" alt="Screenshot 2025-03-01 at 12 46 36 PM 1" src="https://github.com/user-attachments/assets/b01c6484-7304-4af1-80d2-00a99bfcce3b" />
 <img width="701" alt="Screenshot 2025-03-01 at 12 46 36 PM" src="https://github.com/user-attachments/assets/cabec2ae-8f2f-41a3-b254-9d4c779aae61" />
 
-
-
-```
-https://meet.google.com/pgj-ddpf-pex
-```
-```
-curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.11.0-1.intel64.pkg && echo "WAZUH_MANAGER='122.160.144.106' && WAZUH_AGENT_GROUP='Cybrotech' && WAZUH_AGENT_NAME='Deendayal'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /
-```
-```
-sudo /Library/Ossec/bin/wazuh-control start
-```
-
 # <div align="center">Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
