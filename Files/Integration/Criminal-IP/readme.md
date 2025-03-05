@@ -1,8 +1,9 @@
+## Criminal IP
+
 Criminal IP is a threat intelligence platform that provides insights into IP addresses, domains, and other network components. It provides the necessary information to assess risks and identify potential threats, enabling security teams to react to malicious activity proactively. Integrating Wazuh with Criminal IP creates a synergy that enhances security monitoring, network management, and system administration. 
 
 Businesses can create an effective defense mechanism by leveraging detailed Criminal IP insights alongside Wazuh XDR capabilities, minimizing potential vulnerabilities and preventing attacks before they escalate. This post explores a step-by-step guide to integrating these two solutions to enhance security.
 
-## Criminal IP
 
 > track
 > 1. VPN usage are detected
