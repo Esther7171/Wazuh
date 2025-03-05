@@ -33,8 +33,7 @@ sudo nano /var/ossec/integrations/custom-criminalip.py
 2. Past this:
 ```py
 #!/var/ossec/framework/python/bin/python3
-# Shahidahktar@gmail.com
-# Developed by Shahid Akhter
+
 import sys
 import os
 import json
@@ -406,4 +405,4 @@ chown wazuh:wazuh /var/ossec/etc/rules/criminal_ip_ruleset.xml
 ```sh
 systemctl restart wazuh-manager
 ```
-10. 
+
