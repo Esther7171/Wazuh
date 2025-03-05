@@ -34,7 +34,8 @@ This integration enables tracking of:
    sudo nano /var/ossec/integrations/custom-criminalip.py
    ```
 2. **Paste the following Python script:**
-   ```py
+
+```py
 #!/var/ossec/framework/python/bin/python3
 
 import sys
