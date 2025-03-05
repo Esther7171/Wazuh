@@ -217,7 +217,8 @@ sudo nano /var/ossec/etc/ossec.conf
    sudo nano /var/ossec/etc/rules/criminal_ip_ruleset.xml
    ```
 2. **Paste the rule definitions:**
-   ```xml
+
+```xml
 <group name="criminalip,">
 
 
@@ -376,7 +377,7 @@ sudo nano /var/ossec/etc/ossec.conf
 
 
 </group>
-   ```
+```
 
 
 #### Where: 
