@@ -1,37 +1,40 @@
-## Criminal IP
+## Criminal IP Integration with Wazuh
 
-Criminal IP is a threat intelligence platform that provides insights into IP addresses, domains, and other network components. It provides the necessary information to assess risks and identify potential threats, enabling security teams to react to malicious activity proactively. Integrating Wazuh with Criminal IP creates a synergy that enhances security monitoring, network management, and system administration. 
+Criminal IP is a powerful threat intelligence platform that provides in-depth insights into IP addresses, domains, and various network components. By leveraging its capabilities, security teams can proactively assess risks and identify potential threats. Integrating Wazuh with Criminal IP enhances security monitoring, network management, and system administration, providing a comprehensive defense mechanism against cyber threats.
 
-Businesses can create an effective defense mechanism by leveraging detailed Criminal IP insights alongside Wazuh XDR capabilities, minimizing potential vulnerabilities and preventing attacks before they escalate. This post explores a step-by-step guide to integrating these two solutions to enhance security.
+This guide outlines the step-by-step process to integrate Criminal IP with Wazuh for enhanced threat detection and mitigation.
 
+### Key Features
+This integration enables tracking of:
+- VPN usage detection
+- TOR network usage
+- Proxy server usage
+- Dark web activity
 
-> track
-> 1. VPN usage are detected
-> 2. TOR network usage 
-> 3. proxy server usage
-> 4. dark web activity 
-
-1. Log in to your [Criminal IP account](https://www.criminalip.io/login?h2=%2F) and generate your personalized API key.
+### Criminal IP Setup
+1. **Log in** to your [Criminal IP account](https://www.criminalip.io/login?h2=%2F) and generate your API key.
 
 ![criminal-ip-account](https://github.com/user-attachments/assets/f9b7b1fc-4d2b-40ca-beb7-b02b839a61ef)
 
-2. Navigate to My Information from the dropdown at the top right corner.
+2. Navigate to **My Information** from the top-right dropdown menu.
 
 ![criminal-ip-information](https://github.com/user-attachments/assets/e7b1d4c6-20f4-4e19-9cad-6af03fde3293)
 
-3. Copy and save the API key generated for you, as you will use it later in this post.
+3. **Copy and save** your generated API key for later use.
+
 ![criminal-ip-api-key](https://github.com/user-attachments/assets/9fd6c216-667e-48b6-9b2b-2a4d9595257b)
 
-> Note: Free Criminal IP membership only comes with 50 free credits for IP address lookup. You can upgrade to a premium subscription for higher usage based on the activities of your monitored endpoints.
 
-## Wazuh server
+> **Note:** Free Criminal IP membership includes 50 free credits for IP address lookup. Upgrade to a premium plan for higher usage.
 
-1. Create a script file `var/ossec/integrations/custom-criminalip.py` with the following content to query the API of Criminal IP and process the data received:
-```sh
-sudo nano /var/ossec/integrations/custom-criminalip.py
-```
-2. Past this:
-```py
+### Wazuh Server Configuration
+#### 1. Create the Integration Script
+1. **Create a script file** at `/var/ossec/integrations/custom-criminalip.py`:
+   ```sh
+   sudo nano /var/ossec/integrations/custom-criminalip.py
+   ```
+2. **Paste the following Python script:**
+   ```py
 #!/var/ossec/framework/python/bin/python3
 
 import sys
@@ -184,38 +187,36 @@ if any(group in ['web', 'sshd', 'invalid_login', 'firewall', 'ids', 'system', 'd
 else:
     debug(f"Event source is not found : {event_source}")
     sys.exit()
-```
+    ```
+3. **Set proper permissions** for the script:
+   ```sh
+   chmod 750 /var/ossec/integrations/custom-criminalip.py
+   chown root:wazuh /var/ossec/integrations/custom-criminalip.py
+   ```
 
-3. Set the ownership and permissions of the `/var/ossec/integrations/custom-criminalip.py` file so that the root user and the wazuh group have access to it:
-```sh
-chmod 750 /var/ossec/integrations/custom-criminalip.py
-chown root:wazuh /var/ossec/integrations/custom-criminalip.py
-```
-4. Append the following configuration to the `/var/ossec/etc/ossec.conf` file to enable Wazuh to query the Criminal IP API and enrich alerts for the specified groups. Replace `<CRIMINALIP_API_KEY>` with your own Criminal IP API key:
+#### 2. Configure Wazuh to Use the Script
+1. **Edit the Wazuh configuration file** (`/var/ossec/etc/ossec.conf`) and add:
 ```sh
 sudo nano /var/ossec/etc/ossec.conf
 ```
-5. Past this code and replace with your API Key
-```xml
-<ossec_config>
-  <integration>
-    <name>custom-criminalip.py</name>
-    <api_key><CRIMINALIP_API_KEY></api_key> <!-- Replace with your Criminal IP API key -->
-    <group>web, sshd, invalid_login, firewall, ids, system, database, application</group>
-    <alert_format>json</alert_format>
-  </integration>
-</ossec_config>
-```
+   ```xml
+   <ossec_config>
+     <integration>
+       <name>custom-criminalip.py</name>
+       <api_key><CRIMINALIP_API_KEY></api_key>
+       <group>web, sshd, invalid_login, firewall, ids, system, database, application</group>
+       <alert_format>json</alert_format>
+     </integration>
+   </ossec_config>
+   ```
 
-> Note: These groups are selected because they include events associated with IP addresses needed for this integration. As criminal IP requires IP addresses to process for a feedback.
-
-6. Create a file `/var/ossec/etc/rules/criminal_ip_ruleset.xml` with the following rules:
-```xml
-sudo nano /var/ossec/etc/rules/criminal_ip_ruleset.xml
-```
-
-7. Past this:
-```xml
+#### 3. Create Custom Rules
+1. **Create a new ruleset file** at `/var/ossec/etc/rules/criminal_ip_ruleset.xml`:
+   ```sh
+   sudo nano /var/ossec/etc/rules/criminal_ip_ruleset.xml
+   ```
+2. **Paste the rule definitions:**
+   ```xml
 <group name="criminalip,">
 
 
@@ -374,7 +375,8 @@ sudo nano /var/ossec/etc/rules/criminal_ip_ruleset.xml
 
 
 </group>
-```
+   ```
+
 
 #### Where: 
 
@@ -396,13 +398,18 @@ sudo nano /var/ossec/etc/rules/criminal_ip_ruleset.xml
 * Rule `100641` is triggered when invalid IP address format errors in the Criminal IP API occur.
 * Rule `100642` is triggered when internal server errors in the Criminal IP API are detected, which could indicate issues with the API’s processing capabilities.
 
-8. Set the ownership and permissions of the `/var/ossec/etc/rules/criminal_ip_ruleset.xml`  file:
-```sh
-chmod 660 /var/ossec/etc/rules/criminal_ip_ruleset.xml 
-chown wazuh:wazuh /var/ossec/etc/rules/criminal_ip_ruleset.xml
-```
-9. Restart the Wazuh manager to apply the changes:
+
+3. **Set proper permissions** for the ruleset:
+   ```sh
+   chmod 660 /var/ossec/etc/rules/criminal_ip_ruleset.xml
+   chown wazuh:wazuh /var/ossec/etc/rules/criminal_ip_ruleset.xml
+   ```
+
+#### 4. Restart Wazuh Manager
 ```sh
 systemctl restart wazuh-manager
 ```
 
+By following these steps, Wazuh will be able to query Criminal IP for intelligence on suspicious IP addresses and enrich its alerts with additional threat intelligence.
+
+****
