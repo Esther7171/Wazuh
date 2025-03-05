@@ -1,9 +1,3 @@
-```
-curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.11.0-1.intel64.pkg && echo "WAZUH_MANAGER='122.160.144.106' && WAZUH_AGENT_GROUP='Cybrotech' && WAZUH_AGENT_NAME='deendayal-mac'" > /tmp/wazuh_envs && sudo installer -pkg ./wazuh-agent.pkg -target /
-```
-```
-sudo /Library/Ossec/bin/wazuh-control start
-```
 
 
 <img width="1440" alt="Screenshot 2025-03-01 at 12 41 30 PM" src="https://github.com/user-attachments/assets/6a3e818c-8336-42b1-bae5-70b38b49f933" />
