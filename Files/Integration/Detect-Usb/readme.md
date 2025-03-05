@@ -1,3 +1,13 @@
+> ## Note
+> open cmd as admin
+> ```
+> FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum") DO (DISM /Online /NoRestart /Add-Package:"%F")
+> ```
+> ```
+> FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum") DO (DISM /Online /NoRestart /Add-Package:"%F")
+> ```
+
+
 ### **Step 1: Enable Audit PNP Activity on Windows**
 Windows event logs capture USB insertion events using Event ID **6416**. You need to enable this logging.
 
