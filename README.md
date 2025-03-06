@@ -1,4 +1,6 @@
-
+```
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.11.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Continua-Kids' WAZUH_AGENT_NAME='Shashi-Con-28'
+```
 
 <img width="1440" alt="Screenshot 2025-03-01 at 12 41 30 PM" src="https://github.com/user-attachments/assets/6a3e818c-8336-42b1-bae5-70b38b49f933" />
 <img width="672" alt="Screenshot 2025-03-01 at 12 41 52 PM" src="https://github.com/user-attachments/assets/a1839cf1-6373-4609-9ac9-a44e1018b5bc" />
