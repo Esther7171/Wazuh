@@ -86,3 +86,6 @@ for subnet in subnets:
     append_to_log(results, log_file)
     time.sleep(2)
 ```
+```
+https://wazuh.com/blog/nmap-and-chatgpt-security-auditing/
+```
