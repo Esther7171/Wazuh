@@ -2,7 +2,7 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
- sssss
+
 > # Topics
 * [Introduction to Wazuh](#introduction-to-wazuh)
 * [HIDS,OSSEC and Wazuh](#what-is-hids-)
@@ -285,3 +285,7 @@ Provide the ID of the agent to be removed (or '\q' to quit):
 ```
 ### Give the id of agent u wanna remove
 check out
+
+
+
+## hii
