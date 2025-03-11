@@ -186,7 +186,7 @@ Wazuh Have 3 central components
 The Wazuh indexer and Wazuh server can be installed on a single host or be distributed in cluster configurations. You can choose between two installation methods for each Wazuh central component. Both options provide instructions to install the central components on a single host or on separate hosts.
 
 ## Single node Deployment (Reccmonded for New Users) 
-1. All-in-One deploument (all component install in a single system for home lab and research or low scale company) 
+1. All-in-One deploument
 
 ## Multi node deployment.
 It  have 2 nodes
@@ -194,6 +194,16 @@ It  have 2 nodes
 2. worker
 3. it will be indexer
 4. dashboard
+
+### Deployment Methods
+
+* Distributed Servers
+* Virtual Machine
+* Amazon Machine Image (AMI)
+* Docker
+* Kubernetes
+
+Check This Page For [Installation Guide](./Files/Installation)
 
 ## Requirements For Installation
 
@@ -205,16 +215,6 @@ The Wazuh indexer requires a 64-bit Intel or AMD Linux processor (x86_64/AMD64 a
 | 2. | Red Hat Enterprise Linux 7, 8, 9 | Wazuh server | 2 | 2 | 4 | 8 |
 | 3. | CentOS 7, 8 | Wazuh dashboard | 4 | 2 | 8 | 4 |
 | 4. | Amazon Linux 2, Amazon Linux 2023 |
-
-
-
-### Deployment Methods
-
-* Distributed Servers
-* Virtual Machine
-* Amazon Machine Image (AMI)
-* Docker
-* Kubernetes
 
 
 # Agent Enrollment
