@@ -8,9 +8,9 @@
 * [HIDS,OSSEC and Wazuh](#what-is-hids-)
 * [Components of Wazuh](#components-of-wazuh)
 * [Architecture of Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#architecture-of-wazuh)
-* [Deployment Methods](https://github.com/Esther7171/Wazuh/blob/main/README.md#deployment-methods)
 * [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
-* [Wazuh Installation]( )
+* [Installation guide]( )
+* [Requirements For Installation]()
 * [Agent Enrollment]()
 * [How to Create Dashboard]()
 * [Wazuh Intergration](#wazuh-integrations)
@@ -109,24 +109,6 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 <img width="2959" alt="wazuh arch" src="https://github.com/user-attachments/assets/93e45c66-f9f1-4032-8032-8a0f85322f3d">
 </div>
 
-
-
-# Deployment Methods
-
-* Distributed Servers
-* Virtual Machine
-* Amazon Machine Image (AMI)
-* Docker
-* Kubernetes
-
-Single node 
-1. all in one
-Multi node deployment we have 2 nodes
-1. master
-2. worker
-3. it will be indexer
-4. dashboard
-
 ## Wazuh Features and Capabilities
 
 | S.no | Feature | Discription |
@@ -194,6 +176,46 @@ Multi node deployment we have 2 nodes
 - [ ] Azure Security Center
 - [ ] Google Cloud Security Command Center
 - [ ] Cloudflare
+
+# Installation guide
+Wazuh Have 3 central components
+* Wazuh Indexer
+* Wazuh Server
+* Wazuh Dashboard
+
+The Wazuh indexer and Wazuh server can be installed on a single host or be distributed in cluster configurations. You can choose between two installation methods for each Wazuh central component. Both options provide instructions to install the central components on a single host or on separate hosts.
+
+## Single node Deployment (Reccmonded for New Users) 
+1. All-in-One deploument (all component install in a single system for home lab and research or low scale company) 
+
+## Multi node deployment.
+It  have 2 nodes
+1. master
+2. worker
+3. it will be indexer
+4. dashboard
+
+## Requirements For Installation
+
+The Wazuh indexer requires a 64-bit Intel or AMD Linux processor (x86_64/AMD64 architecture) to run. Wazuh supports the following operating system versions:
+
+| S.No | Os | Component | RAM (GB) | CPU (cores) | RAM (GB) | CPU (cores)
+|--|--|--|--|--|--|--|
+| 1. | Ubuntu 16.04, 18.04, 20.04, 22.04, 24.04 | Wazuh indexer | 4 | 2 | 16 | 8 |
+| 2. | Red Hat Enterprise Linux 7, 8, 9 | Wazuh server | 2 | 2 | 4 | 8 |
+| 3. | CentOS 7, 8 | Wazuh dashboard | 4 | 2 | 8 | 4 |
+| 4. | Amazon Linux 2, Amazon Linux 2023 |
+
+
+
+### Deployment Methods
+
+* Distributed Servers
+* Virtual Machine
+* Amazon Machine Image (AMI)
+* Docker
+* Kubernetes
+
 
 # Agent Enrollment
 
