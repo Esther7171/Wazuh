@@ -86,10 +86,6 @@ bash wazuh-install.sh --generate-config-files
 ---
 
 ## Step 5: Install Wazuh Indexer Nodes
-### Download the Installation Assistant:
-```bash
-curl -sO https://packages.wazuh.com/4.11/wazuh-install.sh
-```
 
 ### Install and Configure the Wazuh Indexer:
 Run the script for each node (e.g., `node-1`):
