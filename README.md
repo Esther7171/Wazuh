@@ -284,8 +284,3 @@ Available agents:
 Provide the ID of the agent to be removed (or '\q' to quit):
 ```
 ### Give the id of agent u wanna remove
-check out
-
-
-
-## hii
