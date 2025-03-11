@@ -19,8 +19,8 @@ Set up your deployment configuration, generate SSL certificates, and create secu
 
 ### Download the Installation Assistant and Configuration File:
 ```bash
-curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh
-curl -sO https://packages.wazuh.com/4.9/config.yml
+curl -sO https://packages.wazuh.com/4.11/wazuh-install.sh
+curl -sO https://packages.wazuh.com/4.11/config.yml
 ```
 
 ### Edit `config.yml`:
@@ -88,7 +88,7 @@ bash wazuh-install.sh --generate-config-files
 ## Step 5: Install Wazuh Indexer Nodes
 ### Download the Installation Assistant:
 ```bash
-curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh
+curl -sO https://packages.wazuh.com/4.11/wazuh-install.sh
 ```
 
 ### Install and Configure the Wazuh Indexer:
