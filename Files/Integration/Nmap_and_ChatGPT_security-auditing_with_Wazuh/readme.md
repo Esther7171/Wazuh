@@ -2,7 +2,7 @@
 * Install launcher for all users (recommended).
 * Add Python to PATH.
 
-2. Microsoft Visual C++ 2015 Redistributable.
+2. [Microsoft Visual C++ 2015 Redistributable](https://aka.ms/vs/16/release/vc_redist.x86.exe).
 
 3. [Nmap](https://nmap.org/dist/nmap-7.95-setup.exe) or later Check in [website](https://nmap.org/download.html#windows). Ensure to add Nmap to PATH.
 
