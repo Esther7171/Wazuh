@@ -219,6 +219,11 @@ The Wazuh indexer requires a 64-bit Intel or AMD Linux processor (x86_64/AMD64 a
 
 # Agent Enrollment
 
+After you install wazuh the dashboard should look like this
+
+![image](https://github.com/user-attachments/assets/7f0ad58b-72f4-4747-9c43-fba2baa147c0)
+
+To enrole an agent 
 Agent Enrollement in Mac OS (Intel)
 
 ![image](https://github.com/user-attachments/assets/0479b21c-abd5-4746-9a49-76e4344d0d78)
