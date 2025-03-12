@@ -1,3 +1,9 @@
+Add the following configuration to the `<ossec_config>` block of the `ossec.conf` file located at `C:\Program Files (x86)\ossec-agent`:
+
+```ps
+notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
+```
+Past This:
 ```
 <!-- CPU Usage -->
     <wodle name="command">
