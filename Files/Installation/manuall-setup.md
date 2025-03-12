@@ -199,3 +199,42 @@ sed -i "s/^deb /#deb /" /etc/apt/sources.list.d/wazuh.list
 apt update
 ```
 ---
+
+## Creating a Bash Script to Restart All Wazuh Services
+
+To create a script that restarts all necessary Wazuh services, follow these steps:
+
+1. Open a terminal and create the script file:
+```bash
+sudo nano /usr/local/bin/restart-wazuh
+```
+
+2. Add the following script content:
+```bash
+#!/bin/bash
+
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-indexer
+sudo systemctl start wazuh-indexer
+
+sudo systemctl enable wazuh-manager
+sudo systemctl start wazuh-manager
+
+sudo systemctl enable filebeat
+sudo systemctl start filebeat
+
+sudo systemctl enable wazuh-dashboard
+sudo systemctl start wazuh-dashboard
+```
+
+3. Save the file (`CTRL + X`, then `Y`, then `ENTER`).
+
+4. Give execution permission to the script:
+```bash
+sudo chmod +x /usr/local/bin/restart-wazuh
+```
+
+5. Now, you can restart all Wazuh services anytime using:
+```bash
+sudo restart-wazuh
+```
