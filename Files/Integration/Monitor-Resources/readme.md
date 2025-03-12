@@ -4,7 +4,7 @@ Add the following configuration to the `<ossec_config>` block of the `ossec.conf
 notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
 ```
 Past This:
-```
+```xml
 <!-- CPU Usage -->
     <wodle name="command">
         <disabled>no</disabled>
