@@ -213,18 +213,52 @@ sudo nano /usr/local/bin/restart-wazuh
 ```bash
 #!/bin/bash
 
+echo "___________________________"
+echo
+echo -e "\e[1;5;7;43m Starting Wazuh Indexer\e[0m"
+echo "___________________________"
+
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-indexer
 sudo systemctl start wazuh-indexer
 
+echo "___________________________"
+echo
+echo -e "\e[1;5;7;43m Starting Wazuh Manager\e[0m"
+echo "___________________________"
+
 sudo systemctl enable wazuh-manager
 sudo systemctl start wazuh-manager
+
+echo "___________________________"
+echo
+echo -e "\e[1;5;7;43m Starting File beat\e[0m"
+echo "___________________________"
 
 sudo systemctl enable filebeat
 sudo systemctl start filebeat
 
+
+echo "___________________________"
+echo
+echo -e "\e[1;5;7;43m Starting Wazuh Dashboard\e[0m"
+echo "___________________________"
+
 sudo systemctl enable wazuh-dashboard
 sudo systemctl start wazuh-dashboard
+
+echo "___________________________"
+echo
+echo -e "\e[1;5;7;43m Starting SSH Service\e[0m"
+echo "___________________________"
+
+sudo systemctl restart ssh
+
+
+echo "__________________"
+echo
+echo -e "\e[1;5;7;43m Done\e[0m"
+echo "__________________"
 ```
 
 3. Save the file (`CTRL + X`, then `Y`, then `ENTER`).
