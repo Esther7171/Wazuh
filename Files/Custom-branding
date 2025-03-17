@@ -1,0 +1,47 @@
+## Change Dashboard logo
+
+
+
+
+
+```
+cd /usr/share/wazuh-dashboard/plugins/securityDashboards/target/public
+```
+You will find `Wazuh` logo.svg. In my case it's like this `30e500f584235c2912f16c790345f966.svg`
+SO what u need to do is to get your own svg and do path manuplation, first thing first make a backup of this svg
+```
+mv 30e500f584235c2912f16c790345f966.svg 30e500f584235c2912f16c790345f966.svg.bak
+
+
+## Setting up custom branding
+
+Custom logos on the Wazuh dashboard
+
+Global App loading logo
+
+1. Edit `opensearch_dashboards.yml`. You can find this file in the following locations:
+```
+sudo nano /etc/wazuh-dashboard/opensearch_dashboards.yml
+```
+For Docker installations.
+```
+/usr/share/wazuh-dashboard/config/
+```
+
+2. Add the URL of your default and dark theme logos.
+
+> Note: Best option is to use [Imgur](https://imgur.com/). post a image there grab link of image and past here
+```
+opensearchDashboards.branding:
+   loadingLogo:
+      defaultUrl: "https://domain.org/default-logo.png"
+      darkModeUrl: "https://domain.org/dark-mode-logo.png"
+```
+
+3. Restart the Wazuh dashboard service:
+
+```
+systemctl restart wazuh-dashboard
+```
+
+## To customize the Wazuh plugins loading logo, do the following.
