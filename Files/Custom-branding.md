@@ -81,3 +81,32 @@ Select all the category as custom branding
 
 ![image](https://github.com/user-attachments/assets/68e54785-abca-42be-b81a-9df9cb29fe48)
 
+add image u like
+
+![image](https://github.com/user-attachments/assets/f0f335ac-60e5-407e-9af2-975af1f37106)
+
+save chnage at bottom 
+![image](https://github.com/user-attachments/assets/d455ec83-5327-4cf7-b61e-4d710d3a7297)
+
+
+
+## To get change favicons convert your image into favico and then at this location
+```
+/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons
+```
+let maove out this old favico of wazuh
+```
+mkdir /usr/share/wazuh-dashboard/src/core/server/core_app/assets/old-favicons && mv * /usr/share/wazuh-dashboard/src/core/server/core_app/assets/old-favicons
+```
+
+Past your new favicons here
+```
+/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons
+```
+
+<!--
+opensearchDashboards.branding:
+   loadingLogo:
+      defaultUrl: "https://i.imgur.com/xKck6D7.png"
+      darkModeUrl: "https://i.imgur.com/xKck6D7.png"
+-->
