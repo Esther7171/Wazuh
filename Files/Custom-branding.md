@@ -1,8 +1,7 @@
 ## Change Dashboard logo
 
 
-
-
+![waz](https://github.com/user-attachments/assets/e3b60358-9e12-49d6-899d-9e4cd32a6c65)
 
 ```
 cd /usr/share/wazuh-dashboard/plugins/securityDashboards/target/public
@@ -11,6 +10,33 @@ You will find `Wazuh` logo.svg. In my case it's like this `30e500f584235c2912f16
 SO what u need to do is to get your own svg and do path manuplation, first thing first make a backup of this svg
 ```
 mv 30e500f584235c2912f16c790345f966.svg 30e500f584235c2912f16c790345f966.svg.bak
+```
+Use Wget to download here
+```
+wget <svg link>
+```
+And download your svg and save at this location and rename it like this
+```
+mv BERSERK-LOGO.svg 30e500f584235c2912f16c790345f966.svg
+```
+![2025-03-17_11-35](https://github.com/user-attachments/assets/87361985-3f81-4552-9e12-53eb5435f995)
+
+## To change this Blue Backgorund Image , come to this location'
+```
+cd /usr/share/wazuh-dashboard/src/core/server/core_app/assets
+```
+You will find this `wazuh_login_bg.svg`, do same path manuplatio
+create an svg of any image and download it at this location
+backup of login backhground image
+```
+mv wazuh_login_bg.svg wazuh_login_bg.svg.bak
+```
+change path of both
+```
+mv img.svg wazuh_login_bg.svg
+```
+Done
+![image](https://github.com/user-attachments/assets/1d8a68dd-c89c-443e-a823-641046e1620e)
 
 
 ## Setting up custom branding
@@ -45,3 +71,13 @@ systemctl restart wazuh-dashboard
 ```
 
 ## To customize the Wazuh plugins loading logo, do the following.
+
+![image](https://github.com/user-attachments/assets/c13e1781-28b3-4bef-8a55-d6a50f24c812)
+
+Click on 3 lines , then come to dashboard management > App settings
+
+
+Select all the category as custom branding
+
+![image](https://github.com/user-attachments/assets/68e54785-abca-42be-b81a-9df9cb29fe48)
+
