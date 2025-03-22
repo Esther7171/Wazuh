@@ -110,3 +110,16 @@ opensearchDashboards.branding:
       defaultUrl: "https://i.imgur.com/xKck6D7.png"
       darkModeUrl: "https://i.imgur.com/xKck6D7.png"
 -->
+
+## Change wazuh dahboard title
+```
+nano /etc/wazuh-dashboard/opensearch_dashboards.yml
+```
+Adding the following line:
+```
+opensearchDashboards.branding.applicationTitle: 'Title'
+```
+Please remember to restart the service after saving the file:
+```
+systemctl restart wazuh-dashboard
+```
