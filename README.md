@@ -1,11 +1,7 @@
-```
-https://us06web.zoom.us/j/6899287498?pwd=S0MikKqFP2Bp8wS9NOKFaBQirrwOlZ.1&omn=89225717618
-```
 # <div align="center">Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
-
  
 > # Topics
 * [Introduction to Wazuh](#introduction-to-wazuh)
