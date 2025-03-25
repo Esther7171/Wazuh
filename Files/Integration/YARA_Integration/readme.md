@@ -41,7 +41,7 @@ with open('yara_rules.yar', 'w') as fh:
 ```
 9. Run the following commands to download the rules and place them in the `C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\` directory:
 ```
-python.exe  `C:\Program Files (x86)\ossec-agent\active-response\bin\yara\download_yara_rules.py`
+python.exe  'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\download_yara_rules.py'
 mkdir 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\'
 cp yara_rules.yar 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\'
 ```
