@@ -49,7 +49,7 @@ cp yara_rules.yar 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\r
 11. Perform the steps below to configure the Wazuh FIM and an active response script for the detection of malicious files on the endpoint.
 12. Create the `yara.bat` script in the `C:\Program Files (x86)\ossec-agent\active-response\bin\` directory. This is necessary for the Wazuh-YARA Active Response scans:
 ```
-notepad.exe `C:\Program Files (x86)\ossec-agent\active-response\bin\yara.bat`
+notepad.exe 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara.bat'
 ```
 13. Past this:
 ```
