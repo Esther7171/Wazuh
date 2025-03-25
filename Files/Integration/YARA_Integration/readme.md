@@ -138,6 +138,9 @@ sudo nano /var/ossec/etc/decoders/local_decoder.xml
 ```
 3. Add the following rules to the Wazuh server `/var/ossec/etc/rules/local_rules.xml` file. The rules detect FIM events in the monitored directory. They also alert when malware is found by the YARA integration:
 ```
+sudo nano /var/ossec/etc/rules/local_rules.xml
+```
+```
 <group name="syscheck,">
   <rule id="100303" level="7">
     <if_sid>550</if_sid>
