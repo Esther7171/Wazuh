@@ -6,7 +6,7 @@ Monitor Entire C drive
 ```
 <directories check_all="yes" whodata="yes" report_changes="yes">C:</directories>
 ```
-Monitor Limited Directories (for virus total + yara + wazuh)
+Monitor Limited Directories (for virus total + yara + Fim)
 ```
 <directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
 <directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
