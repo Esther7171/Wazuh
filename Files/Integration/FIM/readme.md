@@ -6,12 +6,14 @@ Monitor Entire C drive
 ```
 <directories check_all="yes" whodata="yes" report_changes="yes">C:</directories>
 ```
-Monitor Limited Directories
+Monitor Limited Directories (for virus total + yara + wazuh)
 ```
-<directories realtime="yes" check_all="yes" whodata="yes" report_changes="yes"></directories>
-<directories realtime="yes" check_all="yes" whodata="yes" report_changes="yes"></directories>
-<directories realtime="yes" check_all="yes" whodata="yes" report_changes="yes"></directories>
-<directories realtime="yes" check_all="yes" whodata="yes" report_changes="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes"></directories>
 ```
 ```internal_options.conf```
 
