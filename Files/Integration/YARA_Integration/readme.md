@@ -27,7 +27,7 @@ pip install valhallaAPI
 ```
 7. Copy the following script and save it as ```download_yara_rules.py```
 ```
-notepad.exe C:\Program Files (x86)\ossec-agent\active-response\bin\yara\download_yara_rules.py
+notepad.exe 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\download_yara_rules.py'
 ```
 8. Past this :
 ```
