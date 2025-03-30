@@ -2,8 +2,6 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
-
-
  
 > # Topics
 * [Introduction to Wazuh](#introduction-to-wazuh)
@@ -118,13 +116,6 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 | 1. | Intrusion Detection | Scan and Monitor Endpoints. Llook for rootkit, malware, detect hidden file and unregiter network listners.
 | 2. | Log Data Analysis | Read os logs and app logs  then encript it and send it to manager or server on rule base analysis. We still get data form sys logs like ```Router or switches```
 | 3. | File Integrity Monitoring | Wazuh Monitor the file system  Identify any changes in the content, permission, ownership and different attributes of file and generates an alert when there is any unauthorized changes. We can join pci  
-
-
-
-
-
-
-
 
 
 
