@@ -4,6 +4,7 @@
 </div>
 
 
+
  
 > # Topics
 * [Introduction to Wazuh](#introduction-to-wazuh)
