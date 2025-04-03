@@ -63,12 +63,21 @@ opensearchDashboards.branding:
       defaultUrl: "https://domain.org/default-logo.png"
       darkModeUrl: "https://domain.org/dark-mode-logo.png"
 ```
+Add branding Name in same file
+```
+sudo nano /etc/wazuh-dashboard/opensearch_dashboards.yml
+```
+add
+```
+opensearchDashboards.branding.applicationTitle: "hacked"
+```
 
 3. Restart the Wazuh dashboard service:
 
 ```
 systemctl restart wazuh-dashboard
 ```
+![image](https://github.com/user-attachments/assets/926ed4f9-815d-4bba-a8ba-102bea647562)
 
 ## To customize the Wazuh plugins loading logo, do the following.
 
