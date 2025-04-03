@@ -91,6 +91,8 @@ save chnage at bottom
 
 
 ## To get change favicons convert your image into favico and then at this location
+![image](https://github.com/user-attachments/assets/fcfdc052-f941-4029-a857-931cbb100970)
+
 ```
 /usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons
 ```
