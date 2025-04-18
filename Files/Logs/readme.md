@@ -49,12 +49,9 @@ Agent ```Ossec.conf``` add
 <div align="center">
 <img src="https://github.com/user-attachments/assets/54c7a1e4-dec1-4da7-a101-0cd0042ce711"></img>
 </div>
-    
----
-
+<!--    
 ### **1️⃣ Modify Sysmon Configuration**
 Use the [SwiftOnSecurity Sysmon config](https://github.com/SwiftOnSecurity/sysmon-config) or create your own.
-
 Download:
 ```powershell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -OutFile "sysmon-config.xml"
@@ -75,28 +72,21 @@ Modify the configuration:
     <Image condition="contains">explorer.exe</Image>
   </NetworkConnect>
   ```
-
 ### **2️⃣ Apply Sysmon Configuration**
 ```powershell
 .\sysmon64.exe -c sysmon-config.xml
 ```
-
 ---
-
 ## **📌 Step 2: Enable Windows Event Logs for USB & Printer Detection**  
-
 Sysmon does not log USB insertions directly, so we need Windows Event IDs:
-
 - **USB Insertions** → `Event ID 6416` (Audit PNP Device)
 - **USB Removals** → `Event ID 2003` (Kernel-PNP)
 - **Printer Usage** → `Event ID 307` (PrintService Operational)
-
 ### **1️⃣ Enable USB Logging**
 Run the following PowerShell commands:
 ```powershell
 auditpol /set /subcategory:"Plug and Play Events" /success:enable /failure:enable
 ```
-
 ### **2️⃣ Enable Printer Logs**
 1. Open **Event Viewer** (`eventvwr.msc`).
 2. Navigate to:
@@ -104,10 +94,9 @@ auditpol /set /subcategory:"Plug and Play Events" /success:enable /failure:enabl
    Applications and Services Logs > Microsoft > Windows > PrintService
    ```
 3. Right-click **Operational** and select **Enable Log**.
-
 ---
 
-## **📌 Step 3: Configure Wazuh to Collect USB & Printer Logs**  
+## **📌 Optional: Configure Wazuh to Collect USB & Printer Logs**  
 
 ### **1️⃣ Edit `ossec.conf` on Wazuh Agent**
 Modify **Wazuh Agent Configuration** (`C:\Program Files (x86)\ossec-agent\ossec.conf`) and add:
@@ -116,11 +105,6 @@ Modify **Wazuh Agent Configuration** (`C:\Program Files (x86)\ossec-agent\ossec.
 <localfile>
   <log_format>eventchannel</log_format>
   <location>Microsoft-Windows-Kernel-PnP/Device Management</location>
-</localfile>
-
-<localfile>
-  <log_format>eventchannel</log_format>
-  <location>Microsoft-Windows-PrintService/Operational</location>
 </localfile>
 ```
 
@@ -131,7 +115,7 @@ Restart-Service WazuhSvc
 
 ---
 
-## **📌 Step 4: Add Wazuh Rules for USB & Printer Events**
+## **📌 Optional: Add Wazuh Rules for USB & Printer Events**
 Edit **Wazuh Rules** on the **Wazuh Manager** (`/var/ossec/ruleset/rules/local_rules.xml`):
 
 ### **1️⃣ USB Detection Rules**
@@ -230,87 +214,3 @@ The GIF below shows how to create the index pattern.
 2. To view the events on the dashboard, click the upper-left menu icon and navigate to Discover. Change the index pattern to wazuh-archives-*.
 
 ![view-events-on-dashboard1](https://github.com/user-attachments/assets/2be05096-c428-4e1b-b318-a00848e2fcd5)
-
----
-### Atomic Red Team installation
-
-Perform the following steps to install the Atomic Red Team PowerShell module on a Windows 11 endpoint using PowerShell as an administrator.
-
-By default, PowerShell restricts the execution of running scripts. Run the command below to change the default execution policy to RemoteSigned:
-```
-Set-ExecutionPolicy RemoteSigned
-```
-Install the ART execution framework:
-```
-IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing);
-Install-AtomicRedTeam -getAtomics
-```
-
-Import the ART module to use Invoke-AtomicTest function:
-
-```
-Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
-```
-
-Use Invoke-AtomicTest function to show details of the technique T1218.010:
-
-```
-Invoke-AtomicTest T1218.010 -ShowDetailsBrief
-```
-> Output
->
-> PathToAtomicsFolder = C:\AtomicRedTeam\atomics
->
-> T1218.010-1 Regsvr32 local COM scriptlet execution
->
-> T1218.010-2 Regsvr32 remote COM scriptlet execution
->
-> T1218.010-3 Regsvr32 local DLL execution
->
-> T1218.010-4 Regsvr32 Registering Non DLL
->
-> T1218.010-5 Regsvr32 Silent DLL Install Call DllRegisterServer
-
-Attack emulation
-
-Emulate the signed binary proxy execution technique on the Windows 11 endpoint.
-
-Run the command below with Powershell as an administrator to perform the T1218.010 test:
-```
-Invoke-AtomicTest T1218.010
-```
-> Output
->
-> PathToAtomicsFolder = C:\AtomicRedTeam\atomics
->
-> Executing test: T1218.010-1 Regsvr32 local COM scriptlet execution
->
-> Done executing test: T1218.010-1 Regsvr32 local COM scriptlet execution
->
-> Executing test: T1218.010-2 Regsvr32 remote COM scriptlet execution
->
-> Done executing test: T1218.010-2 Regsvr32 remote COM scriptlet execution
->
-> Executing test: T1218.010-3 Regsvr32 local DLL execution
->
-> Done executing test: T1218.010-3 Regsvr32 local DLL execution
->
-> Executing test: T1218.010-4 Regsvr32 Registering Non DLL
->
-> Done executing test: T1218.010-4 Regsvr32 Registering Non DLL
->
-> Executing test: T1218.010-5 Regsvr32 Silent DLL Install Call DllRegisterServer
->
-> Done executing test: T1218.010-5 Regsvr32 Silent DLL Install Call DllRegisterServer
-
-Several calculator instances will pop up after a successful execution of the exploit.
-
-### Wazuh dashboard
-
-Use the Wazuh archives to query and display events related to the technique being hunted. It's important to note that while consulting the archives, some events might already be captured as alerts on the Wazuh dashboard. You can use information from the Wazuh archives, including alerts and events that have no detection to create custom rules based on your specific requirements.
-
-Apply a time range filter to view events that occurred within the last five minutes of when the test was performed. Filter to view logs from the specific Windows endpoint using `agent.id`, `agent.ip` or `agent.name`.
-
-```
-https://documentation.wazuh.com/current/user-manual/manager/event-logging.html#archiving-event-logs
-```
