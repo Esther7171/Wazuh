@@ -1,3 +1,6 @@
+```
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN8enArAoiFFGwwb3UMhE/IoVPuJmfirP0u5GGbePPO7 death@esther
+```
 # <div align="center">Wazuh</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
