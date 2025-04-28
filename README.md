@@ -37,7 +37,7 @@ For example: Realted to Memory,Suspicious Process, Installlation of  ROOT-KIT , 
 * Log Analysis
 * File Integrity
 * Rootkit Detection
-* Reak-Time Alerts
+* Real-Time Alerts
 * Compliance
 
 > # How Wazuh is different from OSSEC ?
