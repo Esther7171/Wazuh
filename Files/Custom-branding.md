@@ -1,6 +1,5 @@
 ## Change Dashboard logo
 
-
 ![waz](https://github.com/user-attachments/assets/e3b60358-9e12-49d6-899d-9e4cd32a6c65)
 
 ```
