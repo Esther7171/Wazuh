@@ -1,5 +1,6 @@
 ## Change Dashboard logo
 
+
 ![waz](https://github.com/user-attachments/assets/e3b60358-9e12-49d6-899d-9e4cd32a6c65)
 
 ```
@@ -132,4 +133,26 @@ opensearchDashboards.branding.applicationTitle: 'Title'
 Please remember to restart the service after saving the file:
 ```
 systemctl restart wazuh-dashboard
+```
+
+
+##  Change logo of dashboard and loading:
+
+```
+sudo nano /etc/wazuh-dashboard/opensearch_dashboards.yml
+```
+
+```yml
+opensearch_security.ui.basicauth.login.brandimage: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+
+opensearchDashboards.branding:
+  logo:
+    defaultUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+    darkModeUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+  loadingLogo:
+    defaultUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+    darkModeUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+  mark:
+    defaultUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
+    darkModeUrl: "https://www.elirodrigues.com/wp-content/uploads/2016/11/sample-logo-black.png"
 ```

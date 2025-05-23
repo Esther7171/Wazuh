@@ -1,10 +1,10 @@
-# 🔐 Wazuh Admin Password Reset & Service Restart Guide  
+# Wazuh Admin Password Reset & Service Restart Guide  
 
 This guide provides instructions to securely reset the Wazuh admin password and restart essential services.  
 
 ---
 
-## 🚀 Reset Wazuh Admin Password  
+## Reset Wazuh Admin Password  
 
 To update the password for an existing Wazuh user (e.g., `admin`), execute the following command:  
 

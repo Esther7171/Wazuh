@@ -4,6 +4,11 @@
 
 ---
 
+### Download this commond utils:
+```
+sudo apt -y install curl wget nano
+```
+
 ### Step 1: Create a Directory for Installtion files.
 Organize all installtion files in a dedicated directory:
 
