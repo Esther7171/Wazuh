@@ -1,34 +1,98 @@
-1. Configure Sysmon
-2. Open Powershell in Admin At default ```C:``` drive
+# Logs Configure Sysmon
+1. Open Powershell in Admin At default ```C:``` drive
 ```
 cd c:\
 ```
-3. Download Sysmon
+2. Download Sysmon
 ```
 curl https://download.sysinternals.com/files/Sysmon.zip -o Sysmon.zip
 ```
-4. Unzip The Sysmon
+3. Unzip The Sysmon
 ```ps
 Expand-Archive Sysmon.zip
 ```
-5. Remove Sysmon.zip becouse it no longer in use.
+4. Remove Sysmon.zip becouse it no longer in use.
 ```ps
 rm Sysmon.zip
 ```
-6. Go to folder.
+5. Go to folder.
 ```
 cd Sysmon
 ```
-7. Install Wazuh Sysmon-config file
+6. Install Wazuh Sysmon-config file
 ```ps1
 curl -o sysmonconfig.xml https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml
 ```
-8. Install Config File 
+7. Install Config File 
 ```ps1
 .\sysmon64.exe -accepteula -i .\sysmonconfig.xml
 ```
 
+# Detecting PowerShell Exploitation Techniques in Windows Using Wazuh
+Step 1: Enable PowerShell Logging
+
 * Open Powershell as admin
+```ps1
+function Enable-PSLogging {
+    # Define registry paths for ScriptBlockLogging and ModuleLogging
+    $scriptBlockPath = 'HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging'
+    $moduleLoggingPath = 'HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ModuleLogging'
+    
+    # Enable Script Block Logging
+    if (-not (Test-Path $scriptBlockPath)) {
+        $null = New-Item $scriptBlockPath -Force
+    }
+    Set-ItemProperty -Path $scriptBlockPath -Name EnableScriptBlockLogging -Value 1
+
+    # Enable Module Logging
+    if (-not (Test-Path $moduleLoggingPath)) {
+        $null = New-Item $moduleLoggingPath -Force
+    }
+    Set-ItemProperty -Path $moduleLoggingPath -Name EnableModuleLogging -Value 1
+    
+    # Specify modules to log - set to all (*) for comprehensive logging
+    $moduleNames = @('*')  # To specify individual modules, replace * with module names in the array
+    New-ItemProperty -Path $moduleLoggingPath -Name ModuleNames -PropertyType MultiString -Value $moduleNames -Force
+
+    Write-Output "Script Block Logging and Module Logging have been enabled."
+}
+
+Enable-PSLogging
+```
+
+> The output should be 
+```
+Output Script Block Logging and Module Logging have been enabled.
+```
+
+## Atomic Red Team installation
+* ART Execution Framework and Atomics folder installation.
+* The following command will perform the installation of the Execution Framework as well as the Atomics folder, which contains the tests and binaries that are needed for the emulation:
+```ps
+IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing)
+Install-AtomicRedTeam -Force -getAtomics
+```
+* Importing the ART module
+```
+Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
+```
+2. After installation finishes, confirm the folder exists:
+```
+ls C:\AtomicRedTeam\atomics
+```
+3. Then re-import the module and test again:
+```ps
+Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
+Invoke-AtomicTest T1548.002 -ShowDetailsBrief
+```
+
+
+
+
+
+
+
+
 ```
 notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
 ```
@@ -47,6 +111,11 @@ notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
 <localfile>
     <location>Microsoft-Windows-Sysmon/Operational</location>
     <log_format>eventchannel</log_format>
+</localfile>
+
+<localfile>
+  <location>Microsoft-Windows-PowerShell/Operational</location>
+  <log_format>eventchannel</log_format>
 </localfile>
 
 <!-- CPU Usage -->
