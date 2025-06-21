@@ -1,3 +1,4 @@
+# Sysmon + Wazuh for log collection
 Configure Wazuh With Sysmon So we See Incidents More Clearly
 
 1. Open Powershell in Admin At default ```C:``` drive
