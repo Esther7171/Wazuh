@@ -1,7 +1,3 @@
-If u change the frequency to lowest that would'nt give exact result on real time monitoring on next day on log(reccomend dont change). Else set 10 sec monitoring
-```xml
-<frequency>10<frequency>
-```
 Monitor Entire C drive
 ```
 <directories check_all="yes" whodata="yes" report_changes="yes">C:</directories>
