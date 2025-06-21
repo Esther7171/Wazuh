@@ -39,3 +39,16 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/d48aba16-881e-4687-a6c5-cf9805c98b59" height="250"></img>
 </div>
+
+
+## Agent.conf
+```
+notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
+```
+Add this lines:
+```xml
+<localfile>
+  <location>Microsoft-Windows-Windows Defender/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+```
