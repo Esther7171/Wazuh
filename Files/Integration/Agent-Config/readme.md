@@ -190,6 +190,30 @@ for /f "delims=" %%a in ('powershell -command "& \"%yara_exe_path%\" \"%yara_rul
 
 exit /b
 ```
+# ChatGpt For Port Scan
+* [Nmap v7.97](https://nmap.org/dist/nmap-7.97-setup.exe) or later. Ensure to add Nmap to PATH.
+* Run the command below to install the python-nmap library and all its dependencies using Powershell:
+```
+pip3 install python-nmap
+```
+* Open powershell as admin and Go To `Documents` and download a file nmap `nmapscan.exe`
+```
+curl https://github.com/Esther7171/Wazuh/releases/download/nmap-exe/nmapscan.exe -o $env:USERPROFILE\Documents\nmapscan.exe
+```
+* The Nmapscan.exe executable is download under `C:\Users<USERNAME>\Documents` directory.
+* Open the agent configuration file located at `C:\Program Files (x86)\ossec-agent`.
+```
+notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
+```
+* Go to bottom of file Under `<ossec_config>` block.
+```xml
+<!-- Run nmap python script -->
+  <localfile>
+    <log_format>full_command</log_format>
+    <command>C:\Users\<Add UserName Here>\Documents\nmapscan.exe</command>
+    <frequency>604800</frequency>
+  </localfile>
+```
 ## Configure Agent for FIM + Virus Total + Yara
 * Open the agent configuration file located at `C:\Program Files (x86)\ossec-agent`.
 ```
