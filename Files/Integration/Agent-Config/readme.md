@@ -86,7 +86,15 @@ Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" 
 Invoke-AtomicTest T1548.002 -ShowDetailsBrief
 ```
 
-
+## Virus-Total
+* Install Python, Download the Python installer from the official [Python-3.13.5](https://www.python.org/ftp/python/3.13.5/python-3.13.5-amd64.exe) website.
+* Open the terminal as Administrator and install the required package:
+```
+pip install pyinstaller
+```
+```
+pyinstaller -F --icon=logo.ico remove-threat.py
+```
 
 
 
