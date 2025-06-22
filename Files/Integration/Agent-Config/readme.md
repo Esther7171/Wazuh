@@ -1,22 +1,22 @@
 # Logs Configure Sysmon
 1. Open Powershell in Admin At default ```C:``` drive
-```
+```cmd
 cd c:\
 ```
 2. Download Sysmon
-```
+```ps1
 curl https://download.sysinternals.com/files/Sysmon.zip -o Sysmon.zip
 ```
 3. Unzip The Sysmon
-```ps
+```ps1
 Expand-Archive Sysmon.zip
 ```
 4. Remove Sysmon.zip becouse it no longer in use.
-```ps
+```ps1
 rm Sysmon.zip
 ```
 5. Go to folder.
-```
+```ps1
 cd Sysmon
 ```
 6. Install Wazuh Sysmon-config file
@@ -68,20 +68,20 @@ Output Script Block Logging and Module Logging have been enabled.
 ## Atomic Red Team installation
 * ART Execution Framework and Atomics folder installation.
 * The following command will perform the installation of the Execution Framework as well as the Atomics folder, which contains the tests and binaries that are needed for the emulation:
-```ps
+```ps1
 IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing)
 Install-AtomicRedTeam -Force -getAtomics
 ```
 * Importing the ART module
-```
+```ps1
 Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
 ```
 2. After installation finishes, confirm the folder exists:
-```
+```ps1
 ls C:\AtomicRedTeam\atomics
 ```
 3. Then re-import the module and test again:
-```ps
+```ps1
 Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
 Invoke-AtomicTest T1548.002 -ShowDetailsBrief
 ```
@@ -89,22 +89,141 @@ Invoke-AtomicTest T1548.002 -ShowDetailsBrief
 ## Virus-Total
 * Install Python, Download the Python installer from the official [Python-3.13.5](https://www.python.org/ftp/python/3.13.5/python-3.13.5-amd64.exe) website.
 * Open the terminal as Administrator and install the required package:
+```ps1
+cd "C:\Program Files (x86)\ossec-agent\active-response\bin"
 ```
-pip install pyinstaller
+* Download Remove-Threat Script
+```ps1
+curl https://github.com/Esther7171/Wazuh/releases/download/test-case/remove-threat.exe -o remove-threat.exe
 ```
+* Restart Agent
+```ps1
+Restart-Service -Name wazuh
 ```
-pyinstaller -F --icon=logo.ico remove-threat.py
+## Yara Integrate 
+* Download and install the latest [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe) package.
+1. Open Powershell in Admin At default ```C:``` drive
+```cmd
+cd c:\
 ```
+* Open PowerShell with administrator privileges to download and extract YARA:
+```ps1
+Invoke-WebRequest -Uri https://github.com/VirusTotal/yara/releases/download/v4.2.3/yara-4.2.3-2029-win64.zip -OutFile v4.2.3-2029-win64.zip
+Expand-Archive v4.2.3-2029-win64.zip; Remove-Item v4.2.3-2029-win64.zip
+```
+* Create a directory called C:\Program Files (x86)\ossec-agent\active-response\bin\yara\ and copy the YARA executable into it:
+```
+mkdir 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\'
+cp .\v4.2.3-2029-win64\yara64.exe 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\'
+```
+* Install the valhallaAPI module:
+```
+pip install valhallaAPI
+```
+* Copy the following script and save it as download_yara_rules.py:
+```
+notepad.exe 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\download_yara_rules.py'
+```
+* Past this :
+```py
+from valhallaAPI.valhalla import ValhallaAPI
+
+v = ValhallaAPI(api_key="1111111111111111111111111111111111111111111111111111111111111111")
+response = v.get_rules_text()
+
+with open('yara_rules.yar', 'w') as fh:
+    fh.write(response)
+```
+* Run the following commands to download the rules and place them in the `C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\` directory:
+```
+cd "C:\Program Files (x86)\ossec-agent\active-response\bin\yara"
+```
+* Download the rules
+```
+python.exe download_yara_rules.py
+mkdir 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\'
+cp yara_rules.yar 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\'
+```
+### Configure Active Response and FIM
+* Create the yara.bat script in the `C:\Program Files (x86)\ossec-agent\active-response\bin\` directory. This is necessary for the Wazuh-YARA Active Response scans:
+```
+notepad.exe 'C:\Program Files (x86)\ossec-agent\active-response\bin\yara.bat'
+```
+* Add this:
+```ps1
+@echo off
+
+setlocal enableDelayedExpansion
+
+reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" > NUL && SET OS=32BIT || SET OS=64BIT
 
 
+if %OS%==32BIT (
+    SET log_file_path="%programfiles%\ossec-agent\active-response\active-responses.log"
+)
+
+if %OS%==64BIT (
+    SET log_file_path="%programfiles(x86)%\ossec-agent\active-response\active-responses.log"
+)
+
+set input=
+for /f "delims=" %%a in ('PowerShell -command "$logInput = Read-Host; Write-Output $logInput"') do (
+    set input=%%a
+)
 
 
+set json_file_path="C:\Program Files (x86)\ossec-agent\active-response\stdin.txt"
+set syscheck_file_path=
+echo %input% > %json_file_path%
 
+for /F "tokens=* USEBACKQ" %%F in (`Powershell -Nop -C "(Get-Content 'C:\Program Files (x86)\ossec-agent\active-response\stdin.txt'|ConvertFrom-Json).parameters.alert.syscheck.path"`) do (
+set syscheck_file_path=%%F
+)
 
+del /f %json_file_path%
+set yara_exe_path="C:\Program Files (x86)\ossec-agent\active-response\bin\yara\yara64.exe"
+set yara_rules_path="C:\Program Files (x86)\ossec-agent\active-response\bin\yara\rules\yara_rules.yar"
+echo %syscheck_file_path% >> %log_file_path%
+for /f "delims=" %%a in ('powershell -command "& \"%yara_exe_path%\" \"%yara_rules_path%\" \"%syscheck_file_path%\""') do (
+    echo wazuh-yara: INFO - Scan result: %%a >> %log_file_path%
+)
+
+exit /b
+```
+## Configure Agent for FIM + Virus Total + Yara
+* Open the agent configuration file located at `C:\Program Files (x86)\ossec-agent`.
 ```
 notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
 ```
-* Agent Ossec.conf add
+* Modify `syscheck` Block
+* Locate the `<syscheck>` block in the `ossec.conf` file at `C:\Program Files (x86)\ossec-agent\ossec.conf`.
+* Ensure the `<disabled>` tag is set to `no`:
+```xml
+<syscheck>
+  <disabled>no</disabled>
+</syscheck>
+```
+* Monitor Directories
+```
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Desktop</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Downloads</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Documents</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Music</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Pictures</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\Videos</directories>
+<directories check_all="yes" whodata="yes" report_changes="yes" realtime="yes">C:\Users\*\OneDrive</directories>
+```
+* Add at bottom of file to monitor
+* [ ] Windows Defender
+* [ ] Printer Service
+* [ ] Sysmon
+* [ ] PowerShell
+* [ ] CPU Usage
+* [ ] Memory Usage
+* [ ] Network Received
+* [ ] Network Sent
+* [ ] Disk Free
+
 ```xml
 <localfile>
   <location>Microsoft-Windows-Windows Defender/Operational</location>
@@ -178,6 +297,7 @@ notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
     </wodle>
 ```
 # Server
+## Categories based on group 
 1. Create a Group
 2. edit group and past this:
 ```xml
