@@ -192,6 +192,10 @@ exit /b
 ```
 # ChatGpt For Port Scan
 * [Nmap v7.97](https://nmap.org/dist/nmap-7.97-setup.exe) or later. Ensure to add Nmap to PATH.
+```
+curl https://nmap.org/dist/nmap-7.97-setup.exe  -o $env:USERPROFILE\Downloads\nmap.exe
+.\nmap.exe
+```
 * Run the command below to install the python-nmap library and all its dependencies using Powershell:
 ```
 pip3 install python-nmap
