@@ -102,6 +102,10 @@ Restart-Service -Name wazuh
 ```
 ## Yara Integrate 
 * Download and install the latest [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe) package.
+```ps1
+curl https://aka.ms/vs/17/release/vc_redist.x64.exe  -o $env:USERPROFILE\Downloads\vc_redist.x64.exe
+& "$env:USERPROFILE\Downloads\vc_redist.x64.exe"
+```
 1. Open Powershell in Admin At default ```C:``` drive
 ```cmd
 cd c:\
