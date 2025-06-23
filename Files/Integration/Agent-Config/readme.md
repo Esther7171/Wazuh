@@ -328,6 +328,10 @@ notepad.exe 'C:\Program Files (x86)\ossec-agent\ossec.conf'
         <timeout>0</timeout>
     </wodle>
 ```
+* Restart Agent
+```ps1
+Restart-Service -Name wazuh
+```
 # Server
 ## Categories based on group 
 1. Create a Group
