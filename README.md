@@ -1,4 +1,7 @@
 ```
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi -OutFile "$env:TEMP\wazuh-agent.msi"; msiexec.exe /i "$env:TEMP\wazuh-agent.msi" /q WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Hindustan-Tin' WAZUH_AGENT_NAME='HTW-3231500110020071'
+```
+```
 Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='122.160.144.106' WAZUH_AGENT_GROUP='Hindustan-Tin' WAZUH_AGENT_NAME='HTW-3231500110020071' 
 ```
 # <div align="center">Wazuh</div>
