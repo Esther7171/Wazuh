@@ -94,7 +94,7 @@ cd "C:\Program Files (x86)\ossec-agent\active-response\bin"
 ```
 * Download Remove-Threat Script
 ```ps1
-curl https://github.com/Esther7171/Wazuh/releases/download/test-case/remove-threat.exe -o remove-threat.exe
+curl https://github.com/Esther7171/Wazuh/releases/download/Remove_Threat/remove-threat.exe -o remove-threat.exe
 ```
 * Restart Agent
 ```ps1
