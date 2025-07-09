@@ -129,3 +129,4 @@ Mode: realtime
 By configuring SMTP in Wazuh, you can receive real-time alerts via email, improving incident response and monitoring efficiency. For advanced configurations, refer to the Wazuh documentation.
 
 ---
+![image](https://github.com/user-attachments/assets/413dde07-d01c-4dbd-9659-635db57f43d1)
