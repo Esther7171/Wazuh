@@ -130,3 +130,5 @@ By configuring SMTP in Wazuh, you can receive real-time alerts via email, improv
 
 ---
 ![image](https://github.com/user-attachments/assets/413dde07-d01c-4dbd-9659-635db57f43d1)
+![image](https://github.com/user-attachments/assets/3388bace-3b32-4144-a883-476608e88b8b)
+
