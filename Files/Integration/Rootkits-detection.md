@@ -1,1 +1,0 @@
-# Rootkits behavior detection
