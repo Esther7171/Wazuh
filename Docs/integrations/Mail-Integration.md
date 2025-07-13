@@ -134,12 +134,11 @@ nano custom-email-alert.py
 ```
 
 3. Paste the full Python code provided earlier. 
-```mine
+```
 #!/usr/bin/env python3
-# Authors: ester7171 and yash
-# Last Updated: July 9, 2025
-#
-# Custom Wazuh Email Integration Script
+# Authors: esther7171 & yash
+# Updated: July 13, 2025
+# Purpose: Custom Email Alerts for Wazuh using Postfix (Gmail-compatible)
 # License: GNU GPL v2
 
 import json
@@ -149,359 +148,130 @@ import os
 import smtplib
 from email.utils import formataddr
 from email.message import EmailMessage
-from json2html import *
+from json2html import json2html
 
-# Configuration
-email_server = "122.160.144.106"       # SMTP server IP
-email_from = "wazuhcybrotech@gmail.com"   # Sender email
+# ========== SMTP Configuration ==========
+email_server = "localhost"
+email_port = 25
+email_from = "your-alert@gmail.com"  # Must match your authenticated sender (Gmail App Password)
+sender_name = "Deathesther Alerting"
 
-# Globals
+# ========== Global Paths ==========
 debug_enabled = False
 pwd = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 log_file = f'{pwd}/logs/integrations-email.log'
 now = time.strftime("%a %b %d %H:%M:%S %Z %Y")
 
+# ========== Logging ==========
 def debug(msg):
     if debug_enabled:
-        log_entry = f"{now}: {msg}\n"
-        print(log_entry)
+        entry = f"{now}: {msg}\n"
+        print(entry)
         with open(log_file, "a") as f:
-            f.write(log_entry)
+            f.write(entry)
 
+# ========== Email Sender ==========
 def send_email(recipients, subject, body):
-    TO = recipients.split(',')
-    em = EmailMessage()
-    em['To'] = TO
-    em['From'] = formataddr(('Cybrotech Teams', email_from))
-    em['Subject'] = subject
-    em.add_header('Content-Type', 'text/html')
-    em.set_content(body, subtype='html')
-
     try:
-        mailserver = smtplib.SMTP(email_server, 25)
-        mailserver.ehlo()
-        mailserver.send_message(em)
-        mailserver.close()
-        debug(f"Successfully sent email to {TO}")
-    except Exception as e:
-        debug(f"Failed to send mail to {TO}")
-        debug(f"With error: {e}")
+        em = EmailMessage()
+        em['From'] = formataddr((sender_name, email_from))
+        em['To'] = recipients.strip()
+        em['Subject'] = subject
+        em.set_content(body, subtype='html')
 
+        with smtplib.SMTP(email_server, email_port) as server:
+            server.ehlo()
+            server.send_message(em)
+
+        debug(f"Email sent to {recipients}")
+    except Exception as e:
+        debug(f"Email sending failed to {recipients} with error: {e}")
+
+# ========== HTML Generator ==========
 def generate_msg(alert):
     try:
-        description = alert['rule']['description']
-        level = alert['rule']['level']
-        agentname = alert['agent']['name']
-        timestamp_raw = alert['timestamp'].split('.')[0]
-        timestamp = time.strftime('%c', time.strptime(timestamp_raw, '%Y-%m-%dT%H:%M:%S'))
-        full_log = alert.get('full_log', '')
+        description = alert['rule'].get('description', 'No description')
+        level = alert['rule'].get('level', 'N/A')
+        agentname = alert['agent'].get('name', 'Unknown')
+        timestamp_raw = alert.get('timestamp', '')
+        timestamp = time.strftime('%c', time.strptime(timestamp_raw.split('.')[0], '%Y-%m-%dT%H:%M:%S')) if timestamp_raw else 'Unknown'
+        full_log = alert.get('full_log', 'No log')
+
+        subject = f'[Esther Alert]: Rule level: [ {level} ], from agent: [ {agentname} ], Description: [ {description} ]'
+
+        msg = f"""
+        <html><head>
+        <style>
+            body {{ font-family: Verdana; }}
+            table {{ border-collapse: collapse; width: 100%; }}
+            td, th {{ border: 1px solid #ddd; padding: 8px; }}
+            th {{ background-color: #38414f; color: white; }}
+            .logo {{ text-align: center; }}
+            .logo img {{ height: 70px; }}
+        </style>
+        </head><body>
+        <div class="logo">
+            <img src="https://yourdomain.com/logo.png" alt="Alert Logo">
+        </div>
+        <h2>⚠️ Alert from Wazuh</h2>
+        <table>
+            <tr><th>Date</th><td>{timestamp}</td></tr>
+            <tr><th>Agent</th><td>{agentname}</td></tr>
+            <tr><th>Rule</th><td>{description}</td></tr>
+            <tr><th>Severity</th><td>{level}</td></tr>
+            <tr><th>Log</th><td>{full_log}</td></tr>
+        </table>
+        <hr>
+        <h4>🧾 Full Alert JSON:</h4>
+        <div>{json2html.convert(json=alert)}</div>
+        </body></html>
+        """
+        return subject, msg
     except Exception as e:
-        debug(f"Error extracting fields: {e}")
-        sys.exit(1)
+        debug(f"Error generating message: {e}")
+        return "Wazuh Alert", f"<pre>{json.dumps(alert, indent=2)}</pre>"
 
-    subject = f'[Sachet Alert]: Rule level: [ {level} ], from agent: [ {agentname} ], Description: [ {description} ]'
-
-    msg = f"""
-    <html><head></head>
-    <style>
-        table.tabla-detail {{ max-width:800px; margin:0 auto; border-collapse:collapse; font-family:verdana; }}
-        table.tabla-detail p {{ margin:0; text-align:left }}
-        table.tabla-detail td {{ padding-left:.5em; border:2px solid #38414f }}
-        table.tabla-detail .cabecera-tabla {{ background-color:#38414f; color:#c9cbc3; font-weight:700 }}
-        table.tabla-detail .celda-detail {{ background-color:#c6d0d7 }}
-        table.tabla-detail .logo-cell  {{ text-align: center }}
-        table.tabla-detail .logo-image  {{ max-width: 70px; height: auto; display: block; margin: 0 auto; }}
-        strong {{ color: #004a75; }}
-    </style>
-    <body style="font-family: Verdana">
-    <table class="tabla-detail">
-    <tr>
-        <td class="logo-cell" colspan="2">
-            <img class="logo-image" src="https://cybrotech.us/wp-content/uploads/2025/02/cropped_image.png" alt="Alert Logo">
-        </td>
-    </tr>
-    <tr><td class="cabecera-tabla" colspan="2">Alert from Sachet</td></tr>
-    <tr><td><strong>Date</strong></td><td class="celda-detail"><strong>{timestamp}</strong></td></tr>
-    <tr><td><strong>Server</strong></td><td class="celda-detail"><strong>{agentname}</strong></td></tr>
-    <tr><td><strong>Rule</strong></td><td class="celda-detail"><strong>{description}</strong></td></tr>
-    <tr><td><strong>Severity</strong></td><td class="celda-detail"><strong>{level}</strong></td></tr>
-    <tr><td><strong>Event</strong></td><td class="celda-detail"><strong>{full_log}</strong></td></tr>
-    </table>
-    <br><hr>
-    <div>{json2html.convert(json=alert)}</div>
-    </body></html>
-    """
-    return subject, msg
-
+# ========== Main Runner ==========
 def main(args):
-    debug("# Starting")
-
     if len(args) < 4:
-        debug("# Exiting: Not enough arguments.")
+        debug("Error: Not enough arguments. Exiting.")
         sys.exit(1)
 
-    alert_file_location = args[1]
+    alert_file = args[1]
     recipients = args[3]
 
-    debug("# Webhook")
-    debug(recipients)
+    debug(f"Alert file: {alert_file}")
+    debug(f"Recipients: {recipients}")
 
-    debug("# File location")
-    debug(alert_file_location)
-
-    alerts = []
     try:
-        with open(alert_file_location, encoding='utf-8', errors='replace') as alert_file:
-            for line in alert_file:
-                line = line.strip()
-                if line:
-                    try:
-                        json_alert = json.loads(line)
-                        alerts.append(json_alert)
-                    except json.JSONDecodeError as e:
-                        debug(f"Skipping malformed JSON line: {e}")
+        with open(alert_file, encoding='utf-8', errors='replace') as af:
+            lines = af.readlines()
     except Exception as e:
-        debug(f"# Error reading/parsing alert JSON: {e}")
+        debug(f"Failed to read alert file: {e}")
         sys.exit(1)
 
-    if not alerts:
-        debug("# No valid alerts found.")
-        sys.exit(0)
+    for line in lines:
+        if line.strip():
+            try:
+                alert = json.loads(line.strip())
+                subject, msg = generate_msg(alert)
+                send_email(recipients, subject, msg)
+            except json.JSONDecodeError as e:
+                debug(f"Invalid JSON line skipped: {e}")
 
-    for alert in alerts:
-        subject, msg = generate_msg(alert)
-        debug("# Sending message")
-        send_email(recipients, subject, msg)
-
+# ========== Entry Point ==========
 if __name__ == "__main__":
     try:
-        bad_arguments = False
         if len(sys.argv) >= 4:
-            debug_enabled = len(sys.argv) > 4 and sys.argv[4] == 'debug'
-            msg = f'{now} {sys.argv[1]} {sys.argv[2]} {sys.argv[3]} {sys.argv[4] if len(sys.argv) > 4 else ""}'
-        else:
-            msg = f'{now} Wrong arguments'
-            bad_arguments = True
-
-        with open(log_file, 'a') as f:
-            f.write(msg + '\n')
-
-        if bad_arguments:
-            debug("# Exiting: Bad arguments.")
-            sys.exit(1)
-
-        main(sys.argv)
-
-    except Exception as e:
-        debug(str(e))
-        raise
-```
-```Real
-
-#!/usr/bin/env python3 
-# Copyright (C) 2015-2020, Wazuh Inc.
-# October 20, 2020.
-#
-# This program is free software; you can redistribute it
-# and/or modify it under the terms of the GNU General Public
-# License (version 2) as published by the FSF - Free Software
-# Foundation.
-import json
-import sys
-import time
-import os
-import smtplib
-from email.utils import formataddr
-from email.message import EmailMessage
-from json2html import *
-
-email_server = "127.0.0.1" #IP of you email server
-email_from = "wazuh-server@local.test" #Sender email address
-
-# ossec.conf configuration:
-#  <integration>
-#      <name>custom-email-alerts</name>
-#      <hook_url>emailrecipient@example.com</hook_url>
-#      <level>10</level>
-#      <group>multiple_drops|authentication_failures</group>
-#      <alert_format>json</alert_format>
-#  </integration>
-
-# Global vars
-
-debug_enabled = False
-pwd = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-json_alert = {}
-now = time.strftime("%a %b %d %H:%M:%S %Z %Y")
-
-# Set paths
-log_file = '{0}/logs/integrations-email.log'.format(pwd)
-
-
-def main(args):
-    """
-    Main function. This will call the functions to prepare the message and send the email 
-    """
-    debug("# Starting")
-
-    # Read args
-    alert_file_location = args[1]
-    recipients = args[3]
- 
-    debug("# Webhook")
-    debug(recipients)
-
-    debug("# File location")
-    debug(alert_file_location)
-
-    # Load alert. Parse JSON object.
-    with open(alert_file_location) as alert_file:
-        json_alert = json.load(alert_file)
-    debug("# Processing alert")
-    debug(json_alert)
-
-    debug("# Generating message")
-    subject, msg = generate_msg(json_alert)
-    debug(msg)
-
-    debug("# Sending message")
-    send_email(recipients, subject, msg)
-
-
-def send_email(recipients,subject,body):
-    """
-    Function to send email using an unautheticated email server.
-    """
-    TO = recipients.split(',')
-    em = EmailMessage()
-    em['To'] = TO
-    # em['From'] = email_from 
-    em['From'] = formataddr(('Wazuh Server', email_from))
-    em['Subject'] = subject
-    em.add_header('Content-Type','text/html')
-    em.set_content(body, subtype='html')
-    try:
-        # SMTP_SSL Example
-        mailserver = smtplib.SMTP(email_server, 25)
-        mailserver.ehlo() # optional, called by login()
-        mailserver.send_message(em)
-        mailserver.close()
-        debug('Successfully sent the mail to {}'.format(TO))
-    except Exception as e:
-        debug("Failed to send mail to {}".format(TO))
-        debug("With error: {}".format(e))
-
-
-def debug(msg):
-    """
-    Function to generate debug logs
-    """
-    if debug_enabled:
-        msg = "{0}: {1}\n".format(now, msg)
-        print(msg)
-        f = open(log_file, "a")
-        f.write(msg)
-        f.close()
-
-
-def generate_msg(alert):
-    """
-    Function that will provide the custom subject and body for the email.
-    It takes as input a dictionary object generated from the json alert
-    """
-    title = alert['rule']['description'] if 'description' in alert['rule'] else ''
-    description = alert['rule']['description']
-    level = alert['rule']['level']
-    agentname = alert['agent']['name']
-    t = time.strptime(alert['timestamp'].split('.')[0],'%Y-%m-%dT%H:%M:%S')
-    timestamp = time.strftime('%c',t)
-    full_log = alert['full_log']
-    subject = '[Wazuh Alert]: Rule level: [ {0} ], from agent: [ {1} ], Description: [ {2} ]'.format(level, agentname, description)
-
-    msg = """
-    <html><head></head>
-    <style>
-	table.tabla-detail {{ max-width:800px; margin:0 auto; border-collapse:collapse; padding:0; font-family:verdana; }}
-	table.tabla-detail p {{ margin:0; text-align:left }}
-	table.tabla-detail td {{ padding-left:.5em; border:2px solid #38414f }}
-	table.tabla-detail .cabecera-tabla {{ background-color:#38414f; color:#c9cbc3; font-family:verdana; font-weight:700 }}
-	table.tabla-detail .celda-detail {{ background-color:#c6d0d7 }}
-	table.tabla-detail .tabla-codigo td {{ border:none }}
-	table.tabla-detail .logo-cell  {{ text-align: center }}
-        table.tabla-detail .logo-image  {{ max-width: 70px; height: auto; display: block; margin: 0 auto; }}
-	strong {{ color: #004a75; }}
-    </style>
-    <body style="font-family: Verdana">
-    <p>
-    <table class="tabla-detail">
-    <colgroup><col><col>
-    </colgroup>
-    <tr>
-    <td class="logo-cell" colspan="2"> <img class="logo-image" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Wazuh-Logo-2022.png" alt="Wazuh Logo"> </td>
-    </tr>
-    <tr class="tabla-detail">
-    <td class="tabla-manual cabecera-tabla" colspan="2">Alert from Wazuh server.</td>
-    </tr>
-    <tr class="tabla-detail">
-    <td class="tabla-manual celda-normal"><p class="Normal"><strong>Date</strong></p></td>
-    <td class="tabla-manual celda-detail"><p><strong>{}</strong></p></td>
-    </tr>
-    <tr class="tabla-detail">
-    <td><p class="Normal"><strong>Server</strong></p></td>
-    <td class="tabla-manual celda-detail"><p><strong>{}</strong></p></td>
-    </tr>
-    <tr class="tabla-detail">
-    <td><p class="Normal"><strong>Rule</strong></p></td>
-    <td class="tabla-manual celda-detail"><p><strong>{}</strong></p></td>
-    </tr>
-    <tr class="tabla-detail">
-    <td><p class="Normal"><strong>Severity</strong></p></td>
-    <td class="tabla-manual celda-detail"><p><strong>{}</strong></p></td>
-    </tr>
-    <tr class="tabla-detail">
-    <td><p class="Normal"><strong>Event</strong></p></td>
-    <td class="tabla-manual celda-detail"><p><strong>{}</strong></p></td>
-    </tr>
-    </table>
-    </body>
-    </html>
-    """.format(timestamp,agentname,description,level,full_log, json2html.convert(json = alert) )
-
-    return subject, msg
-
-
-
-if __name__ == "__main__":
-    try:
-        # Read arguments
-        bad_arguments = False
-        if len(sys.argv) >= 4:
-            msg = '{0} {1} {2} {3} {4}'.format(
-                now,
-                sys.argv[1],
-                sys.argv[2],
-                sys.argv[3],
-                sys.argv[4] if len(sys.argv) > 4 else '',
-            )
             debug_enabled = (len(sys.argv) > 4 and sys.argv[4] == 'debug')
+            with open(log_file, 'a') as logf:
+                logf.write(f"{now} {' '.join(sys.argv)}\n")
+            main(sys.argv)
         else:
-            msg = '{0} Wrong arguments'.format(now)
-            bad_arguments = True
-
-        # Logging the call
-        f = open(log_file, 'a')
-        f.write(msg + '\n')
-        f.close()
-
-        if bad_arguments:
-            debug("# Exiting: Bad arguments.")
+            debug("Invalid arguments.")
             sys.exit(1)
-
-        # Main function
-        main(sys.argv)
-
     except Exception as e:
-        debug(str(e))
+        debug(f"Unhandled exception: {e}")
         raise
 ```
 4. Set permissions and ownership:
