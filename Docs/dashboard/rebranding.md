@@ -1,4 +1,4 @@
-# 🎨 Wazuh Dashboard Custom Branding & Rebranding Guide (Beginner Friendly)
+# 🎨 Wazuh Dashboard Custom Branding & Rebranding Guide
 
 Want to give your Wazuh dashboard a personal or organizational touch? Whether you’re adding your company’s logo, updating the background, or customizing the dashboard title, this step-by-step guide walks beginners through the process.
 
