@@ -45,6 +45,7 @@ echo -e "\033[38;5;172m              \\       /\033[0m"
 echo -e "\033[38;5;178m        ______( (_  / \\______\033[0m"
 echo -e "\033[38;5;184m      ,'  ,-----'   |        \\ \033[0m"
 echo -e "\033[38;5;190m      \`--{__________)        \/\033[0m"
+
 sudo systemctl enable wazuh-manager
 sudo systemctl start wazuh-manager
 
