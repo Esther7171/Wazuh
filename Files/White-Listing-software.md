@@ -1,3 +1,5 @@
+<img width="1861" height="751" alt="image" src="https://github.com/user-attachments/assets/c8f1c085-6d8c-4453-a96b-0bb0a3323656" />
+
 <!--   cHECK OUT THIS SYSMON RULES -->
 ## Agent config
 setup sysmon
