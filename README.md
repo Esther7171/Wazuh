@@ -24,7 +24,7 @@
 * [Detecting and Blocking Brute Force Attack]
 * [Get Wazuh Alert on Mail (Configure smtp)](Files/Smtp/readme.md)
 * [Linux-Server Hardening]
-
+* test
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
 
