@@ -1,4 +1,4 @@
-# SMTP Configuration Guide
+# How to Set Up Wazuh Mail Alerts with SMTP – Step-by-Step Configuration Guide
 
 ## Introduction
 This guide explains how to configure SMTP settings in Wazuh to enable email alerts for security events. By setting up email notifications, you can receive alerts when specific rules are triggered.
@@ -397,6 +397,6 @@ By configuring SMTP in Wazuh and adding a custom integration, you can create wel
 
 ### Reference
 
-* 📄 [Wazuh Documentation - Email Alerts](https://documentation.wazuh.com/current/user-manual/manager/alert-management.html#configuring-email-alerts)
+* [Wazuh Documentation - Email Alerts](https://documentation.wazuh.com/current/user-manual/manager/alert-management.html#configuring-email-alerts)
 
 
