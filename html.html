@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiVid Downloader with Implementation Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .code-block {
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        @media print {
+            .no-break {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                    MultiVid Downloader
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl">
+                    Download videos from YouTube, Instagram, Facebook, and more with just one click!
+                </p>
+                <div class="mt-10">
+                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div class="w-full sm:w-96">
+                            <input type="text" id="video-url" placeholder="Paste video URL here..." 
+                                class="px-4 py-3 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" 
+                            />
+                        </div>
+                        <button id="download-btn" class="px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-800 hover:bg-indigo-700 md:text-lg">
+                            Download Video <i class="fas fa-download ml-2"></i>
+                        </button>
+                    </div>
+                    <div id="url-validation" class="text-sm mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Download Results Section -->
+    <section id="download-results" class="hidden py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Download Options</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Choose your preferred format and quality</p>
+            </div>
+            <div class="border-t border-gray-200">
+                <dl>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Video Title</dt>
+                        <dd id="video-title" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Sample Video Title</dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Source Platform</dt>
+                        <dd id="video-platform" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">YouTube</dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Duration</dt>
+                        <dd id="video-duration" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">00:00:00</dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Available Formats</dt>
+                        <dd id="video-formats" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <i class="fas fa-film flex-shrink-0 h-5 w-5 text-gray-400"></i>
+                                        <span class="ml-2 flex-1 w-0 truncate">HD (720p)</span>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <button class="font-medium text-indigo-600 hover:text-indigo-500">Download</button>
+                                    </div>
+                                </li>
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <i class="fas fa-film flex-shrink-0 h-5 w-5 text-gray-400"></i>
+                                        <span class="ml-2 flex-1 w-0 truncate">Full HD (1080p)</span>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <button class="font-medium text-indigo-600 hover:text-indigo-500">Download</button>
+                                    </div>
+                                </li>
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <i class="fas fa-music flex-shrink-0 h-5 w-5 text-gray-400"></i>
+                                        <span class="ml-2 flex-1 w-0 truncate">Audio Only (MP3)</span>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <button class="font-medium text-indigo-600 hover:text-indigo-500">Download</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="step-card bg-white p-6 rounded-lg shadow-md transition duration-300 no-break">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white mb-4">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Copy & Paste URL</h3>
+                    <p class="text-gray-600">
+                        Copy the video URL from YouTube, Instagram, Facebook, or other supported platforms. The URL should be from the video page or share link.
+                    </p>
+                </div>
+                <div class="step-card bg-white p-6 rounded-lg shadow-md transition duration-300 no-break">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Process Video</h3>
+                    <p class="text-gray-600">
+                        Our system analyzes the video and fetches available download options. We use specialized APIs for each platform to retrieve the best quality options.
+                    </p>
+                </div>
+                <div class="step-card bg-white p-6 rounded-lg shadow-md transition duration-300 no-break">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white mb-4">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Download Video</h3>
+                    <p class="text-gray-600">
+                        Choose your preferred quality and format, then download the video directly to your device. No registration or additional software required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Multiple Platforms</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Support for YouTube, Instagram, Facebook, Twitter, TikTok, Vimeo, and many other video platforms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-film"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">HD Downloads</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Download videos in the highest quality available, including 4K and Full HD when available from the source.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-music"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Audio Extraction</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Extract audio from videos in MP3 format, perfect for music videos or podcast content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Fast Processing</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Quick analysis and download preparation with optimized processing algorithms for each platform.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">No Registration</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                No account required to use our service. Your privacy is important to us, and we don't store your information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-break">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Free to Use</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Download videos without any cost or hidden fees. We provide this service completely free of charge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Details Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Technical Implementation Details</h2>
+            
+            <div class="mb-16 no-break">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Architecture Overview</h3>
+                <p class="text-gray-600 mb-4">
+                    The MultiVid Downloader uses a client-server architecture where:
+                </p>
+                <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-6">
+                    <li>The frontend is built with HTML, CSS (using Tailwind), and JavaScript</li>
+                    <li>The backend is powered by Node.js with Express</li>
+                    <li>Video processing uses platform-specific libraries and APIs</li>
+                    <li>Temporary storage for processed videos before download</li>
+                </ul>
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h4 class="font-bold text-lg text-gray-900 mb-3">System Architecture Diagram</h4>
+                    <p class="text-gray-600 mb-4">
+                        User → Frontend → API Gateway → Platform-Specific Extractors → Storage → User Download
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mb-16 no-break">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Frontend Implementation</h3>
+                <p class="text-gray-600 mb-6">
+                    The frontend provides a simple user interface for entering video URLs and displaying download options. It uses 
+                    fetch API to communicate with the backend services.
+                </p>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">URL Validation and Processing</h4>
+                <div class="code-block mb-6">
+<pre>
+// URL validation and processing
+document.getElementById('download-btn').addEventListener('click', function() {
+    const videoUrl = document.getElementById('video-url').value.trim();
+    const validation = document.getElementById('url-validation');
+    
+    // Reset validation message
+    validation.textContent = "";
+    validation.className = "text-sm mt-2";
+    
+    // Basic URL validation
+    if (!videoUrl) {
+        validation.textContent = "Please enter a video URL";
+        validation.className = "text-sm mt-2 text-red-500";
+        return;
+    }
+    
+    // Check if URL is supported
+    if (!isValidVideoUrl(videoUrl)) {
+        validation.textContent = "Unsupported URL format or platform";
+        validation.className = "text-sm mt-2 text-red-500";
+        return;
+    }
+    
+    // Show loading state
+    document.getElementById('download-btn').innerHTML = 
+        '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+    
+    // Send request to backend
+    fetchVideoInfo(videoUrl)
+        .then(displayDownloadOptions)
+        .catch(handleError);
+});
+
+function isValidVideoUrl(url) {
+    // Check for common video platforms
+    const supportedPlatforms = [
+        /youtube\.com\/watch/, 
+        /youtu\.be\//, 
+        /instagram\.com\/p\//, 
+        /instagram\.com\/reel\//, 
+        /facebook\.com\/.*\/videos\//, 
+        /fb\.watch\//, 
+        /twitter\.com\/.*\/status\//, 
+        /tiktok\.com\/@.*\/video\//
+    ];
+    
+    return supportedPlatforms.some(pattern => pattern.test(url));
+}
+</pre>
+                </div>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">API Communication</h4>
+                <div class="code-block mb-6">
+<pre>
+async function fetchVideoInfo(url) {
+    try {
+        const response = await fetch('/api/video-info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to get video information');
+        }
+        
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching video info:', error);
+        throw error;
+    }
+}
+
+function displayDownloadOptions(data) {
+    // Reset button state
+    document.getElementById('download-btn').innerHTML = 
+        'Download Video <i class="fas fa-download ml-2"></i>';
+    
+    // Show results section
+    document.getElementById('download-results').classList.remove('hidden');
+    
+    // Update video information
+    document.getElementById('video-title').textContent = data.title;
+    document.getElementById('video-platform').textContent = data.platform;
+    document.getElementById('video-duration').textContent = formatDuration(data.duration);
+    
+    // Generate format options
+    const formatsContainer = document.getElementById('video-formats');
+    formatsContainer.innerHTML = ''; // Clear existing options
+    
+    const formatsList = document.createElement('ul');
+    formatsList.className = 'border border-gray-200 rounded-md divide-y divide-gray-200';
+    
+    data.formats.forEach(format => {
+        const listItem = document.createElement('li');
+        listItem.className = 'pl-3 pr-4 py-3 flex items-center justify-between text-sm';
+        
+        const formatInfo = document.createElement('div');
+        formatInfo.className = 'w-0 flex-1 flex items-center';
+        
+        const icon = document.createElement('i');
+        icon.className = format.type === 'audio' ? 
+            'fas fa-music flex-shrink-0 h-5 w-5 text-gray-400' : 
+            'fas fa-film flex-shrink-0 h-5 w-5 text-gray-400';
+        
+        const formatLabel = document.createElement('span');
+        formatLabel.className = 'ml-2 flex-1 w-0 truncate';
+        formatLabel.textContent = `${format.quality} (${format.fileSize})`;
+        
+        formatInfo.appendChild(icon);
+        formatInfo.appendChild(formatLabel);
+        
+        const downloadBtnContainer = document.createElement('div');
+        downloadBtnContainer.className = 'ml-4 flex-shrink-0';
+        
+        const downloadBtn = document.createElement('button');
+        downloadBtn.className = 'font-medium text-indigo-600 hover:text-indigo-500';
+        downloadBtn.textContent = 'Download';
+        downloadBtn.onclick = () => downloadFile(format.id, data.title, format.extension);
+        
+        downloadBtnContainer.appendChild(downloadBtn);
+        
+        listItem.appendChild(formatInfo);
+        listItem.appendChild(downloadBtnContainer);
+        formatsList.appendChild(listItem);
+    });
+    
+    formatsContainer.appendChild(formatsList);
+}
+
+function handleError(error) {
+    document.getElementById('download-btn').innerHTML = 
+        'Download Video <i class="fas fa-download ml-2"></i>';
+    
+    const validation = document.getElementById('url-validation');
+    validation.textContent = "Error processing video: " + error.message;
+    validation.className = "text-sm mt-2 text-red-500";
+}
+
+function formatDuration(seconds) {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+    
+    return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function downloadFile(formatId, title, extension) {
+    window.location.href = `/api/download?id=${formatId}&title=${encodeURIComponent(title)}&ext=${extension}`;
+}
+</pre>
+                </div>
+            </div>
+            
+            <div class="mb-16 no-break">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Backend Implementation</h3>
+                <p class="text-gray-600 mb-6">
+                    The backend processes the video URL, extracts available formats, and provides download links. It uses platform-specific libraries for each supported service.
+                </p>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">Backend API Requirements</h4>
+                <div class="code-block mb-6">
+<pre>
+// Required packages
+const express = require('express');
+const cors = require('cors');
+const ytdl = require('ytdl-core');                // For YouTube
+const instagramDl = require('instagram-dl');       // For Instagram (example library)
+const fbDownloader = require('fb-downloader-lib'); // For Facebook (example library)
+const path = require('path');
+const fs = require('fs');
+const crypto = require('crypto');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Temporary storage directory
+const TEMP_DIR = path.join(__dirname, 'temp_downloads');
+if (!fs.existsSync(TEMP_DIR)) {
+    fs.mkdirSync(TEMP_DIR, { recursive: true });
+}
+
+// Video info endpoint
+app.post('/api/video-info', async (req, res) => {
+    try {
+        const { url } = req.body;
+        
+        // Determine the platform and use appropriate library
+        if (url.includes('youtube.com') || url.includes('youtu.be')) {
+            const info = await getYouTubeInfo(url);
+            return res.json(info);
+        } 
+        else if (url.includes('instagram.com')) {
+            const info = await getInstagramInfo(url);
+            return res.json(info);
+        } 
+        else if (url.includes('facebook.com') || url.includes('fb.watch')) {
+            const info = await getFacebookInfo(url);
+            return res.json(info);
+        } 
+        else {
+            return res.status(400).json({ error: 'Unsupported platform' });
+        }
+    } catch (error) {
+        console.error('Error fetching video info:', error);
+        res.status(500).json({ error: 'Failed to fetch video information' });
+    }
+});
+
+// Download endpoint
+app.get('/api/download', async (req, res) => {
+    try {
+        const { id, title, ext } = req.query;
+        
+        // Security check - prevent path traversal
+        const sanitizedTitle = title.replace(/[^a-zA-Z0-9]/g, '_');
+        
+        // Create a temporary file for the download
+        const filePath = path.join(TEMP_DIR, `${sanitizedTitle}.${ext}`);
+        
+        // Process the download based on the format ID
+        // This would use the appropriate library based on the video source
+        await downloadVideo(id, filePath);
+        
+        // Set headers for file download
+        res.setHeader('Content-Disposition', `attachment; filename="${sanitizedTitle}.${ext}"`);
+        res.setHeader('Content-Type', ext === 'mp3' ? 'audio/mpeg' : 'video/mp4');
+        
+        // Send the file and delete after download
+        res.download(filePath, (err) => {
+            if (err) {
+                console.error('Error during download:', err);
+            }
+            // Clean up the temporary file
+            fs.unlink(filePath, (err) => {
+                if (err) console.error('Error deleting temp file:', err);
+            });
+        });
+    } catch (error) {
+        console.error('Download error:', error);
+        res.status(500).json({ error: 'Failed to download file' });
+    }
+});
+
+// Platform-specific helper functions
+async function getYouTubeInfo(url) {
+    const info = await ytdl.getInfo(url);
+    const formats = [];
+    
+    // Get video formats
+    info.formats.forEach(format => {
+        if (format.hasVideo && format.hasAudio) {
+            formats.push({
+                id: format.itag,
+                quality: `${format.qualityLabel} (${format.container})`,
+                fileSize: formatBytes(format.contentLength),
+                type: 'video',
+                extension: format.container
+            });
+        }
+    });
+    
+    // Add audio-only option
+    const audioFormat = info.formats.find(f => !f.hasVideo && f.hasAudio);
+    if (audioFormat) {
+        formats.push({
+            id: audioFormat.itag,
+            quality: 'Audio Only',
+            fileSize: formatBytes(audioFormat.contentLength),
+            type: 'audio',
+            extension: 'mp3'
+        });
+    }
+    
+    return {
+        title: info.videoDetails.title,
+        platform: 'YouTube',
+        duration: parseInt(info.videoDetails.lengthSeconds),
+        formats: formats
+    };
+}
+
+// Example functions for other platforms would be implemented similarly
+
+function formatBytes(bytes) {
+    if (!bytes) return 'Unknown size';
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return `${(bytes / Math.pow(1024, i)).toFixed(2)} ${sizes[i]}`;
+}
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+</pre>
+                </div>
+            </div>
+            
+            <div class="mb-16 no-break">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Platform-Specific Implementations</h3>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">YouTube Implementation</h4>
+                <p class="text-gray-600 mb-4">
+                    For YouTube videos, we use the ytdl-core library which supports extracting video information and downloading in various formats.
+                </p>
+                <div class="code-block mb-6">
+<pre>
+// YouTube download function
+async function downloadVideo(formatId, outputPath) {
+    return new Promise((resolve, reject) => {
+        const stream = ytdl('YOUTUBE_URL_HERE', {
+            quality: formatId
+        });
+        
+        const fileStream = fs.createWriteStream(outputPath);
+        
+        stream.pipe(fileStream);
+        
+        stream.on('end', () => {
+            resolve();
+        });
+        
+        stream.on('error', (error) => {
+            reject(error);
+        });
+    });
+}
+</pre>
+                </div>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">Instagram Implementation</h4>
+                <p class="text-gray-600 mb-4">
+                    Instagram requires more complex handling due to authentication requirements and API restrictions. We use a combination of API calls and web scraping.
+                </p>
+                <div class="code-block mb-6">
+<pre>
+// Instagram handling (conceptual example)
+async function getInstagramInfo(url) {
+    // Instagram requires special handling
+    // This would typically use a specialized library or API
+    
+    // Extract the post/reel ID from the URL
+    const matches = url.match(/instagram\.com\/(p|reel|tv)\/([^/?]+)/);
+    if (!matches || !matches[2]) {
+        throw new Error('Invalid Instagram URL');
+    }
+    
+    const postId = matches[2];
+    
+    // Use Instagram API or scraping technique to get video info
+    // This is a simplified representation
+    const data = await fetchInstagramData(postId);
+    
+    return {
+        title: data.caption || 'Instagram Video',
+        platform: 'Instagram',
+        duration: data.videoLength || 0,
+        formats: [
+            {
+                id: data.videoId,
+                quality: 'High Quality',
+                fileSize: formatBytes(data.videoSize),
+                type: 'video',
+                extension: 'mp4'
+            }
+        ]
+    };
+}
+</pre>
+                </div>
+                
+                <h4 class="font-bold text-lg text-gray-900 mb-3">Facebook Implementation</h4>
+                <p class="text-gray-600 mb-4">
+                    Facebook videos require working with Facebook's Graph API or specialized libraries for extracting the video content.
+                </p>
+                <div class="code-block mb-6">
+<pre>
+// Facebook handling (conceptual example)
+async function getFacebookInfo(url) {
+    // This would typically use a specialized library or API
+    
+    // Example implementation using a hypothetical library
+    const videoData = await fbDownloader.getInfo(url);
+    
+    return {
+        title: videoData.title || 'Facebook Video',
+        platform: 'Facebook',
+        duration: videoData.duration || 0,
+        formats: videoData.formats.map(format => ({
+            id: format.id,
+            quality: format.quality,
+            fileSize: formatBytes(format.size),
+            type: 'video',
+            extension: 'mp4'
+        }))
+    };
+}
+</pre>
+                </div>
+            </div>
+
+            <div class="mb-16 no-break">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Deployment and Scaling</h3>
+                <p class="text-gray-600 mb-6">
+                    The video downloader can be deployed on various platforms such as Heroku, AWS, or Digital Ocean. For scaling, consider the following:
+                </p>
+                <ul class="list-disc pl-6 text-gray-600 space-y-2">
+                    <li>Use a load balancer to distribute traffic across multiple application servers</li>
+                    <li>Implement caching for frequently requested videos to reduce processing overhead</li>
+                    <li>Use a CDN for delivering downloaded content to users</li>
+                    <li>Implement rate limiting to prevent abuse of the service</li>
+                    <li>Consider using cloud storage (S3, Google Cloud Storage) for temporary file storage rather than local disk</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">Is it legal to download videos?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        Downloading videos for personal use is generally acceptable in many cases. However, you should respect copyright laws and the terms of service of the platforms you're downloading from. Never use downloaded content for commercial purposes without permission.
+                    </p>
+                </div>
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">How do I find the URL of a video?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        For YouTube, click the "Share" button below the video and copy the link. For Instagram, click on the three dots (...) and select "Copy Link". For Facebook videos, click on the video to open it in fullscreen, then click the three dots and select "Copy Link".
+                    </p>
+                </div>
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">What video formats are supported?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        Our downloader supports MP4, WebM, and other common video formats. The available formats depend on the original source video and platform. Most downloads are provided in MP4 format for maximum compatibility.
+                    </p>
+                </div>
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">Can I download private or protected content?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        No, our downloader only works with publicly available content. Private, password-protected, or premium content cannot be downloaded. This is both a technical limitation and a respect for the content creators' choices.
+                    </p>
+                </div>
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">How to download Instagram stories or reels?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        For Instagram stories or reels, open the story/reel, click on the three dots, select "Copy Link", and paste it into our downloader. This works for public profiles only, and stories must be currently active (not expired).
+                    </p>
+                </div>
+                <div class="no-break">
+                    <h3 class="text-lg font-medium text-gray-900">Why do some videos fail to download?</h3>
+                    <p class="mt-2 text-base text-gray-600">
+                        Download failures can occur for several reasons: the video might be protected or DRM-encrypted, the platform might have implemented new protection measures, or the URL might be invalid. If you encounter issues, try again later or check that the content is publicly accessible.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MultiVid Downloader</h3>
+                    <p class="text-gray-300">
+                        A powerful video downloader for multiple platforms. Download videos from YouTube, 
+                        Instagram, Facebook, and more with ease.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Legal Notice</h3>
+                    <p class="text-gray-300">
+                        This service is provided for personal use only. Please respect copyright laws and the terms 
+                        of service of the platforms you're downloading from. We do not host any content and 
+                        all downloads are directly from public sources.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2025 MultiVid Downloader - All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for URL validation and processing -->
+    <script>
+        // Show/hide download results section
+        document.getElementById('download-results').classList.add('hidden');
+        
+        // URL validation and processing
+        document.getElementById('download-btn').addEventListener('click', function() {
+            const videoUrl = document.getElementById('video-url').value.trim();
+            const validation = document.getElementById('url-validation');
+            
+            // Reset validation message
+            validation.textContent = "";
+            validation.className = "text-sm mt-2";
+            
+            // Basic URL validation
+            if (!videoUrl) {
+                validation.textContent = "Please enter a video URL";
+                validation.className = "text-sm mt-2 text-red-500";
+                return;
+            }
+            
+            // Check if URL is supported
+            if (!isValidVideoUrl(videoUrl)) {
+                validation.textContent = "Unsupported URL format or platform";
+                validation.className = "text-sm mt-2 text-red-500";
+                return;
+            }
+            
+            // Show loading state
+            document.getElementById('download-btn').innerHTML = 
+                '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+            
+            // Simulated API response for demo purposes
+            setTimeout(() => {
+                const mockData = {
+                    title: "Sample Video Title",
+                    platform: detectPlatform(videoUrl),
+                    duration: 183, // 3:03
+                    formats: [
+                        {
+                            id: "22",
+                            quality: "720p HD",
+                            fileSize: "24.5 MB",
+                            type: "video",
+                            extension: "mp4"
+                        },
+                        {
+                            id: "18",
+                            quality: "360p",
+                            fileSize: "12.3 MB",
+                            type: "video",
+                            extension: "mp4"
+                        },
+                        {
+                            id: "140",
+                            quality: "Audio Only",
+                            fileSize: "3.2 MB",
+                            type: "audio",
+                            extension: "mp3"
+                        }
+                    ]
+                };
+                
+                displayDownloadOptions(mockData);
+            }, 1500);
+        });
+
+        function isValidVideoUrl(url) {
+            // Check for common video platforms
+            const supportedPlatforms = [
+                /youtube\.com\/watch/, 
+                /youtu\.be\//, 
+                /instagram\.com\/p\//, 
+                /instagram\.com\/reel\//, 
+                /facebook\.com\/.*\/videos\//, 
+                /fb\.watch\//, 
+                /twitter\.com\/.*\/status\//, 
+                /tiktok\.com\/@.*\/video\//
+            ];
+            
+            return supportedPlatforms.some(pattern => pattern.test(url));
+        }
+        
+        function detectPlatform(url) {
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                return 'YouTube';
+            } else if (url.includes('instagram.com')) {
+                return 'Instagram';
+            } else if (url.includes('facebook.com') || url.includes('fb.watch')) {
+                return 'Facebook';
+            } else if (url.includes('twitter.com')) {
+                return 'Twitter';
+            } else if (url.includes('tiktok.com')) {
+                return 'TikTok';
+            } else {
+                return 'Unknown Platform';
+            }
+        }
+        
+        function displayDownloadOptions(data) {
+            // Reset button state
+            document.getElementById('download-btn').innerHTML = 
+                'Download Video <i class="fas fa-download ml-2"></i>';
+            
+            // Show results section
+            document.getElementById('download-results').classList.remove('hidden');
+            
+            // Update video information
+            document.getElementById('video-title').textContent = data.title;
+            document.getElementById('video-platform').textContent = data.platform;
+            document.getElementById('video-duration').textContent = formatDuration(data.duration);
+            
+            // Generate format options
+            const formatsContainer = document.getElementById('video-formats');
+            formatsContainer.innerHTML = ''; // Clear existing options
+            
+            const formatsList = document.createElement('ul');
+            formatsList.className = 'border border-gray-200 rounded-md divide-y divide-gray-200';
+            
+            data.formats.forEach(format => {
+                const listItem = document.createElement('li');
+                listItem.className = 'pl-3 pr-4 py-3 flex items-center justify-between text-sm';
+                
+                const formatInfo = document.createElement('div');
+                formatInfo.className = 'w-0 flex-1 flex items-center';
+                
+                const icon = document.createElement('i');
+                icon.className = format.type === 'audio' ? 
+                    'fas fa-music flex-shrink-0 h-5 w-5 text-gray-400' : 
+                    'fas fa-film flex-shrink-0 h-5 w-5 text-gray-400';
+                
+                const formatLabel = document.createElement('span');
+                formatLabel.className = 'ml-2 flex-1 w-0 truncate';
+                formatLabel.textContent = `${format.quality} (${format.fileSize})`;
+                
+                formatInfo.appendChild(icon);
+                formatInfo.appendChild(formatLabel);
+                
+                const downloadBtnContainer = document.createElement('div');
+                downloadBtnContainer.className = 'ml-4 flex-shrink-0';
+                
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'font-medium text-indigo-600 hover:text-indigo-500';
+                downloadBtn.textContent = 'Download';
+                downloadBtn.onclick = () => simulateDownload(format.id, data.title, format.extension);
+                
+                downloadBtnContainer.appendChild(downloadBtn);
+                
+                listItem.appendChild(formatInfo);
+                listItem.appendChild(downloadBtnContainer);
+                formatsList.appendChild(listItem);
+            });
+            
+            formatsContainer.appendChild(formatsList);
+            
+            // Scroll to results
+            document.getElementById('download-results').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        function formatDuration(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+
+    </script>
+</body>
+</html>
+    

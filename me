@@ -1,0 +1,325 @@
+    \documentclass[10pt, letterpaper]{article}
+    \usepackage{textcomp}
+    % Packages:
+    \usepackage[
+        ignoreheadfoot, % set margins without considering header and footer
+        top=2 cm, % seperation between body and page edge from the top
+        bottom=2 cm, % seperation between body and page edge from the bottom
+        left=2 cm, % seperation between body and page edge from the left
+        right=2 cm, % seperation between body and page edge from the right
+        footskip=1.0 cm, % seperation between body and footer
+        % showframe % for debugging 
+    ]{geometry} % for adjusting page geometry
+    \usepackage{titlesec} % for customizing section titles
+    \usepackage{tabularx} % for making tables with fixed width columns
+    \usepackage{array} % tabularx requires this
+    \usepackage[dvipsnames]{xcolor} % for coloring text
+    \definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+    \usepackage{enumitem} % for customizing lists
+    \usepackage{fontawesome5} % for using icons
+    \usepackage{amsmath} % for math
+    \usepackage[
+        pdftitle={Resume CV},
+        pdfauthor={Yash},
+        pdfcreator={LaTeX with RenderCV},
+        colorlinks=true,
+        urlcolor=primaryColor
+    ]{hyperref} % for links, metadata and bookmarks
+    \usepackage[pscoord]{eso-pic} % for floating text on the page
+    \usepackage{calc} % for calculating lengths
+    \usepackage{bookmark} % for bookmarks
+    \usepackage{lastpage} % for getting the total number of pages
+    \usepackage{changepage} % for one column entries (adjustwidth environment)
+    \usepackage{paracol} % for two and three column entries
+    \usepackage{ifthen} % for conditional statements
+    \usepackage{needspace} % for avoiding page brake right after the section title
+    \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+    
+    % Ensure that generate pdf is machine readable/ATS parsable:
+    \ifPDFTeX
+        \input{glyphtounicode}
+        \pdfgentounicode=1
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage{lmodern}
+    \fi
+    
+    \usepackage{charter}
+    
+    % Some settings:
+    \raggedright
+    \AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+    \pagestyle{empty} % no header or footer
+    \setcounter{secnumdepth}{0} % no section numbering
+    \setlength{\parindent}{0pt} % no indentation
+    \setlength{\topskip}{0pt} % no top skip
+    \setlength{\columnsep}{0.15cm} % set column seperation
+    \pagenumbering{gobble} % no page numbering
+    
+    \titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+    
+    \titlespacing{\section}{
+        % left space:
+        -1pt
+    }{
+        % top space:
+        0.3 cm
+    }{
+        % bottom space:
+        0.2 cm
+    } % section title spacing
+    
+    \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+    \newenvironment{highlights}{
+        \begin{itemize}[
+            topsep=0.10 cm,
+            parsep=0.10 cm,
+            partopsep=0pt,
+            itemsep=0pt,
+            leftmargin=0 cm + 10pt
+        ]
+    }{
+        \end{itemize}
+    } % new environment for highlights
+    
+    
+    \newenvironment{highlightsforbulletentries}{
+        \begin{itemize}[
+            topsep=0.10 cm,
+            parsep=0.10 cm,
+            partopsep=0pt,
+            itemsep=0pt,
+            leftmargin=10pt
+        ]
+    }{
+        \end{itemize}
+    } % new environment for highlights for bullet entries
+    
+    \newenvironment{onecolentry}{
+        \begin{adjustwidth}{
+            0 cm + 0.00001 cm
+        }{
+            0 cm + 0.00001 cm
+        }
+    }{
+        \end{adjustwidth}
+    } % new environment for one column entries
+    
+    \newenvironment{twocolentry}[2][]{
+        \onecolentry
+        \def\secondColumn{#2}
+        \setcolumnwidth{\fill, 4.5 cm}
+        \begin{paracol}{2}
+    }{
+        \switchcolumn \raggedleft \secondColumn
+        \end{paracol}
+        \endonecolentry
+    } % new environment for two column entries
+    
+    \newenvironment{threecolentry}[3][]{
+        \onecolentry
+        \def\thirdColumn{#3}
+        \setcolumnwidth{, \fill, 4.5 cm}
+        \begin{paracol}{3}
+        {\raggedright #2} \switchcolumn
+    }{
+        \switchcolumn \raggedleft \thirdColumn
+        \end{paracol}
+        \endonecolentry
+    } % new environment for three column entries
+    
+    \newenvironment{header}{
+        \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+    }{
+        \par\kern\topsep
+    } % new environment for the header
+    
+    \newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+      \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+        \put(
+            \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+            \LenToUnit{\paperheight-1.0 cm}
+        ){\vtop{{\null}\makebox[0pt][c]{
+            \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+        }}}%
+      }%
+    }%
+    
+    % save the original href command in a new command:
+    \let\hrefWithoutArrow\href
+    
+    % new command for external links:
+    
+    
+    \begin{document}
+        \newcommand{\AND}{\unskip
+            \cleaders\copy\ANDbox\hskip\wd\ANDbox
+            \ignorespaces
+        }
+        \newsavebox\ANDbox
+        \sbox\ANDbox{$|$}
+    
+        \begin{header}
+            \fontsize{25 pt}{25 pt}\selectfont \fo Yash Adhikari
+    
+            \vspace{5 pt}
+    
+            \normalsize
+            \mbox{Dwarka mor, New Delhi, Pin-110059}%
+            \kern 5.0 pt%
+            \AND%
+            \kern 5.0 pt%
+            \mbox{\hrefWithoutArrow{mailto:yashadhikari2005@gmail.com}{yashadhikari2005@gmail.com}}%
+            \kern 5.0 pt%
+            \AND%
+            \kern 5.0 pt%
+            \mbox{\hrefWithoutArrow{tel:+91-8595555314}{8595555314}}%
+            \kern 5.0 pt%
+            \AND%
+            \kern 5.0 pt%
+            \mbox{\hrefWithoutArrow{https://yashadhikari.medium.com}{yashadhikari.medium.com}}%
+            \kern 5.0 pt%
+            \AND%
+            \kern 5.0 pt%
+            \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/yashadhikari7171/}{linkedin.com/in/yashadhikari7171/}}%
+            \kern 5.0 pt%
+            \AND%
+            \kern 5.0 pt%
+            \mbox{\hrefWithoutArrow{https://github.com/Esther7171}{github.com/Esther7171}}%
+        \end{header}
+    
+        \vspace{5 pt - 0.4 cm}
+    
+    
+    \section{Professional Summary}
+    
+    \begin{onecolentry}
+    Certified Ethical Hacker (\textbf{C|EH}) with \textbf{1 year} of practical experience in \textit{Red and Blue Team operations}. Skilled in \textbf{VAPT} across \textit{Web, Cloud, API, Mobile,} and \textit{Network} environments. Experienced in \textit{Purple Team} collaboration, \textbf{SIEM (Wazuh)}, and \textbf{EDR (ThreatSpike)} management for \textit{threat detection} and \textit{incident response}. Well-versed in global standards such as \textit{ISO 27001}, \textit{SOC 2}, \textit{NIST 800-53}, and \textit{GDPR}. Focused on strengthening security posture through effective \textbf{detection}, \textbf{response}, and \textbf{defense}.
+    \end{onecolentry}
+    
+    \vspace{0.2cm}
+    
+        
+    \section{TECHNICAL SKILLS \& EXPERTISE}
+    
+    \begin{onecolentry}
+        \begin{highlightsforbulletentries}
+            \item \textbf{Penetration Testing:} Performed Black Box and White Box testing as part of Vulnerability Assessment and Penetration Testing (VAPT) across Web, Mobile, Cloud, API, and Network environments.
+            
+            \item \textbf{Security Monitoring \& Incident Response:} Experience with SIEM tools (Wazuh, ThreatSpike) and SOC L1 operations, including incident response, threat hunting, risk analysis and log monitoring.
+            
+            \item \textbf{Frameworks \& Compliance:} Familiar with MITRE ATT\&CK mapping, ISMS implementation, ISO/IEC 27001 support, and integration of GDPR and NIST security frameworks.
+            
+            \item \textbf{System Hardening \& Network Security:} Proficient in Linux and Windows server hardening, firewall configuration (pfSense), malware analysis and threat detection.
+            
+            \item \textbf{Programming \& Scripting:} Skilled in Java, Python, C, Bash, PowerShell, YARA rules and front-end technologies (HTML, CSS, JS).
+            
+            \item \textbf{Cloud Platforms:} Knowledge of AWS (Cloud Practitioner), Microsoft Azure, and Linode for secure cloud infrastructure and services.
+            
+            \item \textbf{Collaboration \& Documentation:} Contributor to GitHub repositories; experienced in technical documentation, security awareness initiatives, and training program delivery.
+        \end{highlightsforbulletentries}
+    \end{onecolentry}
+    \vspace{0.2cm}
+    
+    \section{Certifications}
+    
+    \begin{twocolentry}{Jan 2024 – Jan 2025}
+    
+    \vspace{0.10cm}
+    
+    \begin{onecolentry}
+        \begin{highlights}
+            \item \textbf{Certified Ethical Hacker (C.E.H)} – EC-Council
+            \item \textbf{Red Hat System Administration} – Practical Skills
+            \item \textbf{Cisco Certified Network Associate (CCNA)} – Completed Training
+        \end{highlights}
+    \end{onecolentry}
+    
+    \end{twocolentry}
+    
+    
+    \section{Education}
+    
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l r }
+    \textbf{Diploma in Cyber Security and Ethical Hacking} & June 2023 -- Jan 2025 \\
+    \textbullet\ Global Institute of Ethical Hacking and Cyber Security & \\
+    \\
+    \textbf{Bachelor of Computer Applications (BCA)} (Pursuing) & Present \\
+    \textbullet\ Indira Gandhi National Open University (IGNOU) & \\
+    \end{tabular*}
+    
+    
+    %====================
+    % Professional Experience
+    %====================
+    \section*{Professional Experience}
+    
+    \textbf{Cyber Security Analyst – Full-time} \\
+    Cybrotech Digiventure Pvt. Ltd., New Delhi \hfill Jan 2025 – Present \\
+    \href{https://cybrotech.us}{cybrotech.us}
+    \begin{itemize}[leftmargin=*]
+        \item Conducted red teaming assessments simulating realistic attack scenarios to evaluate client defenses and improve detection and response capabilities.
+    
+        \item Maintained Wazuh SIEM infrastructure in production, processing high-volume logs with near 100\% uptime; developed custom detection rules mitigating 12 confirmed incidents including DDoS, brute-force, and MITM attacks.
+    
+        \item Conducted and supported 12+ client VAPT projects identifying numerous vulnerabilities (including CVEs, EJS injection, IDOR, WordPress flaws), providing remediation plans that reduced client risk exposure by 40\%.
+    
+        \item Deployed ISO/IEC 27001:2022 aligned controls and configured systems for SOC 2, NIST, GDPR, and TSC for CIS compliance, achieving audit readiness and regulatory adherence for multiple clients.
+    
+        \item Automated compliance workflows through SIEM integrations, significantly reducing time required for audit preparation and reporting.
+    
+        \item Delivered cybersecurity awareness training programs to 7+ SMB clients, driving adoption of security best practices and reducing phishing susceptibility by 80\%.
+    
+        \item Authored standardized playbooks for client onboarding and incident response, improving consistency and efficiency across security operations.
+    
+        \item Regularly prepared and delivered detailed security incident and vulnerability reports to client SOC centers, enabling timely response and continuous security improvements.
+    
+    \end{itemize}
+    
+    \textbf{Cyber Security Analyst – Intern} \\
+    Cybrotech Digiventure Pvt. Ltd., New Delhi \hfill Oct 2024 – Present \\
+    \href{https://cybrotech.us}{cybrotech.us}
+    \begin{itemize}[leftmargin=*]
+        \item Conducted Black \& White Box VAPT on web, APIs, networks, and Android apps; identified 50+ vulnerabilities including 8 critical, reducing client risk by 40\%.
+        \item Deployed and customized Wazuh SIEM; mitigated 12 incidents (DDoS, brute-force, MITM) and enhanced threat detection accuracy.
+        \item Analyzed SIEM logs and network traffic to detect attack patterns and privilege escalation attempts.
+        \item Developed YARA signatures for malware analysis and validated threats using VirusTotal.
+        \item Supported ISO/IEC 27001:2022 implementation by mapping controls and integrating log monitoring into ISMS.
+    \end{itemize}
+    
+    
+    %====================
+    % Projects
+    %====================
+    \section*{Projects}
+    
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Published TryHackMe Room:} Created a realistic, hands-on lab simulating complex attack scenarios to enhance cybersecurity skills. Available at \href{https://tryhackme.com/room/thunder}{tryhackme.com/room/thunder}.
+        \item \textbf{Enterprise Web Security Audit:} Conducted VAPT on 15+ enterprise web applications, identifying 100+ vulnerabilities including IDOR, RCE, and XSS; collaborated with developers for patch validation.
+        \item \textbf{Firewall Deployment:} Implemented pfSense firewalls across three SMB environments, including rule-based access control and VPN configuration.
+        \item \textbf{SIEM Lab Deployment:} Built and maintained a Wazuh SIEM lab environment to simulate real-world log management, alerting, and compliance monitoring.
+    \end{itemize}
+    
+    \section*{Publications \& Contributions}
+    
+    \begin{itemize}[leftmargin=*]
+        \item Authored 400+ detailed walkthroughs and write-ups for TryHackMe, HackTheBox, and PortSwigger labs covering Web Pentesting, Network Security, Privilege Escalation, and Exploitation:
+        \begin{itemize}
+            \item TryHackMe Labs: \href{https://github.com/Esther7171/THM-Walkthroughs}{github.com/Esther7171/THM-Walkthroughs}
+            \item Web App Pentesting: \href{https://github.com/Esther7171/Web-Application-Penetration-Testing}{github.com/Esther7171/Web-Application-Penetration-Testing}
+            \item HackTheBox Labs: \href{https://github.com/Esther7171/HTB-Walkthroughs}{github.com/Esther7171/HTB-Walkthroughs}
+        \end{itemize}
+        \item Published practical guides for security tool setup and troubleshooting:
+        \begin{itemize}
+            \item Windows Subsystem for Linux (WSL) Installation: \href{https://github.com/Esther7171/Installation-of-Windows-Subsystem-for-Linux-WSL-}{github.com/Esther7171/Installation-of-Windows-Subsystem-for-Linux-WSL-}
+            \item VirtualBox Fullscreen Fix: \href{https://github.com/Esther7171/virtualbox-fullscreen_issue}{github.com/Esther7171/virtualbox-fullscreen_issue}
+        \end{itemize}
+        \item Created a comprehensive Wazuh SIEM Deployment Guide featuring advanced Sysmon config, log enrichment, MITRE ATT&CK mapping, and GDPR/NIST compliance integration: \href{https://github.com/Esther7171/Wazuh}{github.com/Esther7171/Wazuh}.
+    \end{itemize}
+    
+    
+    \end{document}
+
+
+
+    

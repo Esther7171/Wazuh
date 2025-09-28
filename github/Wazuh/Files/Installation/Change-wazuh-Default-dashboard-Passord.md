@@ -50,7 +50,3 @@ Encountering issues or errors?
 * 📩 Open an issue on this repository.
 * 💬 Ask in the Wazuh community or your internal team.
 * 📘 Refer to the official Wazuh documentation for troubleshooting tips.
-
----
-
-Let me know if you'd like a **YAML checklist**, downloadable **PDF**, or want to embed this into your GitHub README!

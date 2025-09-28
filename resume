@@ -1,0 +1,121 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{lmodern}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+%====================
+% Header
+%====================
+\begin{center}
+    {\Huge \textbf{Abhishek Kumar}} \\
+    \vspace{0.2em}
+    Hauz Khas, New Delhi, Pin-110016 \\
+    \href{mailto:abhishekkumar62557@gmail.com}{abhishekkumar62557@gmail.com} |
+    \href{tel:‪+917457889233‬}{‪+91-7457889233‬} \\
+    \href{https://abhishek.vulnsec.in}{abhishek.vulnsec.in} |
+    \href{https://www.linkedin.com/in/abhishek62557}{linkedin.com/in/abhishek62557} |
+    \href{https://github.com/CipherXAbhi}{github.com/CipherXAbhi}
+\end{center}
+
+
+\vspace{1em}
+
+%====================
+% Professional Summary
+%====================
+\section*{Professional Summary}
+Certified Cybersecurity Consultant with 1.5+ years of experience in penetration testing, vulnerability assessment, cloud security, and firewall implementation. Successfully executed over 50 vulnerability scans and 30+ penetration tests across enterprise networks. Proven ability to reduce threat surfaces, validate remediations, and produce actionable security reports. Strong understanding of OWASP Top 10, CVSS, and NIST frameworks. Seeking roles in cybersecurity operations, red teaming, or VAPT services.
+
+%====================
+% Certifications
+%====================
+\section*{Certifications}
+\begin{itemize}[leftmargin=*]
+    \item Certified Ethical Hacker (CEH v13) – [In Progress / Completed Month Year]
+    \item Kali Linux Professional (KLCP) – [If any, else remove]
+    \item CompTIA Security+ – [If applicable]
+\end{itemize}
+
+%====================
+% Skills
+%====================
+\section*{Technical Skills}
+\textbf{Security Tools:} Nmap, Wireshark, Metasploit, Nessus, Burp Suite, OWASP ZAP, MobSF, Frida, Drozer, APKTool \\
+\textbf{Technologies:} Linux, Windows, APIs, Firewalls, Cloud Security (Azure), SIEM log review \\
+\textbf{Languages:} Python, Java, Kotlin, JavaScript, HTML, CSS, SQL, Bash \\
+\textbf{Databases:} MySQL, MongoDB, Firebase \\
+\textbf{Security Practices:} VAPT, Threat Modeling, Security Hardening, Incident Response, OWASP Top 10, NIST Frameworks
+
+%====================
+% Professional Experience
+%====================
+\section*{Professional Experience}
+
+\textbf{Assistant Consultant – Cybersecurity} \\
+Cybrotech Digiventure Pvt. Ltd., New Delhi \hfill Jun 2024 – Present \\
+\href{https://cybrotech.us}{cybrotech.us}
+\begin{itemize}[leftmargin=*]
+    \item Conducted 50+ vulnerability scans and 30+ penetration tests, identifying 15+ critical issues per client system.
+    \item Configured 10+ firewalls (pfSense, FortiGate) and implemented rules to block unauthorized traffic, reducing attacks by 70\%.
+    \item Led testing for mobile, web, and API-based apps, aligning with OWASP standards and NIST 800-115.
+    \item Created technical and executive-level reports for clients, improving remediation timelines by 40\%.
+    \item Used tools like Burp Suite, Frida, MobSF, and Drozer to analyze Android application behavior and detect flaws.
+    \item Participated in red team assessments and internal phishing simulations.
+\end{itemize}
+
+\textbf{Cybersecurity Intern} \\
+Cybrotech Digiventure Pvt. Ltd., New Delhi \hfill Feb 2024 – May 2024
+\begin{itemize}[leftmargin=*]
+    \item Supported 12+ client VAPT projects; discovered SQLi and insecure deserialization flaws in 5 enterprise apps.
+    \item Analyzed SIEM logs and network traffic to detect brute-force and MITM activity.
+    \item Assisted in firewall rule audits, asset inventory tracking, and system patch verification.
+    \item Attended client calls and contributed to internal security policy drafts and awareness initiatives.
+\end{itemize}
+
+%====================
+% Projects
+%====================
+\section*{Projects}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Enterprise Web Security Audit:} Performed VAPT on 15+ enterprise web apps. Discovered 100+ issues including IDOR, RCE, and XSS. Coordinated with developers for patch validation.
+    \item \textbf{Android App Testing Lab:} Built testing workflows using Drozer, Frida, and MobSF to analyze 10+ APKs for insecure data storage, exposed components, and certificate pinning.
+    \item \textbf{Firewall Deployment:} Deployed pfSense across 3 SMB environments with rule-based access control and VPN integration.
+    \item \textbf{Incident Response Playbook:} Designed incident response procedures for ransomware and phishing simulations, reducing resolution time by 50\%.
+\end{itemize}
+
+%====================
+% Education
+%====================
+\section*{Education}
+
+\textbf{Teerthanker Mahaveer University} \\
+Master of Computer Application (MCA) \hfill Sept 2022 – May 2024 \\
+SGPA: 8.7/10 \\
+Key Courses: Cryptography, Cloud Security, OS, Web Tech, Networks
+
+\vspace{0.5em}
+
+\textbf{Teerthanker Mahaveer University} \\
+Bachelor of Computer Application (BCA) \hfill Sept 2019 – May 2022 \\
+Percentage: 82\% \\
+Key Courses: Data Structures, Web Dev, Computer Networks
+
+\end{document}
