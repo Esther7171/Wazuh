@@ -1,1 +1,0 @@
-# How To EnroLL Agent In wazuh

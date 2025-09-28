@@ -52,9 +52,5 @@ docker ps
 You should see Wazuh containers running.
 
 2. Access the Wazuh dashboard:
-
-* Open a browser and go to `http://<your-server-ip>:5601`
 * Use default credentials (if any) provided by the installation script
-
----
 

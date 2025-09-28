@@ -1,1 +1,0 @@
-# Integrating Sack with Wazuh
