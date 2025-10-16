@@ -255,7 +255,6 @@ echo "___________________________"
 
 sudo systemctl restart ssh
 
-
 echo "__________________"
 echo
 echo -e "\e[1;5;7;43m Done\e[0m"
