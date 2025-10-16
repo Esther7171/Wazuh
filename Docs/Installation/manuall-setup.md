@@ -273,3 +273,4 @@ sudo chmod +x /usr/local/bin/restart-wazuh
 ```bash
 sudo restart-wazuh
 ```
+
