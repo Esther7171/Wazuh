@@ -16,9 +16,9 @@ This mini-project uses:
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
-### 1. Install Required Packages
+#### 1. Install Required Packages
 
 ```bash
 sudo apt install cowsay fortune lolcat -y
@@ -26,13 +26,13 @@ sudo apt install cowsay fortune lolcat -y
 
 ---
 
-### 2. Create the Banner Script
+#### 2. Create the Banner Script
 
 ```bash
 sudo nano /etc/ssh/ssh-banner.sh
 ```
 
-Paste this content:
+##### Paste this content:
 
 ```bash
 #!/bin/bash
@@ -49,7 +49,7 @@ fortune | cowsay -f "${COWFILE%.*}" | lolcat
 
 ---
 
-### 3. Make the Script Executable
+#### 3. Make the Script Executable
 
 ```bash
 sudo chmod +x /etc/ssh/ssh-banner.sh
@@ -57,7 +57,7 @@ sudo chmod +x /etc/ssh/ssh-banner.sh
 
 ---
 
-### 4. Trigger the Banner on SSH Login
+#### 4. Trigger the Banner on SSH Login
 
 Open your Bash config:
 
@@ -75,7 +75,7 @@ fi
 
 ---
 
-### 5. Reload Bash Configuration
+#### 5. Reload Bash Configuration
 
 ```bash
 source ~/.bashrc
@@ -85,7 +85,7 @@ Or just disconnect and SSH back in!
 
 ---
 
-## 🎉 Demo Output
+## Demo Output
 
 ```bash
  _______________________________________
@@ -105,28 +105,18 @@ Or just disconnect and SSH back in!
 
 ---
 
-## 🧩 Customize Your Banner
+## Customize Your Banner
 
-* 🎭 Use specific cows: `cowsay -f tux`, `cowsay -f dragon`
-* ✏️ Use your own quotes: `echo "Hello, hacker!" | cowsay | lolcat`
-* 🌌 Make your own `.cow` file and add it to `/usr/share/cowsay/cows/`
+* Use specific cows: `cowsay -f tux`, `cowsay -f dragon`
+* Use your own quotes: `echo "Hello, hacker!" | cowsay | lolcat`
+* Make your own `.cow` file and add it to `/usr/share/cowsay/cows/`
 
 ---
 
-## 🧼 To Remove
+## To Remove 🧼
 
 Just delete the `.bashrc` entry and/or remove the script:
 
 ```bash
 sudo rm /etc/ssh/ssh-banner.sh
 ```
-
----
-
-## 📜 License
-
-MIT – free to use, modify, and share the fun!
-
----
-
-Let me know if you'd like an **installer script**, **system-wide setup**, or a **screenshot** added!
