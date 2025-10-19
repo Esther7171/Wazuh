@@ -1,4 +1,4 @@
-# 🔐 Wazuh Admin Password Reset & Service Restart Guide
+# Wazuh Admin Password Reset & Service Restart Guide
 
 This guide will walk you through resetting the Wazuh **admin password** and restarting essential services — all in a secure and beginner-friendly way.
 
@@ -12,7 +12,7 @@ To reset the password for the `admin` user (or any other user), run the followin
 sudo bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh -u admin -p NewSecurePassword123
 ```
 
-> 🔒 **Important:** Replace `NewSecurePassword123` with a **strong, secure password** that you’ll remember.
+> **Important:** Replace `NewSecurePassword123` with a **strong, secure password** that you’ll remember.
 
 ✅ This command securely updates the user’s credentials in the OpenSearch security plugin used by Wazuh.
 
