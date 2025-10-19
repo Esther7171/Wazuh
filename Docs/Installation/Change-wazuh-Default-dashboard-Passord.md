@@ -4,7 +4,7 @@ This guide will walk you through resetting the Wazuh **admin password** and rest
 
 ---
 
-## 🔑 Step 1: Reset the Wazuh Admin Password
+## Step 1: Reset the Wazuh Admin Password
 
 To reset the password for the `admin` user (or any other user), run the following command:
 
