@@ -43,7 +43,7 @@ Keep your Wazuh deployment secure by following these tips:
 
 ---
 
-## 🆘 Need Help?
+## Need Help?
 
 Encountering issues or errors?
 
