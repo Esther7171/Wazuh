@@ -18,7 +18,7 @@ sudo bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passw
 
 ---
 
-## 🔁 Step 2: Restart Required Wazuh Services
+## Step 2: Restart Required Wazuh Services
 
 Once the password is changed, restart the Wazuh services to apply the update:
 
@@ -32,7 +32,7 @@ These commands ensure that all components (Wazuh manager, API, and indexer) relo
 
 ---
 
-## ⚠️ Security Best Practices
+## Security Best Practices
 
 Keep your Wazuh deployment secure by following these tips:
 
