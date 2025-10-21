@@ -50,4 +50,3 @@ Encountering issues or errors?
 * 📩 Open an issue on this repository.
 * 💬 Ask in the Wazuh community or your internal team.
 * 📘 Refer to the official Wazuh documentation for troubleshooting tips.
-
