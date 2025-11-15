@@ -190,10 +190,12 @@ else:
     sys.exit()
     ```
 3. **Set proper permissions** for the script:
-   ```sh
-   chmod 750 /var/ossec/integrations/custom-criminalip.py
-   chown root:wazuh /var/ossec/integrations/custom-criminalip.py
-   ```
+```
+3. **Set proper permissions** for the integrations script:
+```sh
+  chmod 750 /var/ossec/integrations/custom-criminalip.py
+  chown root:wazuh /var/ossec/integrations/custom-criminalip.py
+```
 
 #### 2. Configure Wazuh to Use the Script
 1. **Edit the Wazuh configuration file** (`/var/ossec/etc/ossec.conf`) and add:
