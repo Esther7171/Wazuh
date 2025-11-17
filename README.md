@@ -3,9 +3,147 @@
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
+---
+<div align="center">
 
+# 🟣 Wazuh Complete Documentation Hub
+*A structured, search-optimized guide for deploying, managing, and hardening Wazuh.*
 
+If this repository helps you, please ⭐ **star the repo**.
+
+</div>
+
+---
+
+# 📚 Table of Contents
+
+1. [Agent](#1-agent)  
+2. [Dashboard](#2-dashboard)  
+3. [Installation](#3-installation)  
+4. [Integrations](#4-integrations)  
+5. [Compliance](#5-compliance)  
+6. [Master Server Config](#6-master-server-configuration)  
+7. [Server Hardening](#7-server-hardening)  
+8. [FAQ](#faq)
+
+---
+
+# 1. Agent
+
+### ▸ [How to enroll/register a Wazuh agent (Windows/Linux/macOS)](Docs/Agent/Enroll.md)  
+### ▸ [How to uninstall the Wazuh agent](Docs/Agent/Uninstall.md)  
+### ▸ [How to upgrade Wazuh agents remotely](Docs/Agent/Upgrade-remote.md)  
+
+### Additional Configurations  
+### ▸ [Master Agent Config Guide](Docs/Master-Agent-config.md)
+
+---
+
+# 2. Dashboard
+
+### ▸ [How to change the default Wazuh Dashboard admin password](Docs/Dashboard/Change-default-password.md)  
+### ▸ [How to set up a custom domain + SSL for Wazuh Dashboard](Docs/Dashboard/Custom-domain-ssl-setup.md)  
+### ▸ [How to rebrand/customize the Wazuh Dashboard UI](Docs/Dashboard/Rebranding.md)
+
+---
+
+# 3. Installation
+
+### ▸ [All-In-One Wazuh Installation](Docs/Installation/All-In-One.md)  
+### ▸ [Change Wazuh Dashboard default password (Installer-specific)](Docs/Installation/Change-wazuh-Default-dashboard-Passord.md)  
+### ▸ [Wazuh Installation using Docker](Docs/Installation/docker-installation.md)  
+### ▸ [Manual Step-by-Step Wazuh Setup](Docs/Installation/manuall-setup.md)
+
+---
+
+# 4. Integrations
+
+## 🔔 Alerts  
+### ▸ [Mail Alerts Integration](Docs/Integrations/Alerts/Mail-Integration.md)  
+### ▸ [Microsoft Teams Alerts Integration](Docs/Integrations/Alerts/Microsoft-Teams.md)  
+### ▸ [Slack Alerts Integration](Docs/Integrations/Alerts/Slack.md)  
+### ▸ [Telegram Bot Alerts Integration](Docs/Integrations/Alerts/Telegram-bot.md)
+
+---
+
+## 🛡 Antivirus  
+### ▸ [Windows Defender Integration](Docs/Integrations/Antivirus/Windows-defender.md)
+
+---
+
+## 📊 System Monitoring  
+### ▸ [Sysmon for Windows Log Collection](Docs/Integrations/System-Monitoring/Sysmon-for-Logs.md)  
+### ▸ [System Resource Monitoring (CPU / RAM / Disk)](Docs/Integrations/System-Monitoring/System-Resources-Monitor.md)
+
+---
+
+## 🎯 Threat Hunting  
+### ▸ [Criminal IP Threat Intelligence Integration](Docs/Integrations/Threat-Hunting/Criminal-IP.md)  
+### ▸ [PowerShell Exploitation Detection](Docs/Integrations/Threat-Hunting/Powershell-detection.md)  
+### ▸ [VirusTotal Hash Lookup Integration](Docs/Integrations/Threat-Hunting/Virus-total.md)  
+### ▸ [YARA + FIM based Threat Detection](Docs/Integrations/Threat-Hunting/Yara+fim.md)
+
+---
+
+# 5. Compliance
+
+### ▸ [Compliance & CIS Benchmark Overview](Docs/Compliance/Overview.md)
+
+---
+
+# 6. Master Server Configuration
+
+### ▸ [Test Reference](Docs/Master-Server-config/test.readme.md)  
+### ▸ [Wazuh Services Auto-Restarter Script](Docs/Master-Server-config/wazuh-services-restarter.md)
+
+---
+
+# 7. Server Hardening
+
+### ▸ [Wazuh Server Hardening Guide](Docs/Server-hardening/Server-harding.md)  
+### ▸ [SSH Banner Configuration](Docs/Server-hardening/SSH-banner.md)  
+### ▸ [SSH Connect Helper Script](Docs/Server-hardening/connect-to-ssh.bat)
+
+---
+
+# ❓ FAQ
+
+### **Q1: How do I install Wazuh on Linux/Ubuntu?**  
+See: [All-In-One Installation](Docs/Installation/All-In-One.md)
+
+### **Q2: How do I uninstall a Wazuh agent?**  
+See: [Uninstallation Guide](Docs/Agent/Uninstall.md)
+
+### **Q3: How do I integrate VirusTotal with Wazuh?**  
+See: [VirusTotal Integration](Docs/Integrations/Threat-Hunting/Virus-total.md)
+
+### **Q4: How do I detect PowerShell attacks?**  
+See: [PowerShell Detection](Docs/Integrations/Threat-Hunting/Powershell-detection.md)
+
+### **Q5: How do I monitor system resources?**  
+See: [System Resource Monitor](Docs/Integrations/System-Monitoring/System-Resources-Monitor.md)
+
+### **Q6: How to configure Windows Defender logs?**  
+See: [Windows Defender Integration](Docs/Integrations/Antivirus/Windows-defender.md)
+
+### **Q7: How do I send alerts to Slack/Teams/Mail/Telegram?**  
+See: [Alerts Integrations](Docs/Integrations/Alerts)
+
+---
+
+<div align="center">
+
+### 🤝 Contributions Welcome  
+Feel free to open issues or submit PRs to enhance these docs.
+
+### ⭐ Support  
+If this documentation helped you, please **give the repo a star**.
+
+</div>
+---
 > # Topics  
+# Index
+
 
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
