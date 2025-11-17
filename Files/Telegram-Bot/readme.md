@@ -202,5 +202,3 @@ systemctl restart wazuh-manager
 <img src="https://github.com/user-attachments/assets/178776b7-e1f1-47f1-a651-7c030719ced8"></img>
 
 All good to go
-
-
