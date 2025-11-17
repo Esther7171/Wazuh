@@ -13,7 +13,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-# Table of Contents
+> # ▸ Table of Contents
 
 ---
 
