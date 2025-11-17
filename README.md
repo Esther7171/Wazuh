@@ -1,12 +1,10 @@
 
-# <div align="center">Wazuh</div>
+# <div align="center">Wazuh Complete Documentation Hub</div>
 <div align="center">
 <img src="https://github.com/user-attachments/assets/818c4229-e59a-41b6-a10a-ef8d4775c076" height="200"></img>
 </div>
----
 <div align="center">
 
-# 🟣 Wazuh Complete Documentation Hub
 *A structured, search-optimized guide for deploying, managing, and hardening Wazuh.*
 
 If this repository helps you, please ⭐ **star the repo**.
