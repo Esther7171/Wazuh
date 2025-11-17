@@ -6,27 +6,7 @@
 
 
 > # Topics  
-* [Introduction to Wazuh](#introduction-to-wazuh)
-* [HIDS,OSSEC and Wazuh](#what-is-hids-)
-* [Components of Wazuh](#components-of-wazuh)
-* [Architecture of Wazuh](https://github.com/Esther7171/Wazuh/blob/main/README.md#architecture-of-wazuh)
-* [Wazuh Feature](https://github.com/Esther7171/Wazuh/edit/main/README.md#wazuh-features-and-capabilities)
-* [Installation guide]( )
-* [Requirements For Installation]()
-* [Agent Enrollment]()
-* [How to Create Dashboard]()
-* [Wazuh Intergration](#wazuh-integrations)
-* [Uninstalling the Wazuh agent](#uninstalling-the-wazuh-agent-form-agent-side)
-* [Wazuh Ruleset & Decoders]
-* [File Integrity Monitoring (FIM) Configuration](./Files/Integration/FIM/readme.md)
-* [Detecting and removing malware using VirusTotal integration](./Files/Integration/virus-total)
-* [Detecting Network using Suricata `IDS`]()
-* [Detecting Vulnerabilities]
-* [Detecting Execution of Malicious Commands]
-* [Detecting and Blocking Brute Force Attack]
-* [Get Wazuh Alert on Mail (Configure smtp)](Files/Smtp/readme.md)
-* [Linux-Server Hardening]
-* test
+
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
 
@@ -236,5 +216,3 @@ Add Agent name and group
 ![image](https://github.com/user-attachments/assets/9305c30f-0e2a-4efb-ba84-15c85b4d1370)
 
 Copy the command and past it in mac endpoint
-
-
