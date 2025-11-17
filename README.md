@@ -47,7 +47,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 # 4. Integrations
 
-## 🔔 Alerts  
+## Alerts  
 ### ▸ [Mail Alerts Integration](Docs/Integrations/Alerts/Mail-Integration.md)  
 ### ▸ [Microsoft Teams Alerts Integration](Docs/Integrations/Alerts/Microsoft-Teams.md)  
 ### ▸ [Slack Alerts Integration](Docs/Integrations/Alerts/Slack.md)  
@@ -55,18 +55,18 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-## 🛡 Antivirus  
+## Antivirus  
 ### ▸ [Windows Defender Integration](Docs/Integrations/Antivirus/Windows-defender.md)
 
 ---
 
-## 📊 System Monitoring  
+## System Monitoring  
 ### ▸ [Sysmon for Windows Log Collection](Docs/Integrations/System-Monitoring/Sysmon-for-Logs.md)  
 ### ▸ [System Resource Monitoring (CPU / RAM / Disk)](Docs/Integrations/System-Monitoring/System-Resources-Monitor.md)
 
 ---
 
-## 🎯 Threat Hunting  
+##  Threat Hunting  
 ### ▸ [Criminal IP Threat Intelligence Integration](Docs/Integrations/Threat-Hunting/Criminal-IP.md)  
 ### ▸ [PowerShell Exploitation Detection](Docs/Integrations/Threat-Hunting/Powershell-detection.md)  
 ### ▸ [VirusTotal Hash Lookup Integration](Docs/Integrations/Threat-Hunting/Virus-total.md)  
