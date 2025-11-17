@@ -17,7 +17,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-## 1. Agent
+# 1. Agent
 
 ### ▸ [How to enroll/register a Wazuh agent (Windows/Linux/macOS)](Docs/Agent/Enroll.md)  
 ### ▸ [How to uninstall the Wazuh agent](Docs/Agent/Uninstall.md)  
@@ -28,7 +28,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-## 2. Dashboard
+# 2. Dashboard
 
 ### ▸ [How to change the default Wazuh Dashboard admin password](Docs/Dashboard/Change-default-password.md)  
 ### ▸ [How to set up a custom domain + SSL for Wazuh Dashboard](Docs/Dashboard/Custom-domain-ssl-setup.md)  
@@ -36,7 +36,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-## 3. Installation
+# 3. Installation
 
 ### ▸ [All-In-One Wazuh Installation](Docs/Installation/All-In-One.md)  
 ### ▸ [Change Wazuh Dashboard default password (Installer-specific)](Docs/Installation/Change-wazuh-Default-dashboard-Passord.md)  
@@ -45,7 +45,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-## 4. Integrations
+# 4. Integrations
 
 ## 🔔 Alerts  
 ### ▸ [Mail Alerts Integration](Docs/Integrations/Alerts/Mail-Integration.md)  
