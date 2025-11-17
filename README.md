@@ -118,22 +118,6 @@ See: [Windows Defender Integration](Docs/Integrations/Antivirus/Windows-defender
 ### **Q7: How do I send alerts to Slack/Teams/Mail/Telegram?**  
 See: [Alerts Integrations](Docs/Integrations/Alerts)
 
----
-
-<div align="center">
-
-### 🤝 Contributions Welcome  
-Feel free to open issues or submit PRs to enhance these docs.
-
-### ⭐ Support  
-If this documentation helped you, please **give the repo a star**.
-
-</div>
----
-> # Topics  
-# Index
-
-
 > # Introduction to Wazuh
 OSSEC is open source HIDS security platform and a Host Intrusion Detection System(HIDS) software. Created by Daniel CID in year 2004, In year 2015 it forked from OSSEC AND Wazuh platform was created  
 
@@ -343,3 +327,13 @@ Add Agent name and group
 ![image](https://github.com/user-attachments/assets/9305c30f-0e2a-4efb-ba84-15c85b4d1370)
 
 Copy the command and past it in mac endpoint
+
+<div align="center">
+
+### 🤝 Contributions Welcome  
+Feel free to open issues or submit PRs to enhance these docs.
+
+### ⭐ Support  
+If this documentation helped you, please **give the repo a star**.
+
+</div>
