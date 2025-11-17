@@ -13,16 +13,7 @@ If this repository helps you, please ⭐ **star the repo**.
 
 ---
 
-# 📚 Table of Contents
-
-1. [Agent](#1-agent)  
-2. [Dashboard](#2-dashboard)  
-3. [Installation](#3-installation)  
-4. [Integrations](#4-integrations)  
-5. [Compliance](#5-compliance)  
-6. [Master Server Config](#6-master-server-configuration)  
-7. [Server Hardening](#7-server-hardening)  
-8. [FAQ](#faq)
+# Table of Contents
 
 ---
 
